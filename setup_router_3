@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#sudo apt-get install vlan
-#sudo modprobe 8021q
-#sudo su -c 'echo "8021q" >> /etc/modules'
+sudo apt-get install vlan
+sudo modprobe 8021q
+sudo su -c 'echo "8021q" >> /etc/modules'
 
 read -p "Desactiva el gestor automático de la red. Activar red NO marcado. Pulsa enter para continuar."
 
