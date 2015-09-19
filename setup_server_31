@@ -1,8 +1,0 @@
-#!/bin/bash
-
-read -p "Desactiva el gestor automático de la red. Activar red NO marcado. Pulsa enter para continuar."
-
-sudo cp ./server_31_interfaces /etc/network/interfaces
-
-sudo ifdown eth0
-sudo ifup eth0
