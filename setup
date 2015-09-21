@@ -41,6 +41,8 @@ function server1 {
 	cp ./server_31_interfaces /etc/network/interfaces
 	ifdown eth0
 	ifup eth0
+
+  echo "nameserver 8.8.8.8" >> /etc/resolvconf/resolv.conf.d/head
 }
 
 function server2 {
@@ -48,6 +50,8 @@ function server2 {
 	cp ./server_32_interfaces /etc/network/interfaces
 	ifdown eth0
 	ifup eth0
+
+  echo "nameserver 8.8.8.8" >> /etc/resolvconf/resolv.conf.d/head
 }
 
 
