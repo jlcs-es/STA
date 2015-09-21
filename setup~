@@ -1,24 +1,26 @@
 #!/bin/bash
 
-if [ "$EUID" -ne "0" ]; then
-  echo "Ejecuta como root (sudo)."
+if [ "$EUID" -ne 0 ]; then
+  echo Ejecuta como root (sudo).
   exit
 fi
 
-USO="Uso: \#$0 router|server1|server2"
+USO = "Uso: \#$0 router|server1|server2"
 
-if [ "$#" -lt "1" ] ; then
+if[$#<1]; then
 	echo $USO
 	exit
 fi
 
+read -p "Desactiva el gestor automático de la red. Activar red NO marcado. Pulsa enter para continuar."
+echo "$Deity quiera que lo hayas hecho de verdad..."
+
 function router {
-	apt-get install vlan -y
+	apt-get install vlan
 	modprobe 8021q
 	su -c 'echo "8021q" >> /etc/modules'
 
-  stop network-manager
-
+	
 	cp ./router_3_interfaces /etc/network/interfaces
 
 	ifdown eth0
@@ -26,40 +28,41 @@ function router {
 	ifup eth1.31
 	ifup eth1.32
 
+
 	sysctl -w net.ipv4.ip_forward=1
 	#O hacerlo permanente descomentando la linea en /etc/sysctl
 
 	iptables -t nat -A POSTROUTING ! -d 192.168.0.0/16 -o eth0 -j MASQUERADE
 	iptables-save
-	apt-get install iptables-persistent -y
-
+	apt-get install iptables-persistent
 }
 
 
 function server1 {
-  stop network-manager
 	cp ./server_31_interfaces /etc/network/interfaces
 	ifdown eth0
 	ifup eth0
 }
 
 function server2 {
-  stop network-manager
 	cp ./server_32_interfaces /etc/network/interfaces
 	ifdown eth0
 	ifup eth0
 }
 
 
-if [ $1 = "router" ] ; then
+if[$1 = "router"]; then
 	router
-elif [ $1 = "server1" ] ; then
+elif [$1 = "server1"]; then
 	server1
-elif [ $1 = "server2" ] ; then
+elif [$1 = "server2"]; then
 	server2
 else
 	echo $USO
 	exit
 fi
 
-ping -c 50 8.8.8.8
+
+
+
+
