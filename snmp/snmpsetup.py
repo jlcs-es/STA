@@ -1,6 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+#TODO: al instalar todo: apt-get purge antes del install para dejar el sistema limpio.
+#Ponerlo en el setup de topología y de los python.
+
 import shutil
 import subprocess
 import os
@@ -30,7 +33,7 @@ if __name__== "__main__":
     os.remove("log.txt")
     bash("touch",["log.txt"])
 
-    uso = "Uso: agente [escritura] | manejador"
+    uso = "Uso: agente [escritura] | manejador [trap]"  #TODO: trap del agente
 
     if os.geteuid() != 0:
         print "Necesitas permisos de super vaca"
@@ -53,8 +56,13 @@ if __name__== "__main__":
         shutil.copyfile(snmpdConfFile, "/etc/snmp/snmpd.conf")
         bash("service", ["snmpd","restart"])
     elif (sys.argv[1] == "manejador"):
-        aptget(["snmp", "snmp-mibs-downloader"])
+        aptget(["snmpd", "snmp", "snmp-mibs-downloader"])
         shutil.copyfile("./snmp.conf","/etc/snmp/snmp.conf")
+        if len(sys.argv) >= 2:
+            if argv[2] == "trap":
+                shutil.copyfile("./snmptrapd.conf","/etc/snmp/snmptrapd.conf")
+                #bash("snmptrapd", ["-f", "-Leo"])   #Esto es para quedarse escuchando traps.
+                #TODO: decidir si abrimos nueva terminal que se quede escuchando
     else:
         print uso
         exit(127)
