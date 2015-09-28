@@ -30,7 +30,7 @@ if __name__== "__main__":
     os.remove("log.txt")
     bash("touch",["log.txt"])
 
-    uso = "Uso: agente|manejador"
+    uso = "Uso: agente [escritura] | manejador"
 
     if os.geteuid() != 0:
         print "Necesitas permisos de super vaca"
@@ -46,7 +46,11 @@ if __name__== "__main__":
         aptget(["snmpd", "snmp", "snmp-mibs-downloader"])
         bash("service", ["snmpd","stop"])
         #TODO: Habrá que cambiar el SYSTEM INFORMATION con la información de la Organización
-        shutil.copyfile("./snmpd.conf","/etc/snmp/snmpd.conf")
+        snmpdConfFile = "./snmpd.conf"
+        if len(sys.argv) >= 2:
+            if argv[2] == "escritura":
+                snmpdConfFile = "./write_snmpd.conf"
+        shutil.copyfile(snmpdConfFile, "/etc/snmp/snmpd.conf")
         bash("service", ["snmpd","restart"])
     elif (sys.argv[1] == "manejador"):
         aptget(["snmp", "snmp-mibs-downloader"])
