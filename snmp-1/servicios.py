@@ -48,7 +48,7 @@ if __name__== "__main__":
         bash("service", ["snmpd","stop"])
         #TODO: Habrá que cambiar el SYSTEM INFORMATION con la información de la Organización
         snmpdConfFile = "./snmpd.conf"
-        if len(sys.argv) >= 2:
+        if len(sys.argv) > 2:
             if sys.argv[2] == "escritura":
                 snmpdConfFile = "./write_snmpd.conf"
         shutil.copyfile(snmpdConfFile, "/etc/snmp/snmpd.conf")
@@ -56,7 +56,7 @@ if __name__== "__main__":
     elif (sys.argv[1] == "manejador"):
         aptget(["snmpd", "snmp", "snmp-mibs-downloader"])
         shutil.copyfile("./snmp.conf","/etc/snmp/snmp.conf")
-        if len(sys.argv) >= 2:
+        if len(sys.argv) > 2:
             if sys.argv[2] == "trap":
                 shutil.copyfile("./snmptrapd.conf","/etc/snmp/snmptrapd.conf")
                 #bash("snmptrapd", ["-f", "-Leo"])   #Esto es para quedarse escuchando traps.
