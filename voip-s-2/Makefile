@@ -4,6 +4,9 @@ all: network servicios configuration test
 servicios:
 	sh install
 
+network:
+	sh network
+
 configuration:
 	sh config
 
