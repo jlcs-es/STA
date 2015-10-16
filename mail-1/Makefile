@@ -1,6 +1,8 @@
 
 all: network servicios test
 
+no-network: servicios test
+
 network:
 	sh network
 
