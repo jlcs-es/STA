@@ -7,8 +7,9 @@ network:
 snmp:
 	#TODO SNMP: python SNMP/servicios.py
 
+ #Evitar que los scripts fallen si referencian ficheros con rutas relativas
 voip:
-	cd VOIP; \  #Evitar que los scripts fallen si referencian ficheros con rutas relativas
+	cd VOIP; \
 	sh install; \
 	sh config
 
