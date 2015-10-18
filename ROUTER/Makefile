@@ -5,7 +5,7 @@ network:
 	sh network
 
 servicios:
-	python SNMP/servicios.py #SNMP agent #TODO
+	cd SNMP; python servicios.py #SNMP agent #TODO
 
 test:
 	sh test  #TODO
