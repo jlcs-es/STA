@@ -1,0 +1,19 @@
+ESTRUCTURA:
+Una carpeta por ORGANIZACIÓN/ROUTER
+En cada organización, una carpteta por máquina: física / mv servidor / mv cliente.
+En cada una, un Makefile para configurar la máquina completa.
+En cada máquina una carpeta por servicio, para agrupar ficheros de configuración y de instalación.
+
+---------------------------------------
+
+En ORG2 podría haber dos servidores,
+la idea sería que el manejador SNMP del primer server controle servicios del segundo, no siendo de la misma máquina.
+
+-----------------------------
+
+SNMP
+-ROUTER: Decidir qué traps, si ro/rw, v3 o v2.
+-AGENTES: decidir qué configuración en cada agente en general.
+
+VOIP
+-
