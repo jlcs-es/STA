@@ -62,6 +62,51 @@
 
 \section{Introducción}
 
+Somos el grupo 3, así que nos encargaremos de las organizaciones 31 y 32.
+
 \section{Topología}
+
+En esta sección describimos la forma en la que se van a desplegar los servicios y como estarán
+conectados entre sí. 
+
+\subsection{Dispositivos}
+
+Tenemos para las pruebas y el desarrollo de la práctica, las siguientes herramientas hardware:
+
+\begin{itemize}
+
+	\item Un \textbf{switch} con VLAN y 5 puertos.
+	\item Un ordenador que actúa de \textbf{enrutador}, con tres puertos ethernet.
+	\item Un \textbf{punto de acceso} WiFi para el acceso a la red.
+	\item Un \textbf{iPhone} y un \textbf{portátil Mac}, útiles para probar VOIP con wifi.
+	\item Dos ordenadores que actúan como \textbf{organizaciones} 31 y 32. 
+	\item Dos ordenadores más para simular \textbf{clientes} haciendo peticiones.
+
+\end{itemize}
+
+\subsection{Topología de red}
+
+\begin{Verbatim}
+TODO: Introducir aquí un diagrama hecho con GNS3 o similar.
+\end{Verbatim}
+
+\section{Configuración de los dispositivos}
+
+Para la configuración de los dispositivos utilizamos herramientas Makefile, y scripts escritos en bash y python, de manera que desplegar los servicios y la topología en un dispositivo esté automatizado.
+\\
+
+Usamos una estructura de directorios basada en el hardware a configurar. Es decir, en el ordenador que hace de enrutador ejecutamos un Makefile que está en el directorio ROUTER.
+
+\section{Servicios}
+
+\subsection{Enrutamiento}
+
+\subsection{SNMP}
+
+\subsubsection{Agentes}
+
+\subsubsection{Manejador}
+
+\subsection{Voz sobre IP}
 
 \end{document}
