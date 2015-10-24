@@ -1,1 +1,1 @@
-snmpget –v 2c –c sta 192.168.N1.100 system.sysLocation.0 
+snmpget -v 2c -c sta31 192.168.31.100 system.sysLocation.0 
