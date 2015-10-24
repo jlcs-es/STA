@@ -6,7 +6,7 @@ import os
 import sys
 
 def bash(command, args):
-    proc = subprocess.Popen(command + " " + " ".join(args), shell=True, stdin=None, stdout=open("log.txt","a"), stderr=open(os.devnull,"wb"), executable="/bin/bash")
+    proc = subprocess.Popen(command + " " + " ".join(args), shell=True, stdin=None, stdout=open("logAgente.txt","a"), stderr=open(os.devnull,"wb"), executable="/bin/bash")
     proc.wait()
 
 def aptget(software):

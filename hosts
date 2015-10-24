@@ -1,16 +1,3 @@
-stop network-manager
-cat > /etc/network/interfaces << EOF
-auto lo
-iface lo inet loopback
-
-auto eth0
-iface eth0 inet static
-address 192.168.32.2
-netmask 255.255.255.0
-gateway 192.168.32.1
-EOF
-
-cat > /etc/hosts << EOF
 127.0.0.1   localhost
 
 #ROUTER
@@ -38,9 +25,3 @@ cat > /etc/hosts << EOF
 192.168.32.111    client1.org32
 192.168.32.112    client2.org32
 192.168.32.113    client3.org32
-EOF
-
-ifdown eth0
-ifup eth0
-echo "nameserver 8.8.8.8" >> /etc/resolvconf/resolv.conf.d/head
-echo "nameserver 8.8.8.8" >> /etc/resolv.conf

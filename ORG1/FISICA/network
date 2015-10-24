@@ -10,6 +10,36 @@ netmask 255.255.255.0
 gateway 192.168.31.1
 EOF
 
+cat > /etc/hosts << EOF
+127.0.0.1   localhost
+
+#ROUTER
+192.168.31.1    router.org31
+192.168.32.1    router.org32
+
+
+#ORG1
+192.168.31.2    fisica.org31
+
+192.168.31.100    server.org31
+192.168.31.101    server2.org31
+
+192.168.31.111    client1.org31
+192.168.31.112    client2.org31
+192.168.31.113    client3.org31
+
+
+#ORG2
+192.168.32.2    fisica.org32
+
+192.168.32.100    server.org32
+192.168.32.101    server2.org32
+
+192.168.32.111    client1.org32
+192.168.32.112    client2.org32
+192.168.32.113    client3.org32
+EOF
+
 ifdown eth0
 ifup eth0
 echo "nameserver 8.8.8.8" >> /etc/resolvconf/resolv.conf.d/head

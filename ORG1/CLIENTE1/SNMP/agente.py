@@ -6,7 +6,7 @@ import os
 import sys
 
 def bash(command, args):
-    proc = subprocess.Popen(command + " " + " ".join(args), shell=True, stdin=None, stdout=open("logManejador.txt","a"), stderr=open(os.devnull,"wb"), executable="/bin/bash")
+    proc = subprocess.Popen(command + " " + " ".join(args), shell=True, stdin=None, stdout=open("log.txt","a"), stderr=open(os.devnull,"wb"), executable="/bin/bash")
     proc.wait()
 
 def aptget(software):
@@ -36,10 +36,11 @@ if __name__== "__main__":
     #Instalar paquetes necesarios
     aptget(["snmpd", "snmp", "snmp-mibs-downloader"])
 
-    #Copiar la configuracion
     shutil.copyfile("./snmp.conf","/etc/snmp/snmp.conf")
-    shutil.copyfile("./snmptrapd.conf","/etc/snmp/snmptrapd.conf")
+    bash("service", ["snmpd","stop"])
+    shutil.copyfile("./snmpd.conf", "/etc/snmp/snmpd.conf")
     bash("service", ["snmpd","restart"])
-    bash("gnome-terminal", ["-e", "snmptrapd -f -Leo"]) #TODO: sustituir por la terminal de linux correcta
+
+
 
     exit(0)
