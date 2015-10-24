@@ -11,9 +11,16 @@ la idea sería que el manejador SNMP del primer server controle servicios del se
 
 -----------------------------
 
+TODO: al instalar un paquete: apt-get purge antes del install para dejar el sistema limpio.
+Sugerencia: un make clean_installs que haga todo si es necesario.
+
+TOPOLOGY:
+-En vez de dns, añadir a fichero de hosts las ips nuestras.
+
 SNMP
 -ROUTER: Decidir qué traps, si ro/rw, v3 o v2.
 -AGENTES: decidir qué configuración en cada agente en general.
+-En caso de mail: system info de snmpd.conf correo del admin.
 
 VOIP
 -

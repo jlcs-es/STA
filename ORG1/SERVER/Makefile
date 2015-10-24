@@ -5,7 +5,9 @@ network:
 	sh network
 
 snmp:
-	#TODO SNMP: python SNMP/servicios.py
+	cd SNMP; \
+	python manejador.py; \
+	python agente.py
 
 #Evitar que los scripts fallen si referencian ficheros con rutas relativas
 voip:
@@ -15,6 +17,7 @@ voip:
 
 test:
 	sh test
+	cd SNMP; sh test
 	cd VOIP; sh test
 
 
