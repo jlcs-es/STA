@@ -40,6 +40,7 @@
 	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
 	stringstyle=\color{mymauve},     % string literal style
 	tabsize=4,                       
+	inputencoding=utf8,
 	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 
@@ -51,7 +52,6 @@
 \begin{document}
 
 \maketitle
-
 
 \begin{abstract}
 %Aquí el resumen
@@ -86,9 +86,9 @@ Tenemos para las pruebas y el desarrollo de la práctica, las siguientes herrami
 
 \subsection{Topología de red}
 
-\begin{Verbatim}
-TODO: Introducir aquí un diagrama hecho con GNS3 o similar.
-\end{Verbatim}
+\begin{lstlisting}
+TODO: Introducir aqui un diagrama hecho con GNS3 o similar.
+\end{lstlisting}
 
 \section{Configuración de los dispositivos}
 
@@ -101,6 +101,20 @@ Usamos una estructura de directorios basada en el hardware a configurar. Es deci
 
 \subsection{Enrutamiento}
 
+Del enrutamiento se encarga el PC que hace de enrutador. La configuración física se basa en tres puertos Ethernet:
+
+\begin{itemize}
+	\item Un puerto se usa para conectarse a la red de la UMu, que da conectividad al exterior. 
+	\item Otro puerto, conectado al \textit{trunk switch vlan} de la organización 31.
+	\item Ídem, para la organización 32.
+\end{itemize}
+
+La configuración lógica, es decir, la configuración de los interfaces de red es la siguiente:
+
+\begin{lstlisting}
+TODO: Copiar la configuracion de las interfaces.
+\end{lstlisting}
+
 \subsection{SNMP}
 
 \subsubsection{Agentes}
@@ -108,5 +122,33 @@ Usamos una estructura de directorios basada en el hardware a configurar. Es deci
 \subsubsection{Manejador}
 
 \subsection{Voz sobre IP}
+
+En esta sección documentamos las configuraciones que hemos tomado para el servidor de Asterisk.
+
+\subsubsection{Configuración básica}
+
+Para las organizaciones 31 y 32, hacemos 2 cuentas de cliente para ambas organizaciones (311 y 312 para organización 31; 321 y 322 para la organización 32).
+
+\begin{lstlisting}
+TODO: Copiar aqui la configuracion relativa a los clientes.
+\end{lstlisting}
+
+Para esos clientes también hemos configurado sus extensiones.
+
+\begin{lstlisting}
+TODO: Copiar aqui la configuracion relativa a las extensiones.
+\end{lstlisting}
+
+\subsubsection{Troncales Asterisk}
+
+Para empezar, hacemos una redirección básica entre los dos servicios Asterisk en las configuraciones de extensión de Asterisk:
+
+\begin{lstlisting}
+TODO: Copiar aqui la configuracion relativa a las extensiones entre servicios.
+\end{lstlisting}
+
+\subsubsection{Buzón de voz}
+
+\subsection{LDAP}
 
 \end{document}
