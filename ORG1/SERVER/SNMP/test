@@ -1,1 +1,7 @@
-snmpget -v 2c -c sta31 192.168.31.100 system.sysLocation.0 
+#!/bin/bash
+
+snmpget -v 2c -c sta31 192.168.31.100 system.sysLocation.0
+
+gnome-terminal -t "SNMP TRAPS" -e "snmptrapd -f -Leo" &
+
+exit 0

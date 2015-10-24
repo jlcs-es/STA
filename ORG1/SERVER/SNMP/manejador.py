@@ -40,6 +40,5 @@ if __name__== "__main__":
     shutil.copyfile("./snmp.conf","/etc/snmp/snmp.conf")
     shutil.copyfile("./snmptrapd.conf","/etc/snmp/snmptrapd.conf")
     bash("service", ["snmpd","restart"])
-    bash("gnome-terminal", ["-e", "snmptrapd -f -Leo"]) #TODO: sustituir por la terminal de linux correcta
 
     exit(0)

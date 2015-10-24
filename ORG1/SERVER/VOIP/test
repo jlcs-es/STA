@@ -1,3 +1,3 @@
 #!/bin/bash
 
-asterisk -vvvvr
+gnome-terminal -t "ASTERISK" -e "asterisk -vvvvr" &
