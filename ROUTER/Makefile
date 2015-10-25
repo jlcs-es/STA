@@ -1,14 +1,16 @@
 
-all: network #TODO: servicios test
+all: network snmp test
 
 network:
 	sh network
 
-servicios:
-	cd SNMP; python servicios.py #SNMP agent #TODO
+snmp:
+	cd SNMP; \
+	python agente.py
 
 test:
-	sh test  #TODO
+	sh test
+	cd SNMP; sh test
 
 
-.PHONY: all network
+.PHONY: all network snmp test

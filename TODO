@@ -19,8 +19,9 @@ TOPOLOGY:
 
 SNMP
 -ROUTER: Decidir qué traps, si ro/rw, v3 o v2.
+        · Diferenciar que los traps de una interfaz vayan sólo al manejador de la org correspondiente.
 -AGENTES: decidir qué configuración en cada agente en general.
 -En caso de mail: system info de snmpd.conf correo del admin.
 
 VOIP
--
+-CLIENTE: instalar cliente voip e intentar configurar una cuenta

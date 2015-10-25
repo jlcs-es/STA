@@ -1,1 +1,1 @@
-ping -c 50 www.google.com
+ping -c 10 www.google.com

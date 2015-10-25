@@ -1,6 +1,6 @@
 #!/bin/bash
 
-snmpget -v 2c -c sta31 server.org31 system.sysLocation.0
+snmpget -v 2c -c sta32 server.org32 system.sysLocation.0
 
 gnome-terminal -t "SNMP TRAPS" -e "snmptrapd -f -Leo" &
 
