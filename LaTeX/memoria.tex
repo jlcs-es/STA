@@ -86,16 +86,59 @@ Tenemos para las pruebas y el desarrollo de la práctica, las siguientes herrami
 
 \subsection{Topología de red}
 
-\begin{lstlisting}
-TODO: Introducir aqui un diagrama hecho con GNS3 o similar.
-\end{lstlisting}
+%TODO: explicar la topología lógica: un server, 1-2 clientes, a lo sumo un server extra.
+
+En cuanto a la topología física real, disponemos en el laboratorio de 3 torres, 5 puertos del switch CISCO y un punto de acceso wifi configurado para la organización 31. La conexión del una de las torres como router y las otras dos como equipos de cada organización ya se explica en los boletines de prácticas.
+\\
+
+A partir de esa configuración básica, configuramos las dos organizaciones de manera casi simétrica: en la máquina física de una organización, se ejecutarán como máquinas virtuales un servidor y uno o dos clientes para probar los servicios. Decidimos usar un servidor porque la cantidad de servicios proporcionados por una organización no son tan pesados como carga de trabajo para una única máquina, como lo pueda ser tener varios servidores como máquinas virtuales en la misma torre del laboratorio. En la organización 32 podrían haber dos servidores para, por ejemplo, probar la gestión de servidor con SNMP que no sean en la misma máquina.
+\\
+
+Ahora bien, por el modo en que programamos la configuración de dispositivos, nos es muy fácil cambiar los roles de las máquinas de modo que el servidor de una organización sea la máquina física, y los clientes una máquina virtual, o una torre libre del laboratorio, o un móvil o portátil nuestros.
+\\
+
+Con esto nuestra solución para la práctica se centra más en los dispositivos lógicos \textit{SERVER}, \textit{CLIENTE}, \textit{ROUTER}, que en las máquinas que disponemos en los laboratorios o las máquinas virtuales creadas.
+
+
+\begin{figure}[h!]
+	\caption{Topología física}
+	\centering
+		\includegraphics[scale=0.35]{images/TopologiaFisica}
+\end{figure}
 
 \section{Configuración de los dispositivos}
 
-Para la configuración de los dispositivos utilizamos herramientas Makefile, y scripts escritos en bash y python, de manera que desplegar los servicios y la topología en un dispositivo esté automatizado.
+Para la configuración de los dispositivos utilizamos herramientas Makefile, y scripts escritos en bash y python, de manera que desplegar los servicios y la topología en un dispositivo esté automatizado. No nos apoyamos en una máquina virtual que vayamos configurando a lo largo de las prácticas llevándola de un lado a otro, y por lo general, usamos máquinas virtuales con una instantánea \textit{limpia}.
 \\
 
 Usamos una estructura de directorios basada en el hardware a configurar. Es decir, en el ordenador que hace de enrutador ejecutamos un Makefile que está en el directorio ROUTER.
+
+%TODO: decidir si se pone la estructura, y si se modifica cómo presentarla.
+\begin{Verbatim} 
+ROUTER
+	SNMP
+	Makefile
+	network
+	test
+ORG1
+	FISICA
+		Makefile
+		network
+		test
+	SERVER
+		SNMP
+		VOIP
+		Makefile
+		network
+		test
+	CLIENTE1
+		SNMP
+		VOIP
+		Makefile
+		network
+		test
+
+\end{Verbatim}
 
 \section{Servicios}
 
@@ -114,6 +157,7 @@ La configuración lógica, es decir, la configuración de los interfaces de red 
 \begin{lstlisting}
 TODO: Copiar la configuracion de las interfaces.
 \end{lstlisting}
+\lstinputlisting{../ROUTER/network}
 
 \subsection{SNMP}
 
