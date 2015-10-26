@@ -16,10 +16,14 @@ def aptget(software):
     if noupdate:
         bash("apt-get", ["update"])
         noupdate = False
-    lista = ["install", "-y"]
+    lista = ["install", "-y" ,"-q"]
     lista.extend(software)
     bash("apt-get", lista)
 
+
+def generar_usuario(name, password):
+    with open(name+".ldif","w") as ldif:
+        ldif.write("# Entrada para los usuarios:\ndn: cn="+name+", ou=owncloud, dc=org31, dc=es\nchangetype: add\nobjectclass: inetOrgPerson\nsn:Perez\ncn: "+name+"cn\nuid: "+name+"uid\nuserPassword: "+password+"\nou:owncloud\n")
 
 if __name__== "__main__":
     # Preparar log.txt
@@ -33,11 +37,23 @@ if __name__== "__main__":
 
     noupdate = True
 
+    #Evitar la ventana ascii:
+    os.environ["DEBIAN_FRONTEND"] = "noninteractive"
+
     #Instalar paquetes necesarios
     aptget(["slapd", "ldap-utils"])
 
-    #Copiar la configuracion
-    #shutil.copyfile("./snmp.conf","/etc/snmp/snmp.conf")
-    #bash("service", ["snmpd","restart"])
+    os.environ["DEBIAN_FRONTEND"] = ""
 
+    #Copiar la configuracion
+    initialdir = os.getcwd()
+    shutil.copyfile("./initial.tar.gz","/etc/ldap/initial.tar.gz")
+    os.chdir("/etc/ldap/")
+    bash("tar", ["-xzf", "initial.tar.gz"])
+    os.chdir(initialdir)
+
+    # Generar usuarios:
+    generar_usuario("cliente311","manyhue")
+    generar_usuario("cliente312","manyhue")
+    generar_usuario("cliente313","manyhue")
     exit(0)

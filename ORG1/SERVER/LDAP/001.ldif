@@ -1,0 +1,4 @@
+# Entrada para owncloud
+dn: ou=owncloud, dc=org31, dc=es
+changetype: add
+objectclass: organizationalunit

@@ -1,0 +1,10 @@
+# Entrada para los usuarios:
+dn: cn=cliente311, ou=owncloud, dc=org31, dc=es
+changetype: add
+objectclass: inetOrgPerson
+sn:
+Perez
+cn: cliente311cn
+uid: cliente311uid
+userPassword: manyhue
+ou:owncloud
