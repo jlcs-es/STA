@@ -22,10 +22,6 @@ def aptget(software):
 
 
 if __name__== "__main__":
-    # Preparar log.txt
-    bash("touch",["log.txt"])
-    os.remove("log.txt")
-    bash("touch",["log.txt"])
 
     if os.geteuid() != 0:
         print "Necesitas permisos de super usuario"

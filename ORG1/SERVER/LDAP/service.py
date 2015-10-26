@@ -6,7 +6,7 @@ import os
 import sys
 
 def bash(command, args):
-    proc = subprocess.Popen(command + " " + " ".join(args), shell=True, stdin=None, stdout=open("logManejador.txt","a"), stderr=open(os.devnull,"wb"), executable="/bin/bash")
+    proc = subprocess.Popen(command + " " + " ".join(args), shell=True, stdin=None, stdout=open("log.txt","a"), stderr=open(os.devnull,"wb"), executable="/bin/bash")
     proc.wait()
 
 def aptget(software):
@@ -22,6 +22,10 @@ def aptget(software):
 
 
 if __name__== "__main__":
+    # Preparar log.txt
+    bash("touch",["log.txt"])
+    os.remove("log.txt")
+    bash("touch",["log.txt"])
 
     if os.geteuid() != 0:
         print "Necesitas permisos de super usuario"
@@ -30,11 +34,10 @@ if __name__== "__main__":
     noupdate = True
 
     #Instalar paquetes necesarios
-    aptget(["snmpd", "snmp", "snmp-mibs-downloader"])
+    aptget(["slapd", "ldap-utils"])
 
     #Copiar la configuracion
-    shutil.copyfile("./snmp.conf","/etc/snmp/snmp.conf")
-    shutil.copyfile("./snmptrapd.conf","/etc/snmp/snmptrapd.conf")
-    bash("service", ["snmpd","restart"])
+    #shutil.copyfile("./snmp.conf","/etc/snmp/snmp.conf")
+    #bash("service", ["snmpd","restart"])
 
     exit(0)
