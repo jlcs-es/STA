@@ -56,4 +56,12 @@ if __name__== "__main__":
     generar_usuario("cliente311","manyhue")
     generar_usuario("cliente312","manyhue")
     generar_usuario("cliente313","manyhue")
+
+    # Añadirlos a ldap
+    #TODO: debe mostrar cuando pide la contraseña!!
+    bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-W", "-H", "ldap://127.0.0.1", "-f", "001.ldif"])
+    bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-W", "-H", "ldap://127.0.0.1", "-f", "cliente311.ldif"])
+    bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-W", "-H", "ldap://127.0.0.1", "-f", "cliente312.ldif"])
+    bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-W", "-H", "ldap://127.0.0.1", "-f", "cliente313.ldif"])
+
     exit(0)

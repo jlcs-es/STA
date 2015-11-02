@@ -168,3 +168,126 @@ snmpd ya está en su versión más reciente.
 0 actualizados, 0 se instalarán, 0 para eliminar y 133 no actualizados.
  * Stopping network management services:
  * Restarting network management services:
+Ign http://archive.canonical.com trusty InRelease
+Ign http://extras.ubuntu.com trusty InRelease
+Des:1 http://security.ubuntu.com trusty-security InRelease [64,4 kB]
+Ign http://ppa.launchpad.net trusty InRelease
+Obj http://archive.canonical.com trusty Release.gpg
+Obj http://extras.ubuntu.com trusty Release.gpg
+Obj http://ppa.launchpad.net trusty InRelease
+Obj http://archive.canonical.com trusty Release
+Obj http://extras.ubuntu.com trusty Release
+Ign http://dl.google.com stable InRelease
+Obj http://ppa.launchpad.net trusty Release.gpg
+Ign http://es.archive.ubuntu.com trusty InRelease
+Obj http://archive.canonical.com trusty/partner Sources
+Obj http://dl.google.com stable Release.gpg
+Obj http://extras.ubuntu.com trusty/main Sources
+Obj http://ppa.launchpad.net trusty/main amd64 Packages
+Obj http://archive.canonical.com trusty/partner amd64 Packages
+Obj http://dl.google.com stable Release
+Obj http://extras.ubuntu.com trusty/main amd64 Packages
+Obj http://ppa.launchpad.net trusty/main i386 Packages
+Obj http://archive.canonical.com trusty/partner i386 Packages
+Obj http://es.archive.ubuntu.com trusty-updates InRelease
+Obj http://extras.ubuntu.com trusty/main i386 Packages
+Des:2 http://security.ubuntu.com trusty-security/main Sources [98,0 kB]
+Obj http://dl.google.com stable/main amd64 Packages
+Obj http://ppa.launchpad.net trusty/main Translation-en
+Obj http://dl.google.com stable/main i386 Packages
+Obj http://ppa.launchpad.net trusty Release
+Obj http://es.archive.ubuntu.com trusty-backports InRelease
+Ign http://archive.canonical.com trusty/partner Translation-en
+Obj http://ppa.launchpad.net trusty/main amd64 Packages
+Obj http://ppa.launchpad.net trusty/main i386 Packages
+Obj http://es.archive.ubuntu.com trusty Release.gpg
+Obj http://ppa.launchpad.net trusty/main Translation-en
+Des:3 http://security.ubuntu.com trusty-security/restricted Sources [3.357 B]
+Obj http://es.archive.ubuntu.com trusty-updates/main Sources
+Des:4 http://security.ubuntu.com trusty-security/universe Sources [31,0 kB]
+Obj http://es.archive.ubuntu.com trusty-updates/restricted Sources
+Des:5 http://security.ubuntu.com trusty-security/multiverse Sources [2.346 B]
+Des:6 http://security.ubuntu.com trusty-security/main amd64 Packages [357 kB]
+Obj http://es.archive.ubuntu.com trusty-updates/universe Sources
+Ign http://extras.ubuntu.com trusty/main Translation-es_ES
+Ign http://dl.google.com stable/main Translation-es_ES
+Ign http://extras.ubuntu.com trusty/main Translation-es
+Obj http://es.archive.ubuntu.com trusty-updates/multiverse Sources
+Ign http://dl.google.com stable/main Translation-es
+Ign http://extras.ubuntu.com trusty/main Translation-en
+Ign http://dl.google.com stable/main Translation-en
+Obj http://es.archive.ubuntu.com trusty-updates/main amd64 Packages
+Obj http://es.archive.ubuntu.com trusty-updates/restricted amd64 Packages
+Obj http://es.archive.ubuntu.com trusty-updates/universe amd64 Packages
+Obj http://es.archive.ubuntu.com trusty-updates/multiverse amd64 Packages
+Obj http://es.archive.ubuntu.com trusty-updates/main i386 Packages
+Obj http://es.archive.ubuntu.com trusty-updates/restricted i386 Packages
+Des:7 http://security.ubuntu.com trusty-security/restricted amd64 Packages [12,4 kB]
+Obj http://es.archive.ubuntu.com trusty-updates/universe i386 Packages
+Des:8 http://security.ubuntu.com trusty-security/universe amd64 Packages [117 kB]
+Obj http://es.archive.ubuntu.com trusty-updates/multiverse i386 Packages
+Obj http://es.archive.ubuntu.com trusty-updates/main Translation-en
+Des:9 http://security.ubuntu.com trusty-security/multiverse amd64 Packages [3.688 B]
+Obj http://es.archive.ubuntu.com trusty-updates/multiverse Translation-en
+Des:10 http://security.ubuntu.com trusty-security/main i386 Packages [338 kB]
+Obj http://es.archive.ubuntu.com trusty-updates/restricted Translation-en
+Obj http://es.archive.ubuntu.com trusty-updates/universe Translation-en
+Obj http://es.archive.ubuntu.com trusty-backports/main Sources
+Obj http://es.archive.ubuntu.com trusty-backports/restricted Sources
+Obj http://es.archive.ubuntu.com trusty-backports/universe Sources
+Obj http://es.archive.ubuntu.com trusty-backports/multiverse Sources
+Des:11 http://security.ubuntu.com trusty-security/restricted i386 Packages [12,2 kB]
+Obj http://es.archive.ubuntu.com trusty-backports/main amd64 Packages
+Des:12 http://security.ubuntu.com trusty-security/universe i386 Packages [117 kB]
+Obj http://es.archive.ubuntu.com trusty-backports/restricted amd64 Packages
+Obj http://es.archive.ubuntu.com trusty-backports/universe amd64 Packages
+Obj http://es.archive.ubuntu.com trusty-backports/multiverse amd64 Packages
+Des:13 http://security.ubuntu.com trusty-security/multiverse i386 Packages [3.846 B]
+Obj http://es.archive.ubuntu.com trusty-backports/main i386 Packages
+Obj http://es.archive.ubuntu.com trusty-backports/restricted i386 Packages
+Obj http://es.archive.ubuntu.com trusty-backports/universe i386 Packages
+Des:14 http://security.ubuntu.com trusty-security/main Translation-en [194 kB]
+Obj http://es.archive.ubuntu.com trusty-backports/multiverse i386 Packages
+Obj http://es.archive.ubuntu.com trusty-backports/main Translation-en
+Obj http://es.archive.ubuntu.com trusty-backports/multiverse Translation-en
+Obj http://es.archive.ubuntu.com trusty-backports/restricted Translation-en
+Obj http://es.archive.ubuntu.com trusty-backports/universe Translation-en
+Obj http://es.archive.ubuntu.com trusty Release
+Des:15 http://security.ubuntu.com trusty-security/multiverse Translation-en [1.679 B]
+Obj http://es.archive.ubuntu.com trusty/main Sources
+Des:16 http://security.ubuntu.com trusty-security/restricted Translation-en [3.076 B]
+Des:17 http://security.ubuntu.com trusty-security/universe Translation-en [68,4 kB]
+Obj http://es.archive.ubuntu.com trusty/restricted Sources
+Obj http://es.archive.ubuntu.com trusty/universe Sources
+Obj http://es.archive.ubuntu.com trusty/multiverse Sources
+Obj http://es.archive.ubuntu.com trusty/main amd64 Packages
+Obj http://es.archive.ubuntu.com trusty/restricted amd64 Packages
+Obj http://es.archive.ubuntu.com trusty/universe amd64 Packages
+Obj http://es.archive.ubuntu.com trusty/multiverse amd64 Packages
+Obj http://es.archive.ubuntu.com trusty/main i386 Packages
+Obj http://es.archive.ubuntu.com trusty/restricted i386 Packages
+Obj http://es.archive.ubuntu.com trusty/universe i386 Packages
+Obj http://es.archive.ubuntu.com trusty/multiverse i386 Packages
+Obj http://es.archive.ubuntu.com trusty/main Translation-es
+Obj http://es.archive.ubuntu.com trusty/main Translation-en
+Obj http://es.archive.ubuntu.com trusty/multiverse Translation-es
+Obj http://es.archive.ubuntu.com trusty/multiverse Translation-en
+Obj http://es.archive.ubuntu.com trusty/restricted Translation-es
+Obj http://es.archive.ubuntu.com trusty/restricted Translation-en
+Obj http://es.archive.ubuntu.com trusty/universe Translation-es
+Obj http://es.archive.ubuntu.com trusty/universe Translation-en
+Ign http://es.archive.ubuntu.com trusty/main Translation-es_ES
+Ign http://es.archive.ubuntu.com trusty/multiverse Translation-es_ES
+Ign http://es.archive.ubuntu.com trusty/restricted Translation-es_ES
+Ign http://es.archive.ubuntu.com trusty/universe Translation-es_ES
+Descargados 1.428 kB en 15seg. (93,9 kB/s)
+Leyendo lista de paquetes...
+Leyendo lista de paquetes...
+Creando árbol de dependencias...
+Leyendo la información de estado...
+snmp-mibs-downloader ya está en su versión más reciente.
+snmp ya está en su versión más reciente.
+snmpd ya está en su versión más reciente.
+0 actualizados, 0 se instalarán, 0 para eliminar y 154 no actualizados.
+ * Stopping network management services:
+ * Restarting network management services:

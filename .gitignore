@@ -1,5 +1,8 @@
 *~
 log.txt
+logAgente.txt
+logManejador.txt
+Release.key
 
 #LaTeX
 *.aux
@@ -25,4 +28,3 @@ log.txt
 *.mtc1
 *.out
 *.synctex.gz
-
