@@ -40,8 +40,10 @@ if __name__== "__main__":
     #Evitar la ventana ascii:
     os.environ["DEBIAN_FRONTEND"] = "noninteractive"
 
-    #Instalar paquetes necesarios
-    #aptget(["slapd", "ldap-utils"])
+    #Instalar y parar el servicio
+    aptget(["slapd", "ldap-utils"])
+    bash("service",["slapd","stop"])
+
 
     os.environ["DEBIAN_FRONTEND"] = ""
 
@@ -55,13 +57,15 @@ if __name__== "__main__":
     bash("tar", ["-xzf", "db.tar.gz"])
     os.chdir(initialdir)
 
+    # Iniciar de nuevo el servicio
+    bash("service",["slapd","start"])
+
     # Generar usuarios:
     generar_usuario("cliente311","manyhue")
     generar_usuario("cliente312","manyhue")
     generar_usuario("cliente313","manyhue")
 
     # Añadirlos a ldap
-    #TODO: debe mostrar cuando pide la contraseña!!
     bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-w", "alumno", "-H", "ldap://127.0.0.1", "-f", "001.ldif"])
     bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-w", "alumno", "-H", "ldap://127.0.0.1", "-f", "cliente311.ldif"])
     bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-w", "alumno", "-H", "ldap://127.0.0.1", "-f", "cliente312.ldif"])
