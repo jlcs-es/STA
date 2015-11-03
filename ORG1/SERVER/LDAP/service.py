@@ -41,15 +41,18 @@ if __name__== "__main__":
     os.environ["DEBIAN_FRONTEND"] = "noninteractive"
 
     #Instalar paquetes necesarios
-    aptget(["slapd", "ldap-utils"])
+    #aptget(["slapd", "ldap-utils"])
 
     os.environ["DEBIAN_FRONTEND"] = ""
 
     #Copiar la configuracion
     initialdir = os.getcwd()
     shutil.copyfile("./initial.tar.gz","/etc/ldap/initial.tar.gz")
+    shutil.copyfile("./db.tar.gz","/var/lib/ldap/db.tar.gz")
     os.chdir("/etc/ldap/")
     bash("tar", ["-xzf", "initial.tar.gz"])
+    os.chdir("/var/lib/ldap")
+    bash("tar", ["-xzf", "db.tar.gz"])
     os.chdir(initialdir)
 
     # Generar usuarios:
@@ -59,9 +62,9 @@ if __name__== "__main__":
 
     # Añadirlos a ldap
     #TODO: debe mostrar cuando pide la contraseña!!
-    bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-W", "-H", "ldap://127.0.0.1", "-f", "001.ldif"])
-    bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-W", "-H", "ldap://127.0.0.1", "-f", "cliente311.ldif"])
-    bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-W", "-H", "ldap://127.0.0.1", "-f", "cliente312.ldif"])
-    bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-W", "-H", "ldap://127.0.0.1", "-f", "cliente313.ldif"])
+    bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-w", "alumno", "-H", "ldap://127.0.0.1", "-f", "001.ldif"])
+    bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-w", "alumno", "-H", "ldap://127.0.0.1", "-f", "cliente311.ldif"])
+    bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-w", "alumno", "-H", "ldap://127.0.0.1", "-f", "cliente312.ldif"])
+    bash("ldapmodify", ["-D", '"cn=admin,dc=org31,dc=es"', "-w", "alumno", "-H", "ldap://127.0.0.1", "-f", "cliente313.ldif"])
 
     exit(0)
