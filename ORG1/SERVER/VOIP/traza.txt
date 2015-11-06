@@ -1,0 +1,2541 @@
+INVITE sip:312@192.168.32.100 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;rport
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100
+
+CSeq: 20 INVITE
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Content-Type: application/sdp
+
+Content-Length: 556
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+
+
+v=0
+
+o=cliente-321 357 886 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+a=rtcp-xr:rcvr-rtt=all:10000 stat-summary=loss,dup,jitt,TTL voip-metrics
+
+m=audio 7078 RTP/AVP 96 97 98 99 0 8 101 100 102
+
+a=rtpmap:96 opus/48000/2
+
+a=fmtp:96 useinbandfec=1; stereo=0; sprop-stereo=0
+
+a=rtpmap:97 SILK/16000
+
+a=rtpmap:98 speex/16000
+
+a=fmtp:98 vbr=on
+
+a=rtpmap:99 speex/8000
+
+a=fmtp:99 vbr=on
+
+a=rtpmap:101 telephone-event/48000
+
+a=rtpmap:100 telephone-event/16000
+
+a=rtpmap:102 telephone-event/8000
+
+m=video 9078 RTP/AVP 96
+
+a=rtpmap:96 VP8/90000
+
+INVITE sip:312@192.168.32.100 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;rport
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100
+
+CSeq: 20 INVITE
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Content-Type: application/sdp
+
+Content-Length: 556
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+
+
+v=0
+
+o=cliente-321 357 886 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+a=rtcp-xr:rcvr-rtt=all:10000 stat-summary=loss,dup,jitt,TTL voip-metrics
+
+m=audio 7078 RTP/AVP 96 97 98 99 0 8 101 100 102
+
+a=rtpmap:96 opus/48000/2
+
+a=fmtp:96 useinbandfec=1; stereo=0; sprop-stereo=0
+
+a=rtpmap:97 SILK/16000
+
+a=rtpmap:98 speex/16000
+
+a=fmtp:98 vbr=on
+
+a=rtpmap:99 speex/8000
+
+a=fmtp:99 vbr=on
+
+a=rtpmap:101 telephone-event/48000
+
+a=rtpmap:100 telephone-event/16000
+
+a=rtpmap:102 telephone-event/8000
+
+m=video 9078 RTP/AVP 96
+
+a=rtpmap:96 VP8/90000
+
+INVITE sip:312@192.168.32.100 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;rport
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100
+
+CSeq: 20 INVITE
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Content-Type: application/sdp
+
+Content-Length: 556
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+
+
+v=0
+
+o=cliente-321 357 886 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+a=rtcp-xr:rcvr-rtt=all:10000 stat-summary=loss,dup,jitt,TTL voip-metrics
+
+m=audio 7078 RTP/AVP 96 97 98 99 0 8 101 100 102
+
+a=rtpmap:96 opus/48000/2
+
+a=fmtp:96 useinbandfec=1; stereo=0; sprop-stereo=0
+
+a=rtpmap:97 SILK/16000
+
+a=rtpmap:98 speex/16000
+
+a=fmtp:98 vbr=on
+
+a=rtpmap:99 speex/8000
+
+a=fmtp:99 vbr=on
+
+a=rtpmap:101 telephone-event/48000
+
+a=rtpmap:100 telephone-event/16000
+
+a=rtpmap:102 telephone-event/8000
+
+m=video 9078 RTP/AVP 96
+
+a=rtpmap:96 VP8/90000
+
+INVITE sip:312@192.168.32.100 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;rport
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100
+
+CSeq: 20 INVITE
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Content-Type: application/sdp
+
+Content-Length: 556
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+
+
+v=0
+
+o=cliente-321 357 886 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+a=rtcp-xr:rcvr-rtt=all:10000 stat-summary=loss,dup,jitt,TTL voip-metrics
+
+m=audio 7078 RTP/AVP 96 97 98 99 0 8 101 100 102
+
+a=rtpmap:96 opus/48000/2
+
+a=fmtp:96 useinbandfec=1; stereo=0; sprop-stereo=0
+
+a=rtpmap:97 SILK/16000
+
+a=rtpmap:98 speex/16000
+
+a=fmtp:98 vbr=on
+
+a=rtpmap:99 speex/8000
+
+a=fmtp:99 vbr=on
+
+a=rtpmap:101 telephone-event/48000
+
+a=rtpmap:100 telephone-event/16000
+
+a=rtpmap:102 telephone-event/8000
+
+m=video 9078 RTP/AVP 96
+
+a=rtpmap:96 VP8/90000
+
+SIP/2.0 401 Unauthorized
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as2473c8f8
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 20 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+WWW-Authenticate: Digest algorithm=MD5, realm="organizacion-32.tld", nonce="240bf8ce"
+
+Content-Length: 0
+
+
+
+SIP/2.0 401 Unauthorized
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as2473c8f8
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 20 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+WWW-Authenticate: Digest algorithm=MD5, realm="organizacion-32.tld", nonce="240bf8ce"
+
+Content-Length: 0
+
+
+
+SIP/2.0 401 Unauthorized
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as2473c8f8
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 20 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+WWW-Authenticate: Digest algorithm=MD5, realm="organizacion-32.tld", nonce="240bf8ce"
+
+Content-Length: 0
+
+
+
+SIP/2.0 401 Unauthorized
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as2473c8f8
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 20 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+WWW-Authenticate: Digest algorithm=MD5, realm="organizacion-32.tld", nonce="240bf8ce"
+
+Content-Length: 0
+
+
+
+SIP/2.0 401 Unauthorized
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as2473c8f8
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 20 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+WWW-Authenticate: Digest algorithm=MD5, realm="organizacion-32.tld", nonce="240bf8ce"
+
+Content-Length: 0
+
+
+
+SIP/2.0 401 Unauthorized
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as2473c8f8
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 20 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+WWW-Authenticate: Digest algorithm=MD5, realm="organizacion-32.tld", nonce="240bf8ce"
+
+Content-Length: 0
+
+
+
+SIP/2.0 401 Unauthorized
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as2473c8f8
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 20 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+WWW-Authenticate: Digest algorithm=MD5, realm="organizacion-32.tld", nonce="240bf8ce"
+
+Content-Length: 0
+
+
+
+SIP/2.0 401 Unauthorized
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as2473c8f8
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 20 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+WWW-Authenticate: Digest algorithm=MD5, realm="organizacion-32.tld", nonce="240bf8ce"
+
+Content-Length: 0
+
+
+
+ACK sip:312@192.168.32.100 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;rport
+
+Call-ID: wg0NIZUIlM
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as2473c8f8
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+Max-Forwards: 70
+
+CSeq: 20 ACK
+
+
+
+ACK sip:312@192.168.32.100 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;rport
+
+Call-ID: wg0NIZUIlM
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as2473c8f8
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+Max-Forwards: 70
+
+CSeq: 20 ACK
+
+
+
+ACK sip:312@192.168.32.100 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;rport
+
+Call-ID: wg0NIZUIlM
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as2473c8f8
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+Max-Forwards: 70
+
+CSeq: 20 ACK
+
+
+
+ACK sip:312@192.168.32.100 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.0pfFL8Vay;rport
+
+Call-ID: wg0NIZUIlM
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as2473c8f8
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+Max-Forwards: 70
+
+CSeq: 20 ACK
+
+
+
+INVITE sip:312@192.168.32.100 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;rport
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100
+
+CSeq: 21 INVITE
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Content-Type: application/sdp
+
+Content-Length: 556
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Authorization:  Digest realm="organizacion-32.tld", nonce="240bf8ce", algorithm=MD5, username="cliente-321",  uri="sip:312@192.168.32.100", response="396abbe3090eaa5ed4ee6752917e60f5"
+
+
+
+v=0
+
+o=cliente-321 357 886 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+a=rtcp-xr:rcvr-rtt=all:10000 stat-summary=loss,dup,jitt,TTL voip-metrics
+
+m=audio 7078 RTP/AVP 96 97 98 99 0 8 101 100 102
+
+a=rtpmap:96 opus/48000/2
+
+a=fmtp:96 useinbandfec=1; stereo=0; sprop-stereo=0
+
+a=rtpmap:97 SILK/16000
+
+a=rtpmap:98 speex/16000
+
+a=fmtp:98 vbr=on
+
+a=rtpmap:99 speex/8000
+
+a=fmtp:99 vbr=on
+
+a=rtpmap:101 telephone-event/48000
+
+a=rtpmap:100 telephone-event/16000
+
+a=rtpmap:102 telephone-event/8000
+
+m=video 9078 RTP/AVP 96
+
+a=rtpmap:96 VP8/90000
+
+INVITE sip:312@192.168.32.100 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;rport
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100
+
+CSeq: 21 INVITE
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Content-Type: application/sdp
+
+Content-Length: 556
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Authorization:  Digest realm="organizacion-32.tld", nonce="240bf8ce", algorithm=MD5, username="cliente-321",  uri="sip:312@192.168.32.100", response="396abbe3090eaa5ed4ee6752917e60f5"
+
+
+
+v=0
+
+o=cliente-321 357 886 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+a=rtcp-xr:rcvr-rtt=all:10000 stat-summary=loss,dup,jitt,TTL voip-metrics
+
+m=audio 7078 RTP/AVP 96 97 98 99 0 8 101 100 102
+
+a=rtpmap:96 opus/48000/2
+
+a=fmtp:96 useinbandfec=1; stereo=0; sprop-stereo=0
+
+a=rtpmap:97 SILK/16000
+
+a=rtpmap:98 speex/16000
+
+a=fmtp:98 vbr=on
+
+a=rtpmap:99 speex/8000
+
+a=fmtp:99 vbr=on
+
+a=rtpmap:101 telephone-event/48000
+
+a=rtpmap:100 telephone-event/16000
+
+a=rtpmap:102 telephone-event/8000
+
+m=video 9078 RTP/AVP 96
+
+a=rtpmap:96 VP8/90000
+
+INVITE sip:312@192.168.32.100 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;rport
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100
+
+CSeq: 21 INVITE
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Content-Type: application/sdp
+
+Content-Length: 556
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Authorization:  Digest realm="organizacion-32.tld", nonce="240bf8ce", algorithm=MD5, username="cliente-321",  uri="sip:312@192.168.32.100", response="396abbe3090eaa5ed4ee6752917e60f5"
+
+
+
+v=0
+
+o=cliente-321 357 886 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+a=rtcp-xr:rcvr-rtt=all:10000 stat-summary=loss,dup,jitt,TTL voip-metrics
+
+m=audio 7078 RTP/AVP 96 97 98 99 0 8 101 100 102
+
+a=rtpmap:96 opus/48000/2
+
+a=fmtp:96 useinbandfec=1; stereo=0; sprop-stereo=0
+
+a=rtpmap:97 SILK/16000
+
+a=rtpmap:98 speex/16000
+
+a=fmtp:98 vbr=on
+
+a=rtpmap:99 speex/8000
+
+a=fmtp:99 vbr=on
+
+a=rtpmap:101 telephone-event/48000
+
+a=rtpmap:100 telephone-event/16000
+
+a=rtpmap:102 telephone-event/8000
+
+m=video 9078 RTP/AVP 96
+
+a=rtpmap:96 VP8/90000
+
+INVITE sip:312@192.168.32.100 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;rport
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100
+
+CSeq: 21 INVITE
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Content-Type: application/sdp
+
+Content-Length: 556
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Authorization:  Digest realm="organizacion-32.tld", nonce="240bf8ce", algorithm=MD5, username="cliente-321",  uri="sip:312@192.168.32.100", response="396abbe3090eaa5ed4ee6752917e60f5"
+
+
+
+v=0
+
+o=cliente-321 357 886 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+a=rtcp-xr:rcvr-rtt=all:10000 stat-summary=loss,dup,jitt,TTL voip-metrics
+
+m=audio 7078 RTP/AVP 96 97 98 99 0 8 101 100 102
+
+a=rtpmap:96 opus/48000/2
+
+a=fmtp:96 useinbandfec=1; stereo=0; sprop-stereo=0
+
+a=rtpmap:97 SILK/16000
+
+a=rtpmap:98 speex/16000
+
+a=fmtp:98 vbr=on
+
+a=rtpmap:99 speex/8000
+
+a=fmtp:99 vbr=on
+
+a=rtpmap:101 telephone-event/48000
+
+a=rtpmap:100 telephone-event/16000
+
+a=rtpmap:102 telephone-event/8000
+
+m=video 9078 RTP/AVP 96
+
+a=rtpmap:96 VP8/90000
+
+SIP/2.0 100 Trying
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 21 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Content-Length: 0
+
+
+
+SIP/2.0 100 Trying
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 21 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Content-Length: 0
+
+
+
+SIP/2.0 100 Trying
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 21 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Content-Length: 0
+
+
+
+SIP/2.0 100 Trying
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 21 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Content-Length: 0
+
+
+
+SIP/2.0 180 Ringing
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as38e75f32
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 21 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Content-Length: 0
+
+
+
+SIP/2.0 180 Ringing
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as38e75f32
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 21 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Content-Length: 0
+
+
+
+SIP/2.0 180 Ringing
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as38e75f32
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 21 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Content-Length: 0
+
+
+
+SIP/2.0 180 Ringing
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as38e75f32
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 21 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Content-Length: 0
+
+
+
+SIP/2.0 200 OK
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as38e75f32
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 21 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Content-Type: application/sdp
+
+Content-Length: 299
+
+
+
+v=0
+
+o=root 1217391125 1217391125 IN IP4 192.168.32.100
+
+s=Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+c=IN IP4 192.168.32.100
+
+t=0 0
+
+m=audio 17874 RTP/AVP 0 8 101
+
+a=rtpmap:0 PCMU/8000
+
+a=rtpmap:8 PCMA/8000
+
+a=rtpmap:101 telephone-event/8000
+
+a=fmtp:101 0-16
+
+a=ptime:20
+
+a=sendrecv
+
+m=video 0 RTP/AVP 96
+
+SIP/2.0 200 OK
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as38e75f32
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 21 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Content-Type: application/sdp
+
+Content-Length: 299
+
+
+
+v=0
+
+o=root 1217391125 1217391125 IN IP4 192.168.32.100
+
+s=Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+c=IN IP4 192.168.32.100
+
+t=0 0
+
+m=audio 17874 RTP/AVP 0 8 101
+
+a=rtpmap:0 PCMU/8000
+
+a=rtpmap:8 PCMA/8000
+
+a=rtpmap:101 telephone-event/8000
+
+a=fmtp:101 0-16
+
+a=ptime:20
+
+a=sendrecv
+
+m=video 0 RTP/AVP 96
+
+SIP/2.0 200 OK
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as38e75f32
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 21 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Content-Type: application/sdp
+
+Content-Length: 299
+
+
+
+v=0
+
+o=root 1217391125 1217391125 IN IP4 192.168.32.100
+
+s=Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+c=IN IP4 192.168.32.100
+
+t=0 0
+
+m=audio 17874 RTP/AVP 0 8 101
+
+a=rtpmap:0 PCMU/8000
+
+a=rtpmap:8 PCMA/8000
+
+a=rtpmap:101 telephone-event/8000
+
+a=fmtp:101 0-16
+
+a=ptime:20
+
+a=sendrecv
+
+m=video 0 RTP/AVP 96
+
+SIP/2.0 200 OK
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.Pp4csPQCn;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: sip:312@192.168.32.100;tag=as38e75f32
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 21 INVITE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Content-Type: application/sdp
+
+Content-Length: 299
+
+
+
+v=0
+
+o=root 1217391125 1217391125 IN IP4 192.168.32.100
+
+s=Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+c=IN IP4 192.168.32.100
+
+t=0 0
+
+m=audio 17874 RTP/AVP 0 8 101
+
+a=rtpmap:0 PCMU/8000
+
+a=rtpmap:8 PCMA/8000
+
+a=rtpmap:101 telephone-event/8000
+
+a=fmtp:101 0-16
+
+a=ptime:20
+
+a=sendrecv
+
+m=video 0 RTP/AVP 96
+
+ACK sip:312@192.168.32.100:5060 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;rport;branch=z9hG4bK.LIQKN5UYl
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as38e75f32
+
+CSeq: 21 ACK
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+Authorization:  Digest realm="organizacion-32.tld", nonce="240bf8ce", algorithm=MD5, username="cliente-321",  uri="sip:312@192.168.32.100", response="396abbe3090eaa5ed4ee6752917e60f5"
+
+
+
+ACK sip:312@192.168.32.100:5060 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;rport;branch=z9hG4bK.LIQKN5UYl
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as38e75f32
+
+CSeq: 21 ACK
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+Authorization:  Digest realm="organizacion-32.tld", nonce="240bf8ce", algorithm=MD5, username="cliente-321",  uri="sip:312@192.168.32.100", response="396abbe3090eaa5ed4ee6752917e60f5"
+
+
+
+ACK sip:312@192.168.32.100:5060 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;rport;branch=z9hG4bK.LIQKN5UYl
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as38e75f32
+
+CSeq: 21 ACK
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+Authorization:  Digest realm="organizacion-32.tld", nonce="240bf8ce", algorithm=MD5, username="cliente-321",  uri="sip:312@192.168.32.100", response="396abbe3090eaa5ed4ee6752917e60f5"
+
+
+
+ACK sip:312@192.168.32.100:5060 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;rport;branch=z9hG4bK.LIQKN5UYl
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as38e75f32
+
+CSeq: 21 ACK
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+Authorization:  Digest realm="organizacion-32.tld", nonce="240bf8ce", algorithm=MD5, username="cliente-321",  uri="sip:312@192.168.32.100", response="396abbe3090eaa5ed4ee6752917e60f5"
+
+
+
+INVITE sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK5d2054f7;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 INVITE
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Content-Type: application/sdp
+
+Content-Length: 277
+
+
+
+v=0
+
+o=root 1217391125 1217391126 IN IP4 192.168.31.100
+
+s=Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+c=IN IP4 192.168.31.100
+
+t=0 0
+
+m=audio 17402 RTP/AVP 0 8 101
+
+a=rtpmap:0 PCMU/8000
+
+a=rtpmap:8 PCMA/8000
+
+a=rtpmap:101 telephone-event/8000
+
+a=fmtp:101 0-16
+
+a=ptime:20
+
+a=sendrecv
+
+INVITE sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK5d2054f7;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 INVITE
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Content-Type: application/sdp
+
+Content-Length: 277
+
+
+
+v=0
+
+o=root 1217391125 1217391126 IN IP4 192.168.31.100
+
+s=Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+c=IN IP4 192.168.31.100
+
+t=0 0
+
+m=audio 17402 RTP/AVP 0 8 101
+
+a=rtpmap:0 PCMU/8000
+
+a=rtpmap:8 PCMA/8000
+
+a=rtpmap:101 telephone-event/8000
+
+a=fmtp:101 0-16
+
+a=ptime:20
+
+a=sendrecv
+
+INVITE sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK5d2054f7;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 INVITE
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Content-Type: application/sdp
+
+Content-Length: 277
+
+
+
+v=0
+
+o=root 1217391125 1217391126 IN IP4 192.168.31.100
+
+s=Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+c=IN IP4 192.168.31.100
+
+t=0 0
+
+m=audio 17402 RTP/AVP 0 8 101
+
+a=rtpmap:0 PCMU/8000
+
+a=rtpmap:8 PCMA/8000
+
+a=rtpmap:101 telephone-event/8000
+
+a=fmtp:101 0-16
+
+a=ptime:20
+
+a=sendrecv
+
+INVITE sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK5d2054f7;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 INVITE
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Content-Type: application/sdp
+
+Content-Length: 277
+
+
+
+v=0
+
+o=root 1217391125 1217391126 IN IP4 192.168.31.100
+
+s=Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+c=IN IP4 192.168.31.100
+
+t=0 0
+
+m=audio 17402 RTP/AVP 0 8 101
+
+a=rtpmap:0 PCMU/8000
+
+a=rtpmap:8 PCMA/8000
+
+a=rtpmap:101 telephone-event/8000
+
+a=fmtp:101 0-16
+
+a=ptime:20
+
+a=sendrecv
+
+SIP/2.0 100 Trying
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK5d2054f7;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 INVITE
+
+
+
+SIP/2.0 100 Trying
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK5d2054f7;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 INVITE
+
+
+
+SIP/2.0 100 Trying
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK5d2054f7;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 INVITE
+
+
+
+SIP/2.0 100 Trying
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK5d2054f7;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 INVITE
+
+
+
+SIP/2.0 200 Ok
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK5d2054f7;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 INVITE
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+Content-Type: application/sdp
+
+Content-Length: 155
+
+
+
+v=0
+
+o=cliente-321 357 888 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+m=audio 7078 RTP/AVP 0 8 101
+
+a=rtpmap:101 telephone-event/8000
+
+SIP/2.0 200 Ok
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK5d2054f7;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 INVITE
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+Content-Type: application/sdp
+
+Content-Length: 155
+
+
+
+v=0
+
+o=cliente-321 357 888 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+m=audio 7078 RTP/AVP 0 8 101
+
+a=rtpmap:101 telephone-event/8000
+
+SIP/2.0 200 Ok
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK5d2054f7;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 INVITE
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+Content-Type: application/sdp
+
+Content-Length: 155
+
+
+
+v=0
+
+o=cliente-321 357 888 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+m=audio 7078 RTP/AVP 0 8 101
+
+a=rtpmap:101 telephone-event/8000
+
+SIP/2.0 200 Ok
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK5d2054f7;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 INVITE
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+Content-Type: application/sdp
+
+Content-Length: 155
+
+
+
+v=0
+
+o=cliente-321 357 888 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+m=audio 7078 RTP/AVP 0 8 101
+
+a=rtpmap:101 telephone-event/8000
+
+ACK sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK699f94eb;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 ACK
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Content-Length: 0
+
+
+
+ACK sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK699f94eb;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 ACK
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Content-Length: 0
+
+
+
+ACK sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK699f94eb;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 ACK
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Content-Length: 0
+
+
+
+ACK sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK699f94eb;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 102 ACK
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Content-Length: 0
+
+
+
+INVITE sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK0e44d8f9;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 INVITE
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Content-Type: application/sdp
+
+Content-Length: 276
+
+
+
+v=0
+
+o=root 1217391125 1217391127 IN IP4 192.168.31.201
+
+s=Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+c=IN IP4 192.168.31.201
+
+t=0 0
+
+m=audio 7076 RTP/AVP 0 8 101
+
+a=rtpmap:0 PCMU/8000
+
+a=rtpmap:8 PCMA/8000
+
+a=rtpmap:101 telephone-event/8000
+
+a=fmtp:101 0-16
+
+a=ptime:20
+
+a=sendrecv
+
+INVITE sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK0e44d8f9;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 INVITE
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Content-Type: application/sdp
+
+Content-Length: 276
+
+
+
+v=0
+
+o=root 1217391125 1217391127 IN IP4 192.168.31.201
+
+s=Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+c=IN IP4 192.168.31.201
+
+t=0 0
+
+m=audio 7076 RTP/AVP 0 8 101
+
+a=rtpmap:0 PCMU/8000
+
+a=rtpmap:8 PCMA/8000
+
+a=rtpmap:101 telephone-event/8000
+
+a=fmtp:101 0-16
+
+a=ptime:20
+
+a=sendrecv
+
+INVITE sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK0e44d8f9;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 INVITE
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Content-Type: application/sdp
+
+Content-Length: 276
+
+
+
+v=0
+
+o=root 1217391125 1217391127 IN IP4 192.168.31.201
+
+s=Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+c=IN IP4 192.168.31.201
+
+t=0 0
+
+m=audio 7076 RTP/AVP 0 8 101
+
+a=rtpmap:0 PCMU/8000
+
+a=rtpmap:8 PCMA/8000
+
+a=rtpmap:101 telephone-event/8000
+
+a=fmtp:101 0-16
+
+a=ptime:20
+
+a=sendrecv
+
+INVITE sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK0e44d8f9;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 INVITE
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Content-Type: application/sdp
+
+Content-Length: 276
+
+
+
+v=0
+
+o=root 1217391125 1217391127 IN IP4 192.168.31.201
+
+s=Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+c=IN IP4 192.168.31.201
+
+t=0 0
+
+m=audio 7076 RTP/AVP 0 8 101
+
+a=rtpmap:0 PCMU/8000
+
+a=rtpmap:8 PCMA/8000
+
+a=rtpmap:101 telephone-event/8000
+
+a=fmtp:101 0-16
+
+a=ptime:20
+
+a=sendrecv
+
+SIP/2.0 100 Trying
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK0e44d8f9;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 INVITE
+
+
+
+SIP/2.0 100 Trying
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK0e44d8f9;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 INVITE
+
+
+
+SIP/2.0 100 Trying
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK0e44d8f9;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 INVITE
+
+
+
+SIP/2.0 100 Trying
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK0e44d8f9;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 INVITE
+
+
+
+SIP/2.0 200 Ok
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK0e44d8f9;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 INVITE
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+Content-Type: application/sdp
+
+Content-Length: 155
+
+
+
+v=0
+
+o=cliente-321 357 890 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+m=audio 7078 RTP/AVP 0 8 101
+
+a=rtpmap:101 telephone-event/8000
+
+SIP/2.0 200 Ok
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK0e44d8f9;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 INVITE
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+Content-Type: application/sdp
+
+Content-Length: 155
+
+
+
+v=0
+
+o=cliente-321 357 890 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+m=audio 7078 RTP/AVP 0 8 101
+
+a=rtpmap:101 telephone-event/8000
+
+SIP/2.0 200 Ok
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK0e44d8f9;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 INVITE
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+Content-Type: application/sdp
+
+Content-Length: 155
+
+
+
+v=0
+
+o=cliente-321 357 890 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+m=audio 7078 RTP/AVP 0 8 101
+
+a=rtpmap:101 telephone-event/8000
+
+SIP/2.0 200 Ok
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK0e44d8f9;rport
+
+From: <sip:312@192.168.32.100>;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 INVITE
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Supported: outbound
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO, UPDATE
+
+Contact: <sip:cliente-321@192.168.31.200>;+sip.instance="<urn:uuid:3c5471d3-c59e-45ea-a617-60e5f1571a07>"
+
+Content-Type: application/sdp
+
+Content-Length: 155
+
+
+
+v=0
+
+o=cliente-321 357 890 IN IP4 192.168.31.200
+
+s=Talk
+
+c=IN IP4 192.168.31.200
+
+t=0 0
+
+m=audio 7078 RTP/AVP 0 8 101
+
+a=rtpmap:101 telephone-event/8000
+
+ACK sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK7f5256ac;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 ACK
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Content-Length: 0
+
+
+
+ACK sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK7f5256ac;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 ACK
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Content-Length: 0
+
+
+
+ACK sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK7f5256ac;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 ACK
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Content-Length: 0
+
+
+
+ACK sip:cliente-321@192.168.31.200 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.32.100:5060;branch=z9hG4bK7f5256ac;rport
+
+Max-Forwards: 70
+
+From: sip:312@192.168.32.100;tag=as38e75f32
+
+To: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+Contact: <sip:312@192.168.32.100:5060>
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 103 ACK
+
+User-Agent: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Content-Length: 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BYE sip:312@192.168.32.100:5060 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.zdftZ3se9;rport
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as38e75f32
+
+CSeq: 22 BYE
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Authorization:  Digest realm="organizacion-32.tld", nonce="240bf8ce", algorithm=MD5, username="cliente-321",  uri="sip:312@192.168.32.100:5060", response="783fcff6f02a1ad0f61392fd2dff0904"
+
+
+
+BYE sip:312@192.168.32.100:5060 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.zdftZ3se9;rport
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as38e75f32
+
+CSeq: 22 BYE
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Authorization:  Digest realm="organizacion-32.tld", nonce="240bf8ce", algorithm=MD5, username="cliente-321",  uri="sip:312@192.168.32.100:5060", response="783fcff6f02a1ad0f61392fd2dff0904"
+
+
+
+BYE sip:312@192.168.32.100:5060 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.zdftZ3se9;rport
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as38e75f32
+
+CSeq: 22 BYE
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Authorization:  Digest realm="organizacion-32.tld", nonce="240bf8ce", algorithm=MD5, username="cliente-321",  uri="sip:312@192.168.32.100:5060", response="783fcff6f02a1ad0f61392fd2dff0904"
+
+
+
+BYE sip:312@192.168.32.100:5060 SIP/2.0
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.zdftZ3se9;rport
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as38e75f32
+
+CSeq: 22 BYE
+
+Call-ID: wg0NIZUIlM
+
+Max-Forwards: 70
+
+User-Agent: Linphone/3.8.5 (belle-sip/1.4.1)
+
+Authorization:  Digest realm="organizacion-32.tld", nonce="240bf8ce", algorithm=MD5, username="cliente-321",  uri="sip:312@192.168.32.100:5060", response="783fcff6f02a1ad0f61392fd2dff0904"
+
+
+
+SIP/2.0 200 OK
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.zdftZ3se9;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as38e75f32
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 22 BYE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Content-Length: 0
+
+
+
+SIP/2.0 200 OK
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.zdftZ3se9;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as38e75f32
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 22 BYE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Content-Length: 0
+
+
+
+SIP/2.0 200 OK
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.zdftZ3se9;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as38e75f32
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 22 BYE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Content-Length: 0
+
+
+
+SIP/2.0 200 OK
+
+Via: SIP/2.0/UDP 192.168.31.200:5060;branch=z9hG4bK.zdftZ3se9;received=192.168.31.200;rport=5060
+
+From: <sip:cliente-321@192.168.32.100>;tag=SB78hQOYz
+
+To: <sip:312@192.168.32.100>;tag=as38e75f32
+
+Call-ID: wg0NIZUIlM
+
+CSeq: 22 BYE
+
+Server: Asterisk PBX 11.7.0~dfsg-1ubuntu1
+
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH
+
+Supported: replaces, timer
+
+Content-Length: 0

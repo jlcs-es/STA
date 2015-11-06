@@ -1,0 +1,55 @@
++-------------------------------+-------------------------------------------------------------+
+| Configuration                 |                                                             |
++-------------------------------+-------------------------------------------------------------+
+| hasMemberOfFilterSupport      | 0                                                           |
+| hasPagedResultSupport         |                                                             |
+| homeFolderNamingRule          |                                                             |
+| lastJpegPhotoLookup           | 0                                                           |
+| ldapAgentName                 | cn=admin,dc=org31,dc=es                                     |
+| ldapAgentPassword             | ***                                                         |
+| ldapAttributesForGroupSearch  |                                                             |
+| ldapAttributesForUserSearch   |                                                             |
+| ldapBackupHost                |                                                             |
+| ldapBackupPort                |                                                             |
+| ldapBase                      | dc=org31,dc=es                                              |
+| ldapBaseGroups                | dc=org31,dc=es                                              |
+| ldapBaseUsers                 | dc=org31,dc=es                                              |
+| ldapCacheTTL                  | 600                                                         |
+| ldapConfigurationActive       | 1                                                           |
+| ldapEmailAttribute            |                                                             |
+| ldapExperiencedAdmin          | 0                                                           |
+| ldapExpertUUIDGroupAttr       |                                                             |
+| ldapExpertUUIDUserAttr        |                                                             |
+| ldapExpertUsernameAttr        |                                                             |
+| ldapGroupDisplayName          | cn                                                          |
+| ldapGroupFilter               | (&(|(objectclass=organizationalUnit)))                      |
+| ldapGroupFilterGroups         |                                                             |
+| ldapGroupFilterMode           | 0                                                           |
+| ldapGroupFilterObjectclass    | organizationalUnit                                          |
+| ldapGroupMemberAssocAttr      | uniqueMember                                                |
+| ldapHost                      | 192.168.31.100                                              |
+| ldapIgnoreNamingRules         |                                                             |
+| ldapLoginFilter               | (&(|(objectclass=inetOrgPerson))(|(uid=%uid)(|(uid=%uid)))) |
+| ldapLoginFilterAttributes     | uid                                                         |
+| ldapLoginFilterEmail          | 0                                                           |
+| ldapLoginFilterMode           | 0                                                           |
+| ldapLoginFilterUsername       | 1                                                           |
+| ldapNestedGroups              | 0                                                           |
+| ldapNoCase                    | 0                                                           |
+| ldapOverrideMainServer        |                                                             |
+| ldapPagingSize                | 500                                                         |
+| ldapPort                      | 389                                                         |
+| ldapQuotaAttribute            |                                                             |
+| ldapQuotaDefault              |                                                             |
+| ldapTLS                       | 0                                                           |
+| ldapUserDisplayName           | cn                                                          |
+| ldapUserFilter                | (|(objectclass=inetOrgPerson))                              |
+| ldapUserFilterGroups          |                                                             |
+| ldapUserFilterMode            | 0                                                           |
+| ldapUserFilterObjectclass     | inetOrgPerson                                               |
+| ldapUuidGroupAttribute        | auto                                                        |
+| ldapUuidUserAttribute         | auto                                                        |
+| turnOffCertCheck              | 0                                                           |
+| useMemberOfToDetectMembership | 1                                                           |
++-------------------------------+-------------------------------------------------------------+
+
