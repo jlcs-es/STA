@@ -48,7 +48,7 @@
 
 \title{Servicios Telemáticos Avanzados}
 \author{José Luis Cánovas Sánchez\\Ezequiel Santamaría Navarro}
-http://xdxd.com/
+
 \begin{document}
 
 \maketitle
@@ -194,5 +194,31 @@ TODO: Copiar aqui la configuracion relativa a las extensiones entre servicios.
 \subsubsection{Buzón de voz}
 
 \subsection{LDAP}
+El servicio LDAP ofrece al resto de servicios un punto en común donde encontrar la información relevante de los usuarios (nombres, 
+organización a la que pertenecen, permisos de uso y acceso, credenciales, etc). 
+
+Como contiene la información crítica de los usuarios que se integran en los servicios, LDAP se despliega en su propia máquina.
+
+Sin embargo, en el despliegue real del laboratorio, LDAP está integrado en el ordenador de la organización 31.
+
+Para las pruebas de laboratorio, la instalación y la configuración la generamos automáticamente (sin necesidad de 
+interacción del administrador), en python, generando tres clientes de la organización 31.
+
+%TODO: Incluir partes o total del fichero python.
+%TODO: Incluir un ldiff y comentarlo.
+%TODO: Describir qué es db.tar.gz e initial.tar.gz
+%TODO: Justificar que funciona correctamente con ldapsearch.
+%TODO: LDAP lo integramos con OwnCloud y lo probamos.
+
+\subsection{OwnCloud}
+
+\section{Políticas de seguridad}
+%TODO: Un dibujo del escenario de seguridad
+
+\subsection{Análisis de riesgos}
+%TODO: Tabla de reglas de seguridad
+
+\subsection{Configuración de seguridad}
+%TODO: Iptables
 
 \end{document}
