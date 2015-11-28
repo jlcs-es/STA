@@ -391,3 +391,485 @@ Leyendo lista de paquetes...
 Obj http://dl.google.com stable/main i386 Packages
 Leyendo lista de paquetes...
  * Restarting network management services:
+Ign http://extras.ubuntu.com trusty InRelease
+Ign http://es.archive.ubuntu.com trusty InRelease
+Obj http://extras.ubuntu.com trusty Release.gpg
+Des:1 http://es.archive.ubuntu.com trusty-updates InRelease [64,4 kB]
+Obj http://extras.ubuntu.com trusty Release
+Des:2 http://security.ubuntu.com trusty-security InRelease [64,4 kB]
+Obj http://extras.ubuntu.com trusty/main Sources
+Obj http://extras.ubuntu.com trusty/main amd64 Packages
+Des:3 http://es.archive.ubuntu.com trusty-backports InRelease [64,5 kB]
+Obj http://extras.ubuntu.com trusty/main i386 Packages
+Des:4 http://security.ubuntu.com trusty-security/main Sources [100 kB]
+Obj http://es.archive.ubuntu.com trusty Release.gpg
+Des:5 http://security.ubuntu.com trusty-security/restricted Sources [4.035 B]
+Des:6 http://es.archive.ubuntu.com trusty-updates/main Sources [246 kB]
+Des:7 http://security.ubuntu.com trusty-security/universe Sources [31,5 kB]
+Ign http://extras.ubuntu.com trusty/main Translation-es_ES
+Des:8 http://security.ubuntu.com trusty-security/multiverse Sources [2.345 B]
+Ign http://extras.ubuntu.com trusty/main Translation-es
+Ign http://extras.ubuntu.com trusty/main Translation-en
+Des:9 http://security.ubuntu.com trusty-security/main amd64 Packages [372 kB]
+Des:10 http://security.ubuntu.com trusty-security/restricted amd64 Packages [13,0 kB]
+Des:11 http://security.ubuntu.com trusty-security/universe amd64 Packages [120 kB]
+Des:12 http://security.ubuntu.com trusty-security/multiverse amd64 Packages [4.795 B]
+Des:13 http://security.ubuntu.com trusty-security/main i386 Packages [351 kB]
+Des:14 http://security.ubuntu.com trusty-security/restricted i386 Packages [12,7 kB]
+Des:15 http://es.archive.ubuntu.com trusty-updates/restricted Sources [5.359 B]
+Des:16 http://security.ubuntu.com trusty-security/universe i386 Packages [120 kB]
+Des:17 http://es.archive.ubuntu.com trusty-updates/universe Sources [144 kB]
+Des:18 http://security.ubuntu.com trusty-security/multiverse i386 Packages [4.967 B]
+Des:19 http://security.ubuntu.com trusty-security/main Translation-en [201 kB]
+Des:20 http://security.ubuntu.com trusty-security/multiverse Translation-en [2.437 B]
+Des:21 http://security.ubuntu.com trusty-security/restricted Translation-en [3.206 B]
+Des:22 http://es.archive.ubuntu.com trusty-updates/multiverse Sources [5.162 B]
+Des:23 http://es.archive.ubuntu.com trusty-updates/main amd64 Packages [656 kB]
+Des:24 http://security.ubuntu.com trusty-security/universe Translation-en [69,9 kB]
+Des:25 http://es.archive.ubuntu.com trusty-updates/restricted amd64 Packages [15,9 kB]
+Des:26 http://es.archive.ubuntu.com trusty-updates/universe amd64 Packages [329 kB]
+Des:27 http://es.archive.ubuntu.com trusty-updates/multiverse amd64 Packages [13,0 kB]
+Des:28 http://es.archive.ubuntu.com trusty-updates/main i386 Packages [634 kB]
+Des:29 http://es.archive.ubuntu.com trusty-updates/restricted i386 Packages [15,6 kB]
+Des:30 http://es.archive.ubuntu.com trusty-updates/universe i386 Packages [329 kB]
+Des:31 http://es.archive.ubuntu.com trusty-updates/multiverse i386 Packages [13,1 kB]
+Des:32 http://es.archive.ubuntu.com trusty-updates/main Translation-en [321 kB]
+Des:33 http://es.archive.ubuntu.com trusty-updates/multiverse Translation-en [6.832 B]
+Des:34 http://es.archive.ubuntu.com trusty-updates/restricted Translation-en [3.699 B]
+Des:35 http://es.archive.ubuntu.com trusty-updates/universe Translation-en [173 kB]
+Des:36 http://es.archive.ubuntu.com trusty-backports/main Sources [8.221 B]
+Des:37 http://es.archive.ubuntu.com trusty-backports/restricted Sources [28 B]
+Des:38 http://es.archive.ubuntu.com trusty-backports/universe Sources [33,2 kB]
+Des:39 http://es.archive.ubuntu.com trusty-backports/multiverse Sources [1.898 B]
+Des:40 http://es.archive.ubuntu.com trusty-backports/main amd64 Packages [9.402 B]
+Des:41 http://es.archive.ubuntu.com trusty-backports/restricted amd64 Packages [28 B]
+Des:42 http://es.archive.ubuntu.com trusty-backports/universe amd64 Packages [39,6 kB]
+Des:43 http://es.archive.ubuntu.com trusty-backports/multiverse amd64 Packages [1.571 B]
+Des:44 http://es.archive.ubuntu.com trusty-backports/main i386 Packages [9.411 B]
+Des:45 http://es.archive.ubuntu.com trusty-backports/restricted i386 Packages [28 B]
+Des:46 http://es.archive.ubuntu.com trusty-backports/universe i386 Packages [39,6 kB]
+Des:47 http://es.archive.ubuntu.com trusty-backports/multiverse i386 Packages [1.552 B]
+Des:48 http://es.archive.ubuntu.com trusty-backports/main Translation-en [5.549 B]
+Des:49 http://es.archive.ubuntu.com trusty-backports/multiverse Translation-en [1.215 B]
+Des:50 http://es.archive.ubuntu.com trusty-backports/restricted Translation-en [14 B]
+Des:51 http://es.archive.ubuntu.com trusty-backports/universe Translation-en [34,5 kB]
+Obj http://es.archive.ubuntu.com trusty Release
+Obj http://es.archive.ubuntu.com trusty/main Sources
+Obj http://es.archive.ubuntu.com trusty/restricted Sources
+Obj http://es.archive.ubuntu.com trusty/universe Sources
+Obj http://es.archive.ubuntu.com trusty/multiverse Sources
+Obj http://es.archive.ubuntu.com trusty/main amd64 Packages
+Obj http://es.archive.ubuntu.com trusty/restricted amd64 Packages
+Obj http://es.archive.ubuntu.com trusty/universe amd64 Packages
+Obj http://es.archive.ubuntu.com trusty/multiverse amd64 Packages
+Obj http://es.archive.ubuntu.com trusty/main i386 Packages
+Obj http://es.archive.ubuntu.com trusty/restricted i386 Packages
+Obj http://es.archive.ubuntu.com trusty/universe i386 Packages
+Obj http://es.archive.ubuntu.com trusty/multiverse i386 Packages
+Obj http://es.archive.ubuntu.com trusty/main Translation-es
+Obj http://es.archive.ubuntu.com trusty/main Translation-en
+Obj http://es.archive.ubuntu.com trusty/multiverse Translation-es
+Obj http://es.archive.ubuntu.com trusty/multiverse Translation-en
+Obj http://es.archive.ubuntu.com trusty/restricted Translation-es
+Obj http://es.archive.ubuntu.com trusty/restricted Translation-en
+Obj http://es.archive.ubuntu.com trusty/universe Translation-es
+Obj http://es.archive.ubuntu.com trusty/universe Translation-en
+Ign http://es.archive.ubuntu.com trusty/main Translation-es_ES
+Ign http://es.archive.ubuntu.com trusty/multiverse Translation-es_ES
+Ign http://es.archive.ubuntu.com trusty/restricted Translation-es_ES
+Ign http://es.archive.ubuntu.com trusty/universe Translation-es_ES
+Descargados 4.703 kB en 19seg. (241 kB/s)
+Leyendo lista de paquetes...
+Leyendo lista de paquetes...
+Creando árbol de dependencias...
+Leyendo la información de estado...
+snmp ya está en su versión más reciente.
+Se instalarán los siguientes paquetes extras:
+  libmysqlclient18 mysql-common smistrip
+Se instalarán los siguientes paquetes NUEVOS:
+  libmysqlclient18 mysql-common smistrip snmp-mibs-downloader snmpd
+0 actualizados, 5 se instalarán, 0 para eliminar y 100 no actualizados.
+Necesito descargar 5.810 kB de archivos.
+Se utilizarán 9.823 kB de espacio de disco adicional después de esta operación.
+Des:1 http://es.archive.ubuntu.com/ubuntu/ trusty-updates/main mysql-common all 5.5.46-0ubuntu0.14.04.2 [14,1 kB]
+Des:2 http://es.archive.ubuntu.com/ubuntu/ trusty-updates/main libmysqlclient18 amd64 5.5.46-0ubuntu0.14.04.2 [597 kB]
+Des:3 http://es.archive.ubuntu.com/ubuntu/ trusty/universe smistrip all 0.4.8+dfsg2-8ubuntu2 [8.156 B]
+Des:4 http://es.archive.ubuntu.com/ubuntu/ trusty/multiverse snmp-mibs-downloader all 1.1 [5.118 kB]
+Des:5 http://es.archive.ubuntu.com/ubuntu/ trusty-updates/main snmpd amd64 5.7.2~dfsg-8.1ubuntu3.1 [73,2 kB]
+Preconfigurando paquetes ...
+Descargados 5.810 kB en 1seg. (3.174 kB/s)
+Seleccionando el paquete mysql-common previamente no seleccionado.
+(Leyendo la base de datos ... 198154 ficheros o directorios instalados actualmente.)
+Preparing to unpack .../mysql-common_5.5.46-0ubuntu0.14.04.2_all.deb ...
+Unpacking mysql-common (5.5.46-0ubuntu0.14.04.2) ...
+Seleccionando el paquete libmysqlclient18:amd64 previamente no seleccionado.
+Preparing to unpack .../libmysqlclient18_5.5.46-0ubuntu0.14.04.2_amd64.deb ...
+Unpacking libmysqlclient18:amd64 (5.5.46-0ubuntu0.14.04.2) ...
+Seleccionando el paquete smistrip previamente no seleccionado.
+Preparing to unpack .../smistrip_0.4.8+dfsg2-8ubuntu2_all.deb ...
+Unpacking smistrip (0.4.8+dfsg2-8ubuntu2) ...
+Seleccionando el paquete snmp-mibs-downloader previamente no seleccionado.
+Preparing to unpack .../snmp-mibs-downloader_1.1_all.deb ...
+Unpacking snmp-mibs-downloader (1.1) ...
+Seleccionando el paquete snmpd previamente no seleccionado.
+Preparing to unpack .../snmpd_5.7.2~dfsg-8.1ubuntu3.1_amd64.deb ...
+Unpacking snmpd (5.7.2~dfsg-8.1ubuntu3.1) ...
+Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+Processing triggers for ureadahead (0.100.0-16) ...
+ureadahead will be reprofiled on next reboot
+Configurando mysql-common (5.5.46-0ubuntu0.14.04.2) ...
+Configurando libmysqlclient18:amd64 (5.5.46-0ubuntu0.14.04.2) ...
+Configurando smistrip (0.4.8+dfsg2-8ubuntu2) ...
+Configurando snmp-mibs-downloader (1.1) ...
+
+Downloading documents and extracting MIB files.
+This will take some minutes.
+
+In case this process fails, it can always be repeated later by executing
+/usr/bin/download-mibs again.
+
+RFC1155-SMI: 119 lines.
+RFC1213-MIB: 2613 lines.
+NOTE: SMUX: ignored.
+SMUX-MIB: 158 lines.
+CLNS-MIB: 1294 lines.
+RFC1381-MIB: 1007 lines.
+RFC1382-MIB: 2627 lines.
+RFC1414-MIB: 131 lines.
+SNMPv2-PARTY-MIB: 1410 lines.
+SNMPv2-M2M-MIB: 807 lines.
+MIOX25-MIB: 708 lines.
+PPP-LCP-MIB: 764 lines.
+PPP-SEC-MIB: 289 lines.
+PPP-IP-NCP-MIB: 203 lines.
+PPP-BRIDGE-NCP-MIB: 429 lines.
+FDDI-SMT73-MIB: 2126 lines.
+TOKEN-RING-RMON-MIB: 2302 lines.
+SOURCE-ROUTING-MIB: 450 lines.
+DECNET-PHIV-MIB: 3030 lines.
+DSA-MIB: 642 lines.
+DPI20-MIB: 47 lines.
+IBM-6611-APPN-MIB: 5112 lines.
+DNS-SERVER-MIB: 1078 lines.
+DNS-RESOLVER-MIB: 1196 lines.
+UPS-MIB: 1899 lines.
+CHARACTER-MIB: 646 lines.
+RS-232-MIB: 788 lines.
+PARALLEL-MIB: 286 lines.
+SNA-NAU-MIB: 2765 lines.
+SIP-MIB: 1099 lines.
+Modem-MIB: 1340 lines.
+RDBMS-MIB: 1377 lines.
+RIPv2-MIB: 532 lines.
+APPLETALK-MIB: 3398 lines.
+SNA-SDLC-MIB: 2761 lines.
+TOKENRING-MIB: 836 lines.
+TOKENRING-STATION-SR-MIB: 175 lines.
+TCPIPX-MIB: 331 lines.
+SNMPv2-USEC-MIB: 238 lines.
+MIP-MIB: 2127 lines.
+DOT12-IF-MIB: 772 lines.
+DLSW-MIB: 3560 lines.
+APPC-MIB: 5104 lines.
+SNMP-REPEATER-MIB: 3265 lines.
+FRAME-RELAY-DTE-MIB: 992 lines.
+ISDN-MIB: 1260 lines.
+DIAL-CONTROL-MIB: 1270 lines.
+RSVP-MIB: 2660 lines.
+INTEGRATED-SERVICES-MIB: 750 lines.
+INTEGRATED-SERVICES-GUARANTEED-MIB: 218 lines.
+APPN-DLUR-MIB: 632 lines.
+HPR-MIB: 1270 lines.
+DOT12-RPTR-MIB: 1978 lines.
+SYSAPPL-MIB: 1539 lines.
+IPOA-MIB: 1654 lines.
+IPATM-IPMC-MIB: 3244 lines.
+IPV6-TCP-MIB: 211 lines.
+IPV6-UDP-MIB: 141 lines.
+APPN-MIB: 5611 lines.
+APPN-TRAP-MIB: 477 lines.
+EBN-MIB: 702 lines.
+IPV6-TC: 67 lines.
+IPV6-MIB: 1443 lines.
+IPV6-ICMP-MIB: 529 lines.
+DS0-MIB: 305 lines.
+DS0BUNDLE-MIB: 311 lines.
+ATM-ACCOUNTING-INFORMATION-MIB: 402 lines.
+ACCOUNTING-CONTROL-MIB: 768 lines.
+ATM-TC-MIB: 713 lines.
+ATM-MIB: 2995 lines.
+TN3270E-MIB: 1953 lines.
+TN3270E-RT-MIB: 896 lines.
+APPLICATION-MIB: 2995 lines.
+SNMPv2-SMI: 344 lines.
+NOTE: FIZBIN-MIB: ignored.
+SNMPv2-TC: 772 lines.
+SNMPv2-CONF: 322 lines.
+HPR-IP-MIB: 487 lines.
+WWW-MIB: 1272 lines.
+DIRECTORY-SERVER-MIB: 772 lines.
+SMON-MIB: 1254 lines.
+ADSL-TC-MIB: 113 lines.
+ADSL-LINE-MIB: 4328 lines.
+ETHER-CHIPSET-MIB: 532 lines.
+NHRP-MIB: 2596 lines.
+Job-Monitoring-MIB: 1652 lines.
+FLOW-METER-MIB: 1901 lines.
+AGENTX-MIB: 527 lines.
+SLAPM-MIB: 2842 lines.
+SNMP-USM-DH-OBJECTS-MIB: 532 lines.
+VRRP-MIB: 789 lines.
+NETWORK-SERVICES-MIB: 626 lines.
+MTA-MIB: 1226 lines.
+HOST-RESOURCES-MIB: 1540 lines.
+HOST-RESOURCES-TYPES: 389 lines.
+RMON-MIB: 3980 lines.
+FIBRE-CHANNEL-FE-MIB: 1781 lines.
+HCNUM-TC: 118 lines.
+IF-MIB: 1814 lines.
+IF-INVERTED-STACK-MIB: 149 lines.
+PTOPO-MIB: 804 lines.
+IPMROUTE-STD-MIB: 869 lines.
+IGMP-STD-MIB: 516 lines.
+PIM-MIB: 889 lines.
+COPS-CLIENT-MIB: 844 lines.
+FRNETSERV-MIB: 2479 lines.
+FR-ATM-PVC-SERVICE-IWF-MIB: 1066 lines.
+RTP-MIB: 981 lines.
+DISMAN-EVENT-MIB: 1882 lines.
+DISMAN-EXPRESSION-MIB: 1182 lines.
+NOTIFICATION-LOG-MIB: 753 lines.
+IPV6-MLD-MIB: 417 lines.
+FR-MFR-MIB: 888 lines.
+PINT-MIB: 573 lines.
+DOCS-BPI-MIB: 1569 lines.
+INTERFACETOPN-MIB: 1023 lines.
+DISMAN-SCRIPT-MIB: 1764 lines.
+SFLOW-MIB: 389 lines.
+CIRCUIT-IF-MIB: 369 lines.
+FRSLD-MIB: 1768 lines.
+DISMAN-SCHEDULE-MIB: 699 lines.
+HC-RMON-MIB: 3149 lines.
+DSMON-MIB: 4449 lines.
+DIFFSERV-DSCP-TC: 64 lines.
+DIFFSERV-MIB: 3514 lines.
+GSMP-MIB: 1582 lines.
+L2TP-MIB: 2664 lines.
+SNMP-FRAMEWORK-MIB: 526 lines.
+SNMP-MPD-MIB: 145 lines.
+NOTE: : ignored.
+SNMP-TARGET-MIB: 660 lines.
+SNMP-NOTIFICATION-MIB: 589 lines.
+SNMP-PROXY-MIB: 294 lines.
+NOTE: : ignored.
+SNMP-USER-BASED-SM-MIB: 912 lines.
+SNMP-VIEW-BASED-ACM-MIB: 830 lines.
+SNMPv2-PDU: 133 lines.
+SNMPv2-TM: 176 lines.
+SNMPv2-MIB: 854 lines.
+TRANSPORT-ADDRESS-MIB: 421 lines.
+ENTITY-SENSOR-MIB: 440 lines.
+HC-ALARM-MIB: 707 lines.
+ADSL-LINE-EXT-MIB: 1169 lines.
+APS-MIB: 1659 lines.
+MALLOC-MIB: 1364 lines.
+SNMP-COMMUNITY-MIB: 505 lines.
+OPT-IF-MIB: 6616 lines.
+SONET-MIB: 2360 lines.
+PerfHist-TC-MIB: 178 lines.
+IPV6-FLOW-LABEL-MIB: 58 lines.
+ATM2-MIB: 3220 lines.
+POWER-ETHERNET-MIB: 621 lines.
+EtherLike-MIB: 1862 lines.
+HC-PerfHist-TC-MIB: 222 lines.
+VDSL-LINE-MIB: 2844 lines.
+APM-MIB: 2127 lines.
+DIFFSERV-CONFIG-MIB: 243 lines.
+NOTE: IANA-PRINTER-MIB: ignored.
+Printer-MIB: 4389 lines.
+NOTE: IANA-FINISHER-MIB: ignored.
+Finisher-MIB: 869 lines.
+MPLS-TC-STD-MIB: 635 lines.
+MPLS-TE-STD-MIB: 2483 lines.
+MPLS-LSR-STD-MIB: 2106 lines.
+MPLS-FTN-STD-MIB: 1030 lines.
+MPLS-LDP-STD-MIB: 2408 lines.
+MPLS-LDP-ATM-STD-MIB: 757 lines.
+MPLS-LDP-FRAME-RELAY-STD-MIB: 641 lines.
+MPLS-LDP-GENERIC-STD-MIB: 321 lines.
+ROHC-MIB: 1133 lines.
+ROHC-UNCOMPRESSED-MIB: 197 lines.
+ROHC-RTP-MIB: 636 lines.
+SNMP-USM-AES-MIB: 62 lines.
+TRIP-TC-MIB: 132 lines.
+TRIP-MIB: 2007 lines.
+SCTP-MIB: 1342 lines.
+ALARM-MIB: 1127 lines.
+NOTE: IANA-ITU-ALARM-TC-MIB: ignored.
+ITU-ALARM-TC-MIB: 86 lines.
+ITU-ALARM-MIB: 486 lines.
+ARC-MIB: 396 lines.
+DS3-MIB: 1786 lines.
+TE-MIB: 1679 lines.
+INET-ADDRESS-MIB: 402 lines.
+NAT-MIB: 2391 lines.
+POLICY-BASED-MANAGEMENT-MIB: 2060 lines.
+TCP-MIB: 785 lines.
+DOCS-IETF-SUBMGT-MIB: 672 lines.
+FC-MGMT-MIB: 2205 lines.
+VDSL-LINE-EXT-SCM-MIB: 420 lines.
+VDSL-LINE-EXT-MCM-MIB: 662 lines.
+TUNNEL-MIB: 738 lines.
+UDP-MIB: 549 lines.
+DOCS-IETF-BPI2-MIB: 3451 lines.
+ENTITY-MIB: 1411 lines.
+SSPM-MIB: 1029 lines.
+TPM-MIB: 1916 lines.
+BRIDGE-MIB: 1472 lines.
+TE-LINK-STD-MIB: 1745 lines.
+VPN-TC-STD-MIB: 72 lines.
+ENTITY-STATE-TC-MIB: 169 lines.
+ENTITY-STATE-MIB: 332 lines.
+BGP4-MIB: 1232 lines.
+IP-FORWARD-MIB: 1277 lines.
+IP-MIB: 4993 lines.
+MOBILEIPV6-MIB: 3984 lines.
+RSTP-MIB: 306 lines.
+HDSL2-SHDSL-LINE-MIB: 2503 lines.
+DOCS-IETF-QOS-MIB: 3060 lines.
+P-BRIDGE-MIB: 1157 lines.
+Q-BRIDGE-MIB: 2367 lines.
+MPLS-LC-ATM-STD-MIB: 336 lines.
+MPLS-LC-FR-STD-MIB: 263 lines.
+IFCP-MGMT-MIB: 1015 lines.
+MPLS-L3VPN-STD-MIB: 1588 lines.
+FCIP-MGMT-MIB: 1037 lines.
+T11-FC-NAME-SERVER-MIB: 1136 lines.
+T11-TC-MIB: 67 lines.
+T11-FC-FABRIC-ADDR-MGR-MIB: 1241 lines.
+ISIS-MIB: 4317 lines.
+SCSI-MIB: 2758 lines.
+AGGREGATE-MIB: 477 lines.
+TIME-AGGREGATE-MIB: 375 lines.
+RMON2-MIB: 5711 lines.
+ISCSI-MIB: 3097 lines.
+IPS-AUTH-MIB: 1156 lines.
+DOCS-IF-MIB: 5291 lines.
+DOCS-IETF-CABLE-DEVICE-NOTIFICATION-MIB: 1453 lines.
+DISMAN-PING-MIB: 1561 lines.
+DISMAN-TRACEROUTE-MIB: 1850 lines.
+DISMAN-NSLOOKUP-MIB: 509 lines.
+MSDP-MIB: 1182 lines.
+T11-FC-ROUTE-MIB: 448 lines.
+T11-FC-FSPF-MIB: 1170 lines.
+LMP-MIB: 3185 lines.
+DOCS-CABLE-DEVICE-MIB: 3141 lines.
+RADIUS-AUTH-CLIENT-MIB: 710 lines.
+RADIUS-AUTH-SERVER-MIB: 774 lines.
+RADIUS-ACC-CLIENT-MIB: 638 lines.
+RADIUS-ACC-SERVER-MIB: 727 lines.
+RADIUS-DYNAUTH-CLIENT-MIB: 767 lines.
+RADIUS-DYNAUTH-SERVER-MIB: 699 lines.
+PKTC-IETF-MTA-MIB: 2081 lines.
+ADSL2-LINE-TC-MIB: 729 lines.
+ADSL2-LINE-MIB: 5476 lines.
+RAQMON-MIB: 1417 lines.
+RAQMON-RDS-MIB: 672 lines.
+T11-FC-VIRTUAL-FABRIC-MIB: 523 lines.
+OSPF-MIB: 4164 lines.
+OSPF-TRAP-MIB: 584 lines.
+SIP-TC-MIB: 177 lines.
+SIP-COMMON-MIB: 1913 lines.
+SIP-UA-MIB: 200 lines.
+SIP-SERVER-MIB: 869 lines.
+SNMP-IEEE802-TM-MIB: 40 lines.
+GMPLS-TC-STD-MIB: 124 lines.
+GMPLS-TE-STD-MIB: 1749 lines.
+NOTE: IANA-GMPLS-TC-MIB: ignored.
+GMPLS-LSR-STD-MIB: 503 lines.
+GMPLS-LABEL-STD-MIB: 689 lines.
+DS1-MIB: 3015 lines.
+IPSEC-SPD-MIB: 2682 lines.
+MAU-MIB: 1740 lines.
+NOTE: IANA-MAU-MIB: ignored.
+DOT3-EPON-MIB: 2532 lines.
+DOT3-OAM-MIB: 2115 lines.
+TCP-ESTATS-MIB: 2941 lines.
+T11-FC-FABRIC-CONFIG-SERVER-MIB: 1717 lines.
+T11-FC-FABRIC-LOCK-MIB: 490 lines.
+T11-FC-ZONE-SERVER-MIB: 2638 lines.
+ISNS-MIB: 3243 lines.
+T11-FC-RSCN-MIB: 751 lines.
+URI-TC-MIB: 133 lines.
+PIM-STD-MIB: 3746 lines.
+IF-CAP-STACK-MIB: 284 lines.
+EFM-CU-MIB: 2995 lines.
+UDPLITE-MIB: 513 lines.
+PKTC-IETF-SIG-MIB: 3021 lines.
+LANGTAG-TC-MIB: 56 lines.
+IPMCAST-MIB: 2391 lines.
+MIDCOM-MIB: 2260 lines.
+PIM-BSR-MIB: 699 lines.
+T11-FC-SP-TC-MIB: 637 lines.
+T11-FC-SP-AUTHENTICATION-MIB: 920 lines.
+T11-FC-SP-ZONING-MIB: 550 lines.
+T11-FC-SP-POLICY-MIB: 4274 lines.
+T11-FC-SP-SA-MIB: 2483 lines.
+SYSLOG-TC-MIB: 202 lines.
+PKTC-IETF-EVENT-MIB: 1163 lines.
+NEMO-MIB: 1739 lines.
+MGMD-STD-MIB: 1524 lines.
+RSERPOOL-MIB: 1439 lines.
+PW-TC-STD-MIB: 288 lines.
+SNMP-TSM-MIB: 234 lines.
+SNMP-SSH-TM-MIB: 329 lines.
+NOTE: IANA-PWE3-MIB: ignored.
+PW-STD-MIB: 2438 lines.
+PW-MPLS-STD-MIB: 914 lines.
+PW-ENET-STD-MIB: 491 lines.
+PW-TDM-MIB: 1336 lines.
+PW-ATM-MIB: 1205 lines.
+OSPFV3-MIB: 3951 lines.
+VDSL2-LINE-TC-MIB: 1479 lines.
+VDSL2-LINE-MIB: 7189 lines.
+SYSLOG-MSG-MIB: 598 lines.
+DVB-RCS-MIB: 3329 lines.
+FORCES-MIB: 391 lines.
+IPFIX-MIB: 1677 lines.
+NOTE: IPFIX-SELECTOR-MIB: ignored.
+CAPWAP-BASE-MIB: 2618 lines.
+CAPWAP-DOT11-MIB: 369 lines.
+patching file ADSL-LINE-MIB
+patching file DLSW-MIB
+patching file DSA-MIB
+patching file FDDI-SMT73-MIB
+patching file HPR-MIB
+patching file MIP-MIB
+patching file Modem-MIB
+patching file PPP-LCP-MIB
+patching file RDBMS-MIB
+patching file RFC1414-MIB
+patching file SNA-NAU-MIB
+patching file TCPIPX-MIB
+patching file UPS-MIB
+patching file SMUX-MIB
+IANA-PWE3-MIB: 137 lines.
+NOTE: PW-STD-MIB: ignored.
+IANAifType-MIB: 593 lines.
+IANA-LANGUAGE-MIB: 123 lines.
+IANA-ADDRESS-FAMILY-NUMBERS-MIB: 123 lines.
+IANA-RTPROTO-MIB: 87 lines.
+IANATn3270eTC-MIB: 300 lines.
+IANA-MALLOC-MIB: 65 lines.
+IANA-CHARSET-MIB: 342 lines.
+IANA-PRINTER-MIB: 2084 lines.
+IANA-FINISHER-MIB: 283 lines.
+IANA-ITU-ALARM-TC-MIB: 330 lines.
+IANA-GMPLS-TC-MIB: 303 lines.
+IANA-IPPM-METRICS-REGISTRY-MIB: 650 lines.
+IANA-MAU-MIB: 895 lines.
+IPFIX-SELECTOR-MIB: 167 lines.
+Configurando snmpd (5.7.2~dfsg-8.1ubuntu3.1) ...
+Processing triggers for libc-bin (2.19-0ubuntu6.6) ...
+Processing triggers for ureadahead (0.100.0-16) ...
+ * Restarting network management services:
