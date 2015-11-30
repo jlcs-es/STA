@@ -1,0 +1,1 @@
+install=true&adminlogin=alumno&adminpass=alumno&adminpass-clone=alumno&directory=/var/www/owncloud/data&dbtype=sqlite&dbuser=&dbpass=&dbpass-clone=&dbname=&dbhost=localhost
