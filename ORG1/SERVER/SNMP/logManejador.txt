@@ -873,3 +873,194 @@ Configurando snmpd (5.7.2~dfsg-8.1ubuntu3.1) ...
 Processing triggers for libc-bin (2.19-0ubuntu6.6) ...
 Processing triggers for ureadahead (0.100.0-16) ...
  * Restarting network management services:
+Err http://ppa.launchpad.net trusty InRelease
+  
+Err http://dl.google.com stable InRelease
+  
+Err http://es.archive.ubuntu.com trusty InRelease
+  
+Err http://extras.ubuntu.com trusty InRelease
+  
+Err http://security.ubuntu.com trusty-security InRelease
+  
+Err http://archive.canonical.com trusty InRelease
+  
+Err http://ppa.launchpad.net trusty InRelease
+  
+Err http://ppa.launchpad.net trusty Release.gpg
+  No se pudo resolver «ppa.launchpad.net»
+Err http://ppa.launchpad.net trusty Release.gpg
+  No se pudo resolver «ppa.launchpad.net»
+Err http://extras.ubuntu.com trusty Release.gpg
+  No se pudo resolver «extras.ubuntu.com»
+Err http://dl.google.com stable Release.gpg
+  No se pudo resolver «dl.google.com»
+Err http://security.ubuntu.com trusty-security Release.gpg
+  No se pudo resolver «security.ubuntu.com»
+Err http://archive.canonical.com trusty Release.gpg
+  No se pudo resolver «archive.canonical.com»
+Err http://es.archive.ubuntu.com trusty-updates InRelease
+  
+Err http://es.archive.ubuntu.com trusty-backports InRelease
+  
+Err http://es.archive.ubuntu.com trusty Release.gpg
+  No se pudo resolver «es.archive.ubuntu.com»
+Err http://es.archive.ubuntu.com trusty-updates Release.gpg
+  No se pudo resolver «es.archive.ubuntu.com»
+Err http://es.archive.ubuntu.com trusty-backports Release.gpg
+  No se pudo resolver «es.archive.ubuntu.com»
+Leyendo lista de paquetes...
+Leyendo lista de paquetes...
+Creando árbol de dependencias...
+Leyendo la información de estado...
+snmp-mibs-downloader ya está en su versión más reciente.
+Se instalarán los siguientes paquetes NUEVOS:
+  snmp snmpd
+0 actualizados, 2 se instalarán, 0 para eliminar y 50 no actualizados.
+Necesito descargar 219 kB de archivos.
+Se utilizarán 786 kB de espacio de disco adicional después de esta operación.
+Des:1 http://es.archive.ubuntu.com/ubuntu/ trusty-updates/main snmp amd64 5.7.2~dfsg-8.1ubuntu3.1 [146 kB]
+Des:2 http://es.archive.ubuntu.com/ubuntu/ trusty-updates/main snmpd amd64 5.7.2~dfsg-8.1ubuntu3.1 [73,2 kB]
+Preconfigurando paquetes ...
+Descargados 219 kB en 41seg. (5.249 B/s)
+Seleccionando el paquete snmp previamente no seleccionado.
+(Leyendo la base de datos ... 489877 ficheros o directorios instalados actualmente.)
+Preparing to unpack .../snmp_5.7.2~dfsg-8.1ubuntu3.1_amd64.deb ...
+Ign http://dl.google.com stable InRelease
+Ign http://ppa.launchpad.net trusty InRelease
+Des:1 http://dl.google.com stable Release.gpg [198 B]
+Des:2 http://ppa.launchpad.net trusty InRelease [15,5 kB]
+Des:3 http://dl.google.com stable Release [1.347 B]
+Ign http://archive.canonical.com trusty InRelease
+Des:4 http://security.ubuntu.com trusty-security InRelease [64,4 kB]
+Ign http://extras.ubuntu.com trusty InRelease
+Obj http://ppa.launchpad.net trusty Release.gpg
+Obj http://ppa.launchpad.net trusty Release
+Des:5 http://dl.google.com stable/main amd64 Packages [1.217 B]
+Ign http://es.archive.ubuntu.com trusty InRelease
+Des:6 http://ppa.launchpad.net trusty/main amd64 Packages [3.368 B]
+Des:7 http://archive.canonical.com trusty Release.gpg [933 B]
+Obj http://extras.ubuntu.com trusty Release.gpg
+Des:8 http://dl.google.com stable/main i386 Packages [1.209 B]
+Des:9 http://ppa.launchpad.net trusty/main i386 Packages [3.368 B]
+Des:10 http://ppa.launchpad.net trusty/main Translation-en [1.556 B]
+Des:11 http://es.archive.ubuntu.com trusty-updates InRelease [64,4 kB]
+Des:12 http://archive.canonical.com trusty Release [9.359 B]
+Obj http://extras.ubuntu.com trusty Release
+Obj http://ppa.launchpad.net trusty/main amd64 Packages
+Obj http://ppa.launchpad.net trusty/main i386 Packages
+Obj http://ppa.launchpad.net trusty/main Translation-en
+Des:13 http://archive.canonical.com trusty/partner Sources [10,1 kB]
+Obj http://extras.ubuntu.com trusty/main Sources
+Des:14 http://archive.canonical.com trusty/partner amd64 Packages [5.625 B]
+Des:15 http://security.ubuntu.com trusty-security/main Sources [100 kB]
+Obj http://extras.ubuntu.com trusty/main amd64 Packages
+Des:16 http://es.archive.ubuntu.com trusty-backports InRelease [64,5 kB]
+Des:17 http://archive.canonical.com trusty/partner i386 Packages [6.308 B]
+Obj http://extras.ubuntu.com trusty/main i386 Packages
+Des:18 http://archive.canonical.com trusty/partner Translation-en [4.588 B]
+Obj http://es.archive.ubuntu.com trusty Release.gpg
+Des:19 http://security.ubuntu.com trusty-security/restricted Sources [4.035 B]
+Des:20 http://es.archive.ubuntu.com trusty-updates/main Sources [246 kB]
+Des:21 http://security.ubuntu.com trusty-security/universe Sources [31,5 kB]
+Ign http://dl.google.com stable/main Translation-es_ES
+Des:22 http://security.ubuntu.com trusty-security/multiverse Sources [2.345 B]
+Ign http://dl.google.com stable/main Translation-es
+Des:23 http://es.archive.ubuntu.com trusty-updates/restricted Sources [5.359 B]
+Ign http://dl.google.com stable/main Translation-en
+Des:24 http://security.ubuntu.com trusty-security/main amd64 Packages [372 kB]
+Des:25 http://es.archive.ubuntu.com trusty-updates/universe Sources [144 kB]
+Des:26 http://es.archive.ubuntu.com trusty-updates/multiverse Sources [5.162 B]
+Des:27 http://es.archive.ubuntu.com trusty-updates/main amd64 Packages [656 kB]
+Ign http://extras.ubuntu.com trusty/main Translation-es_ES
+Des:28 http://es.archive.ubuntu.com trusty-updates/restricted amd64 Packages [15,9 kB]
+Ign http://extras.ubuntu.com trusty/main Translation-es
+Des:29 http://es.archive.ubuntu.com trusty-updates/universe amd64 Packages [329 kB]
+Ign http://extras.ubuntu.com trusty/main Translation-en
+Des:30 http://es.archive.ubuntu.com trusty-updates/multiverse amd64 Packages [13,0 kB]
+Des:31 http://es.archive.ubuntu.com trusty-updates/main i386 Packages [634 kB]
+Des:32 http://es.archive.ubuntu.com trusty-updates/restricted i386 Packages [15,6 kB]
+Des:33 http://es.archive.ubuntu.com trusty-updates/universe i386 Packages [329 kB]
+Des:34 http://security.ubuntu.com trusty-security/restricted amd64 Packages [13,0 kB]
+Des:35 http://es.archive.ubuntu.com trusty-updates/multiverse i386 Packages [13,1 kB]
+Des:36 http://es.archive.ubuntu.com trusty-updates/main Translation-en [321 kB]
+Des:37 http://security.ubuntu.com trusty-security/universe amd64 Packages [120 kB]
+Des:38 http://es.archive.ubuntu.com trusty-updates/multiverse Translation-en [6.832 B]
+Des:39 http://es.archive.ubuntu.com trusty-updates/restricted Translation-en [3.699 B]
+Des:40 http://es.archive.ubuntu.com trusty-updates/universe Translation-en [173 kB]
+Des:41 http://es.archive.ubuntu.com trusty-backports/main Sources [8.221 B]
+Des:42 http://es.archive.ubuntu.com trusty-backports/restricted Sources [28 B]
+Des:43 http://es.archive.ubuntu.com trusty-backports/universe Sources [33,2 kB]
+Des:44 http://security.ubuntu.com trusty-security/multiverse amd64 Packages [4.795 B]
+Des:45 http://es.archive.ubuntu.com trusty-backports/multiverse Sources [1.898 B]
+Des:46 http://security.ubuntu.com trusty-security/main i386 Packages [351 kB]
+Des:47 http://es.archive.ubuntu.com trusty-backports/main amd64 Packages [9.402 B]
+Des:48 http://es.archive.ubuntu.com trusty-backports/restricted amd64 Packages [28 B]
+Des:49 http://es.archive.ubuntu.com trusty-backports/universe amd64 Packages [39,6 kB]
+Des:50 http://es.archive.ubuntu.com trusty-backports/multiverse amd64 Packages [1.571 B]
+Des:51 http://es.archive.ubuntu.com trusty-backports/main i386 Packages [9.411 B]
+Des:52 http://es.archive.ubuntu.com trusty-backports/restricted i386 Packages [28 B]
+Des:53 http://es.archive.ubuntu.com trusty-backports/universe i386 Packages [39,6 kB]
+Des:54 http://es.archive.ubuntu.com trusty-backports/multiverse i386 Packages [1.552 B]
+Des:55 http://es.archive.ubuntu.com trusty-backports/main Translation-en [5.549 B]
+Des:56 http://es.archive.ubuntu.com trusty-backports/multiverse Translation-en [1.215 B]
+Des:57 http://es.archive.ubuntu.com trusty-backports/restricted Translation-en [14 B]
+Des:58 http://es.archive.ubuntu.com trusty-backports/universe Translation-en [34,5 kB]
+Obj http://es.archive.ubuntu.com trusty Release
+Obj http://es.archive.ubuntu.com trusty/main Sources
+Obj http://es.archive.ubuntu.com trusty/restricted Sources
+Obj http://es.archive.ubuntu.com trusty/universe Sources
+Obj http://es.archive.ubuntu.com trusty/multiverse Sources
+Obj http://es.archive.ubuntu.com trusty/main amd64 Packages
+Obj http://es.archive.ubuntu.com trusty/restricted amd64 Packages
+Obj http://es.archive.ubuntu.com trusty/universe amd64 Packages
+Obj http://es.archive.ubuntu.com trusty/multiverse amd64 Packages
+Obj http://es.archive.ubuntu.com trusty/main i386 Packages
+Obj http://es.archive.ubuntu.com trusty/restricted i386 Packages
+Obj http://es.archive.ubuntu.com trusty/universe i386 Packages
+Obj http://es.archive.ubuntu.com trusty/multiverse i386 Packages
+Obj http://es.archive.ubuntu.com trusty/main Translation-es
+Des:59 http://security.ubuntu.com trusty-security/restricted i386 Packages [12,7 kB]
+Obj http://es.archive.ubuntu.com trusty/main Translation-en
+Des:60 http://security.ubuntu.com trusty-security/universe i386 Packages [120 kB]
+Obj http://es.archive.ubuntu.com trusty/multiverse Translation-es
+Obj http://es.archive.ubuntu.com trusty/multiverse Translation-en
+Obj http://es.archive.ubuntu.com trusty/restricted Translation-es
+Obj http://es.archive.ubuntu.com trusty/restricted Translation-en
+Obj http://es.archive.ubuntu.com trusty/universe Translation-es
+Obj http://es.archive.ubuntu.com trusty/universe Translation-en
+Des:61 http://security.ubuntu.com trusty-security/multiverse i386 Packages [4.967 B]
+Des:62 http://security.ubuntu.com trusty-security/main Translation-en [201 kB]
+Ign http://es.archive.ubuntu.com trusty/main Translation-es_ES
+Ign http://es.archive.ubuntu.com trusty/multiverse Translation-es_ES
+Ign http://es.archive.ubuntu.com trusty/restricted Translation-es_ES
+Ign http://es.archive.ubuntu.com trusty/universe Translation-es_ES
+Des:63 http://security.ubuntu.com trusty-security/multiverse Translation-en [2.437 B]
+Des:64 http://security.ubuntu.com trusty-security/restricted Translation-en [3.206 B]
+Des:65 http://security.ubuntu.com trusty-security/universe Translation-en [69,9 kB]
+Descargados 4.768 kB en 44seg. (107 kB/s)
+Leyendo lista de paquetes...
+Leyendo lista de paquetes...
+Creando árbol de dependencias...
+Leyendo la información de estado...
+snmp-mibs-downloader ya está en su versión más reciente.
+Se instalarán los siguientes paquetes NUEVOS:
+  snmp snmpd
+Preconfigurando paquetes ...
+0 actualizados, 2 se instalarán, 0 para eliminar y 246 no actualizados.
+Se necesita descargar 0 B/219 kB de archivos.
+Se utilizarán 786 kB de espacio de disco adicional después de esta operación.
+Seleccionando el paquete snmp previamente no seleccionado.
+(Leyendo la base de datos ... 489877 ficheros o directorios instalados actualmente.)
+Preparing to unpack .../snmp_5.7.2~dfsg-8.1ubuntu3.1_amd64.deb ...
+Unpacking snmp (5.7.2~dfsg-8.1ubuntu3.1) ...
+Seleccionando el paquete snmpd previamente no seleccionado.
+Preparing to unpack .../snmpd_5.7.2~dfsg-8.1ubuntu3.1_amd64.deb ...
+Unpacking snmpd (5.7.2~dfsg-8.1ubuntu3.1) ...
+Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+Processing triggers for ureadahead (0.100.0-16) ...
+ureadahead will be reprofiled on next reboot
+Configurando snmp (5.7.2~dfsg-8.1ubuntu3.1) ...
+Configurando snmpd (5.7.2~dfsg-8.1ubuntu3.1) ...
+Processing triggers for ureadahead (0.100.0-16) ...
+ * Restarting network management services:

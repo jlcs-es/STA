@@ -5,6 +5,7 @@ DIR="/etc/asterisk/"
 cp sip.conf $DIR
 cp users.conf $DIR
 cp extensions.conf $DIR
+cp voicemail.conf $DIR
 
 service asterisk stop
 service asterisk start
