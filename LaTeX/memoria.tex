@@ -39,7 +39,7 @@
 	showtabs=false,                  % show tabs within strings adding particular underscores
 	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
 	stringstyle=\color{mymauve},     % string literal style
-	tabsize=4,                       
+	tabsize=4,
 	inputencoding=utf8,
 	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
@@ -67,7 +67,7 @@ Somos el grupo 3, así que nos encargaremos de las organizaciones 31 y 32.
 \section{Topología}
 
 En esta sección describimos la forma en la que se van a desplegar los servicios y como estarán
-conectados entre sí. 
+conectados entre sí.
 
 \subsection{Dispositivos}
 
@@ -79,7 +79,7 @@ Tenemos para las pruebas y el desarrollo de la práctica, las siguientes herrami
 	\item Un ordenador que actúa de \textbf{enrutador}, con dos puertos ethernet, uno de ellos con configuración VLAN.
 	\item Un \textbf{punto de acceso} WiFi para el acceso a la red.
 	\item Un \textbf{iPhone} y un \textbf{portátil Mac}, útiles para probar VOIP con wifi.
-	\item Dos ordenadores que actúan como \textbf{organizaciones} 31 y 32. 
+	\item Dos ordenadores que actúan como \textbf{organizaciones} 31 y 32.
 	\item Dos ordenadores más para simular \textbf{clientes} haciendo peticiones.
 
 \end{itemize}
@@ -114,7 +114,7 @@ Para la configuración de los dispositivos utilizamos herramientas Makefile, y s
 Usamos una estructura de directorios basada en el hardware a configurar. Es decir, en el ordenador que hace de enrutador ejecutamos un Makefile que está en el directorio ROUTER.
 
 %TODO: decidir si se pone la estructura, y si se modifica cómo presentarla.
-\begin{Verbatim} 
+\begin{Verbatim}
 ROUTER
 	SNMP
 	Makefile
@@ -147,7 +147,7 @@ ORG1
 Del enrutamiento se encarga el PC que hace de enrutador. La configuración física se basa en tres puertos Ethernet:
 
 \begin{itemize}
-	\item Un puerto se usa para conectarse a la red de la UMu, que da conectividad al exterior. 
+	\item Un puerto se usa para conectarse a la red de la UMu, que da conectividad al exterior.
 	\item Otro puerto, conectado al \textit{trunk switch vlan} de la organización 31.
 	\item Ídem, para la organización 32.
 \end{itemize}
@@ -194,14 +194,14 @@ TODO: Copiar aqui la configuracion relativa a las extensiones entre servicios.
 \subsubsection{Buzón de voz}
 
 \subsection{LDAP}
-El servicio LDAP ofrece al resto de servicios un punto en común donde encontrar la información relevante de los usuarios (nombres, 
-organización a la que pertenecen, permisos de uso y acceso, credenciales, etc). 
+El servicio LDAP ofrece al resto de servicios un punto en común donde encontrar la información relevante de los usuarios (nombres,
+organización a la que pertenecen, permisos de uso y acceso, credenciales, etc).
 
 Como contiene la información crítica de los usuarios que se integran en los servicios, LDAP se despliega en su propia máquina.
 
 Sin embargo, en el despliegue real del laboratorio, LDAP está integrado en el ordenador de la organización 31.
 
-Para las pruebas de laboratorio, la instalación y la configuración la generamos automáticamente (sin necesidad de 
+Para las pruebas de laboratorio, la instalación y la configuración la generamos automáticamente (sin necesidad de
 interacción del administrador), en python, generando tres clientes de la organización 31.
 
 %TODO: Incluir partes o total del fichero python.
@@ -220,5 +220,12 @@ interacción del administrador), en python, generando tres clientes de la organi
 
 \subsection{Configuración de seguridad}
 %TODO: Iptables
+
+\subsection{Generación de certificados}
+En openssl.cnf no se explica que %yo me entiendo
+
+[ usr_cert ]
+
+crlDistributionPoints = URI:http://server.org31/crl/org31.CRL
 
 \end{document}
