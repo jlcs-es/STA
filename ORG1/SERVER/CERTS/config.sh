@@ -3,8 +3,6 @@
 # Copy openssl.cnf and demoCA
 
 cp ./openssl.cnf /usr/lib/ssl/openssl.cnf
-os.chdir("/etc/ldap/")
-bash("tar", ["-xzf", "initial.tar.gz"])
 tar -xzf demoCA.tar.gz -C /home/alumno/
 
 

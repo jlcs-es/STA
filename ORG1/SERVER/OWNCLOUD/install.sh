@@ -15,6 +15,10 @@ apt-get install -y php5-ldap
 a2enmod ssl
 #certificados:
 tar -xzf toserver.tar.gz -C /home/alumno/
+chown alumno.alumno /home/alumno/toserver
+chown alumno.alumno /home/alumno/toserver/*
+
+echo "ServerName server.org31" >> /etc/apache2/apache2.conf
 #configuración ssl
 cat > /etc/apache2/sites-available/default-ssl.conf << EOF
 <IfModule mod_ssl.c>
@@ -34,7 +38,7 @@ cat > /etc/apache2/sites-available/default-ssl.conf << EOF
 		SSLCACertificateFile /home/alumno/toserver/cacert.pem
 
 		SSLCARevocationCheck chain
-		SSLCARevocationFile /etc/apache2/ssl.crl/ca-bundle.crl
+		SSLCARevocationFile /home/alumno/toserver/ca-bundle.crl
 
 		SSLVerifyClient require
 		SSLVerifyDepth  10
