@@ -1,26 +1,71 @@
 #!/bin/bash
+
+#Instalar paquete owncloud
 wget http://download.opensuse.org/repositories/isv:ownCloud:community/xUbuntu_14.04/Release.key
 apt-key add - < Release.key
 sh -c "echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/xUbuntu_14.04/ /' >> /etc/apt/sources.list.d/owncloud.list"
 apt-get update
 apt-get install -y owncloud
 
-#LDAP
+#php LDAP
 apt-get install -y php5-ldap
-#HTTPS
-#a2enmod ssl
-#a2ensite default-ssl.conf
+
+
+#HTTPS con comprobación de CRL
+a2enmod ssl
+#certificados:
+tar -xzf toserver.tar.gz -C /home/alumno/
+#configuración ssl
+cat > /etc/apache2/sites-available/default-ssl.conf << EOF
+<IfModule mod_ssl.c>
+	<VirtualHost _default_:443>
+		ServerAdmin webmaster@localhost
+
+		DocumentRoot /var/www/html
+
+		ErrorLog ${APACHE_LOG_DIR}/error.log
+		CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+		SSLEngine on
+
+		SSLCertificateFile	/home/alumno/toserver/servercert.pem
+		SSLCertificateKeyFile /home/alumno/toserver/serverkey.pem
+
+		SSLCACertificateFile /home/alumno/toserver/cacert.pem
+
+		SSLCARevocationCheck chain
+		SSLCARevocationFile /etc/apache2/ssl.crl/ca-bundle.crl
+
+		SSLVerifyClient require
+		SSLVerifyDepth  10
+
+		<FilesMatch "\.(cgi|shtml|phtml|php)$">
+				SSLOptions +StdEnvVars
+		</FilesMatch>
+		<Directory /usr/lib/cgi-bin>
+				SSLOptions +StdEnvVars
+		</Directory>
+
+		BrowserMatch "MSIE [2-6]" \
+				nokeepalive ssl-unclean-shutdown \
+				downgrade-1.0 force-response-1.0
+		BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+
+	</VirtualHost>
+</IfModule>
+EOF
+#activar https
+a2ensite default-ssl.conf
+
 
 service apache2 restart
 
-
-#TODO: claves HTTPS
-#TODO: automatizar configuración con
+#Configurar owncloud
 curl -X POST -d @curl-post-data.txt http://192.168.31.100/index.php
 sudo -u cp config.php /var/www/owncloud/config/config.php
 #chown www-data:www-data /var/www/owncloud/config/config.php
 
-sudo -u www-data php /var/www/owncloud/occ app:enable encryption 
+sudo -u www-data php /var/www/owncloud/occ app:enable encryption
 sudo -u www-data php /var/www/owncloud/occ encryption:enable
 sudo -u www-data php /var/www/owncloud/occ app:enable user_ldap
 sudo -u www-data php /var/www/owncloud/occ ldap:set-config '' hasMemberOfFilterSupport "0"
@@ -73,4 +118,3 @@ sudo -u www-data php /var/www/owncloud/occ ldap:set-config '' ldapUuidGroupAttri
 sudo -u www-data php /var/www/owncloud/occ ldap:set-config '' ldapUuidUserAttribute "auto"
 sudo -u www-data php /var/www/owncloud/occ ldap:set-config '' turnOffCertCheck "0"
 sudo -u www-data php /var/www/owncloud/occ ldap:set-config '' useMemberOfToDetectMembership "1"
-

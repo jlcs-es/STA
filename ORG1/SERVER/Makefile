@@ -15,10 +15,22 @@ voip:
 	sh install; \
 	sh config
 
+owncloud:
+	cd LDAP; \
+	python service.py; \
+	cd ../OWNCLOUD; \
+	sh install.sh; \
+	cd ../CERTS; \
+	sh config.sh
+
+ipsec:
+	cd IPSEC; \
+	sh install.sh
+
 test:
 	sh test
 	cd SNMP; sh test
 	cd VOIP; sh test
 
 
-.PHONY: all network snmp voip test
+.PHONY: all network snmp voip owncloud ipsec test
