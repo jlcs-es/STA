@@ -69,7 +69,22 @@ Somos el grupo 3, así que nos encargaremos de las organizaciones 31 y 32.
 En esta sección describimos la forma en la que se van a desplegar los servicios y como estarán
 conectados entre sí.
 
-\subsection{Dispositivos}
+\subsection{Solución ideal}
+
+Imaginemos que estamos en una empresa real con recursos suficientes. Nuestro diseño de la topología de cada organización se basaría en una red DMZ aislada por un firewall donde dispondríamos los servidores de cada servicio, Owncloud, centralita de voz, manejador SNMP, LDAP, etc. También habría una subred dentro de la organización donde se conectarían los usuarios y empleados, por medio de switches y puntos de acceso inalámbricos.
+
+La red de servidores tendría una máquina física para cada servicio, para asegurar a cada uno los recursos mínimos que necesite y evitar que ante el fallo de uno, puedan caer otros servicios. Para la gestión de dispositivos por SNMP habrá una VLAN específica para este tráfico, que al incluir al router, se debe extremar la seguridad. El tráfico VoIP pasaría siempre por la centralita, para controlar tanto las llamadas realizadas como el tráfico de voz IP que entra y sale de la organización por los mismos puertos y equipo servidor. El firewall permitiría el tráfico saliente de la subred de empleados, pero nunca el entrante desde internet, sólo desde la red DMZ. Así, la red DMZ no podría iniciar comunicaciones excepto las básicas para su funcionamiento como actualizar las listas CRL, llamadas VoIP, etc., restringiendo en las reglas qué servidor en concreto tiene dichos permisos. El tráfico entrante desde fuera se reenviaría siempre a la DMZ, si coincide con el tipo de mensajes que la IP destino espera por sus tipo de servicio (peticiones HTTP/S sólo si van dirigidas al servidor Owncloud, por ejemplo).
+
+En la \autoref{fig:topoideal} se muestra el diagrama de nuestra topología.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{images/topoideal.png}
+	\caption{Topología ideal}
+	\label{fig:topoideal}
+\end{figure}
+
+\subsection{Dispositivos disponibles}
 
 Tenemos para las pruebas y el desarrollo de la práctica, las siguientes herramientas hardware:
 
@@ -84,34 +99,36 @@ Tenemos para las pruebas y el desarrollo de la práctica, las siguientes herrami
 
 \end{itemize}
 
-\subsection{Topología de red}
 
-%TODO: explicar la topología lógica: un server, 1-2 clientes, a lo sumo un server extra.
 
-En cuanto a la topología física real, disponemos en el laboratorio de 3 torres, 5 puertos del switch CISCO y un punto de acceso wifi configurado para la organización 31. La conexión del una de las torres como router y las otras dos como equipos de cada organización ya se explica en los boletines de prácticas.
-\\
 
-A partir de esa configuración básica, configuramos las dos organizaciones de manera casi simétrica: en la máquina física de una organización, se ejecutarán como máquinas virtuales un servidor y uno o dos clientes para probar los servicios. Decidimos usar un servidor porque la cantidad de servicios proporcionados por una organización no son tan pesados como carga de trabajo para una única máquina, como lo pueda ser tener varios servidores como máquinas virtuales en la misma torre del laboratorio. En la organización 32 podrían haber dos servidores para, por ejemplo, probar la gestión de servidor con SNMP que no sean en la misma máquina.
-\\
+\subsection{Topología desplegada}
 
-Ahora bien, por el modo en que programamos la configuración de dispositivos, nos es muy fácil cambiar los roles de las máquinas de modo que el servidor de una organización sea la máquina física, y los clientes una máquina virtual, o una torre libre del laboratorio, o un móvil o portátil nuestros.
-\\
+En cuanto a la topología física real, disponemos en el laboratorio de 3 torres, 5 puertos del switch CISCO y un punto de acceso wifi configurado para la organización 31. La conexión de una de las torres como router y las otras dos como equipos de cada organización ya se explica en los boletines de prácticas.
 
-Con esto nuestra solución para la práctica se centra más en los dispositivos lógicos \textit{SERVER}, \textit{CLIENTE}, \textit{ROUTER}, que en las máquinas que disponemos en los laboratorios o las máquinas virtuales creadas.
+A partir de esa configuración básica, configuramos las dos organizaciones de manera casi simétrica: en la \textbf{máquina física} de cada organización se ejecutarán \textbf{todos los servicios}, es decir, del diseño lógico ideal donde cada servicio tiene una máquina física para él solo, ahora todos los servicios conviven en la misma máquina física. Decidimos usar un servidor físico porque la cantidad de servicios proporcionados por la organización no son tan pesados como \textbf{carga de trabajo} conjunta para una única máquina, como lo pueda ser tener \textbf{varios} servidores como \textbf{máquinas virtuales} en la misma torre del laboratorio.
+
+Ahora bien, por el modo en que programamos la instalación de servicios, nos es muy fácil portarlos desde una máquina física a varias, cambiando las configuraciones de la IP de cada máquina.
+
+En la \autoref{fig:topofisica} vemos el diagrama de la topología física, donde tenemos el ordenador que hace de router, los otros dos ordenadores del laboratorio que actuarán de servidores, el punto de acceso donde usamos nuestros móviles y portátiles personales, y la posibilidad de usar otra torre del laboratorio como cliente.
 
 
 \begin{figure}[h!]
 	\caption{Topología física}
 	\centering
 		\includegraphics[scale=0.35]{images/TopologiaFisica}
+	\label{fig:topofisica}
 \end{figure}
+
+
+
 
 \section{Configuración de los dispositivos}
 
-Para la configuración de los dispositivos utilizamos herramientas Makefile, y scripts escritos en bash y python, de manera que desplegar los servicios y la topología en un dispositivo esté automatizado. No nos apoyamos en una máquina virtual que vayamos configurando a lo largo de las prácticas llevándola de un lado a otro, y por lo general, usamos máquinas virtuales con una instantánea \textit{limpia}.
+Para la configuración de los dispositivos utilizamos herramientas Makefile, y scripts escritos en bash y python, de manera que desplegar los servicios y la topología en un dispositivo esté automatizado, llegando a tal punto que en la instalación sólo haría falta intervenir para escribir la contraseña de la base de datos de Owncloud y pulsar Intro en alguna instalación. No nos apoyamos en una máquina virtual que vayamos configurando a lo largo de las prácticas llevándola de un lado a otro, y por lo general, usamos máquinas virtuales con una instantánea \textit{limpia}.
 \\
 
-Usamos una estructura de directorios basada en el hardware a configurar. Es decir, en el ordenador que hace de enrutador ejecutamos un Makefile que está en el directorio ROUTER.
+Usamos una estructura de directorios basada en el hardware a configurar. Es decir, en el ordenador que hace de enrutador ejecutamos un Makefile que está en el directorio ROUTER; para la máquina servidor de la organización 31, la carpeta SERVER correspondiente; etc.
 
 %TODO: decidir si se pone la estructura, y si se modifica cómo presentarla.
 \begin{Verbatim}
@@ -140,16 +157,19 @@ ORG1
 
 \end{Verbatim}
 
+
+
+
+
 \section{Servicios}
 
 \subsection{Enrutamiento}
 
-Del enrutamiento se encarga el PC que hace de enrutador. La configuración física se basa en tres puertos Ethernet:
+Del enrutamiento se encarga el PC que hace de router. La configuración física se basa en dos puertos Ethernet y VLAN:
 
 \begin{itemize}
 	\item Un puerto se usa para conectarse a la red de la UMu, que da conectividad al exterior.
-	\item Otro puerto, conectado al \textit{trunk switch vlan} de la organización 31.
-	\item Ídem, para la organización 32.
+	\item Otro puerto, conectado al \textit{trunk switch vlan} de la organización 31 y 32.
 \end{itemize}
 
 La configuración lógica, es decir, la configuración de los interfaces de red es la siguiente:
@@ -158,6 +178,12 @@ La configuración lógica, es decir, la configuración de los interfaces de red 
 TODO: Copiar la configuracion de las interfaces.
 \end{lstlisting}
 \lstinputlisting{../ROUTER/network}
+%Explicar fichero
+
+El script instala el soporte de vlan en el ordenador, desactiva el gestor de redes de ubuntu, copia en \textit{/etc/network/interfaces} la configuración de los puertos ethernet: eth0 conexión a la red UMu con DHCP; eth1.31 y eth1.32 las dos VLAN para el segundo puerto ethernet. A continuación, copia en \textit{/etc/hosts} los nombres correspondientes a las IPs de las máquinas de cada organización, para solventar la falta de un servidor DNS que los registre. Hay máquinas de más de cara a posibles expansiones durante el desarrollo de la práctica, ahorrarnos modificar el fichero varias veces. Por último activa el \textit{forwarding} de paquetes y la regla de iptables para actuar como NAT para la subred 192.168.0.0/16, enviando los paquetes por eth0.
+
+En las máquinas servidor basta con modificar el fichero \textit{/etc/network/interfaces} para configurar la IP fija 192.168.3i.100, pues no tenemos servidor DHCP para autoconfiguración.
+
 
 \subsection{SNMP}
 
