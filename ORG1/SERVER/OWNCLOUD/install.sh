@@ -72,6 +72,7 @@ sudo -u www-data cp config.php /var/www/owncloud/config/config.php
 sudo -u www-data php /var/www/owncloud/occ app:enable encryption
 sudo -u www-data php /var/www/owncloud/occ encryption:enable
 sudo -u www-data php /var/www/owncloud/occ app:enable user_ldap
+sudo -u www-data php /var/www/owncloud/occ ldap:create-empty-config
 sudo -u www-data php /var/www/owncloud/occ ldap:set-config '' hasMemberOfFilterSupport "0"
 sudo -u www-data php /var/www/owncloud/occ ldap:set-config '' hasPagedResultSupport ""
 sudo -u www-data php /var/www/owncloud/occ ldap:set-config '' homeFolderNamingRule ""
