@@ -23,4 +23,10 @@ service apache2 reload
 
 
 # Add cron job to generate each day a new CRL list in /var/www/crl/org31.CRL and copy to web server
-crontab -l | { cat; echo "0 0 * * * openssl ca -keyfile /home/alumno/demoCA/private/cakey.pem -gencrl -out /var/www/crl/org31.CRL"; } | crontab -
+crontab -l | { cat; echo "0 0 * * * openssl ca -keyfile /home/alumno/demoCA/private/cakey.pem -passin pass:manyhue -gencrl -out /var/www/crl/org31.CRL"; } | crontab -
+
+
+# Revocar certificado de cliente:
+# sudo openssl ca -keyfile private/cakey.pem -passin pass:manyhue -revoke newcerts/02.pem
+# Generar CRL en el momento
+# openssl ca -keyfile /home/alumno/demoCA/private/cakey.pem -passin pass:manyhue -gencrl -out /var/www/crl/org31.CRL
