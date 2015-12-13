@@ -54,7 +54,7 @@
 \maketitle
 
 \begin{abstract}
-%Aquí el resumen
+En esta memoria se describen el despliegue y configuración de las topologías y servicios de dos organizaciones, tanto de manera ideal, donde disponemos de suficientes recursos, como la implementación en los laboratorios de prácticas.
 \end{abstract}
 
 \tableofcontents
@@ -62,7 +62,9 @@
 
 \section{Introducción}
 
-Somos el grupo 3, así que nos encargaremos de las organizaciones 31 y 32.
+Como grupo 3 de prácticas, desplegaremos las organizaciones 31 y 32. En la descripción de cada servicio desplegado indicaremos en los párrafos iniciales el despliegue que haríamos en una situación real y con recursos, es decir, donde tuviéramos un router por organización, más de una o dos máquinas físicas, varios switches, puntos de acceso, firewall, usuarios, clientes, etc. A continuación, la descripción del despliegue que hemos realizado y configurado en los ordenadores de prácticas y sus equivalente máquinas virtuales cuando no había acceso al laboratorio 2.7.
+
+Primero describimos la topología de las organizaciones, segundo el despliegue de la gestión por SNMP y Nagios, a continuación el servicio VoIP desplegado con Asterisk, finalmente entre los servicios, Owncloud haciendo uso de LDAP. No puede faltar la seguridad de la organización, con iptables, y la certificación de Owncloud por medio de nuestra propia jerarquía de certificados.
 
 \section{Topología}
 
@@ -123,7 +125,7 @@ En la \autoref{fig:topofisica} vemos el diagrama de la topología física, donde
 
 
 
-\section{Configuración de los dispositivos}
+\section{Configuración automatizada de los equipos}
 
 Para la configuración de los dispositivos utilizamos herramientas Makefile, y scripts escritos en bash y python, de manera que desplegar los servicios y la topología en un dispositivo esté automatizado, llegando a tal punto que en la instalación sólo haría falta intervenir para escribir la contraseña de la base de datos de Owncloud y pulsar Intro en alguna instalación. No nos apoyamos en una máquina virtual que vayamos configurando a lo largo de las prácticas llevándola de un lado a otro, y por lo general, usamos máquinas virtuales con una instantánea \textit{limpia}.
 \\
@@ -174,29 +176,51 @@ Del enrutamiento se encarga el PC que hace de router. La configuración física 
 
 La configuración lógica, es decir, la configuración de los interfaces de red es la siguiente:
 
-\begin{lstlisting}
-TODO: Copiar la configuracion de las interfaces.
-\end{lstlisting}
 \lstinputlisting{../ROUTER/network}
-%Explicar fichero
+%Explicación del fichero: DONE
 
-El script instala el soporte de vlan en el ordenador, desactiva el gestor de redes de ubuntu, copia en \textit{/etc/network/interfaces} la configuración de los puertos ethernet: eth0 conexión a la red UMu con DHCP; eth1.31 y eth1.32 las dos VLAN para el segundo puerto ethernet. A continuación, copia en \textit{/etc/hosts} los nombres correspondientes a las IPs de las máquinas de cada organización, para solventar la falta de un servidor DNS que los registre. Hay máquinas de más de cara a posibles expansiones durante el desarrollo de la práctica, ahorrarnos modificar el fichero varias veces. Por último activa el \textit{forwarding} de paquetes y la regla de iptables para actuar como NAT para la subred 192.168.0.0/16, enviando los paquetes por eth0.
+El script instala el soporte de vlan en el ordenador, desactiva el gestor de redes de ubuntu, copia en \textit{/etc/network/interfaces} la configuración de los puertos ethernet: eth0 conexión a la red UMu con DHCP; eth1.31 y eth1.32 las dos VLAN para el segundo puerto ethernet. A continuación, copia en \textit{/etc/hosts} los nombres correspondientes a las IPs de las máquinas de cada organización, para solventar la falta de un servidor DNS que los registre. Hay máquinas de más de cara a posibles expansiones durante el desarrollo de la práctica. Por último activa el \textit{forwarding} de paquetes y la regla de iptables para actuar como NAT para la subred 192.168.0.0/16, enviando los paquetes por eth0 hacia la red de la UMu.
 
-En las máquinas servidor basta con modificar el fichero \textit{/etc/network/interfaces} para configurar la IP fija 192.168.3i.100, pues no tenemos servidor DHCP para autoconfiguración.
+En las máquinas servidor basta con modificar el fichero \textit{/etc/network/interfaces} para configurar la IP fija 192.168.3i.100 i$ \in \{1,\ 2\} $, pues no tenemos servidor DHCP para autoconfiguración.
 
 
 \subsection{SNMP}
+%Ideal más Intro: DONE
+
+En la topología ideal descrita hemos indicado que habría un servidor dedicado para SNMP. En concreto sería para el manejador, con un acceso por VLAN de gestión desde un ordenador del administrador en la red interna. El resto de servidores, el firewall, el router, los switches y los puntos de acceso inalámbricos tendrían instalados SNMP como agente.
+
+La configuración de cada dispositivo sería:
+\begin{itemize}
+	\item Todos los dispositivos usarían SNMPv3 y la lectura siempre con autenticación de usuario como mínimo.
+	\item El router y firewall, por ser elementos más críticos, además de autenticación, con encriptación, y nunca permisos de escritura.
+	\item Los únicos dispositivos con posibilidad de escritura serían los switches y puntos de acceso en la red interna, y añadiendo encriptación.
+	\item Los traps (quitando el caso de que no funcionara \textit{monitor}) serían:
+		\subitem En los switches, cuando la interfaz donde se conecta un punto de acceso u otro switch esté caída.
+		\subitem En los servidores, cuando la interfaz o puerto del servicio que dan, más los básicos como SSH, estén caídos. El trap de la interfaz sólo llegaría si tuviera más de una conectada a la subred.
+		\subsubitem En el servicio Owncloud y VoIP cuando el ancho de banda llegue al 80\% de la capacidad máxima, por ser servicios que dependen de buena conexión para una correcta experiencia de uso.
+		\subsubitem En Owncloud además, si el espacio de disco duro libre es inferior al 30\%.
+\end{itemize}
+
+\hfill
+
+En nuestra topología de prácticas, cada organización tiene un manejador en la máquina física, y como agentes la propia máquina y el router, que al ser también la misma máquina para ambos, en su configuración como agente incluye los \textit{community} de ambas organizaciones.
+
+En cuanto a la seguridad, el router tendrá sólo acceso de lectura con autenticación y cifrado de los mensajes; el servidor de la organización también tendrá permisos de sólo lectura, pero el acceso se relaja a autenticación sin cifrado.
+
+Por problemas descubiertos con los paquetes de SNMP donde la orden \textit{monitor} no funciona, con posible solución la compilación de los paquetes snmp, decidimos instalar en el servidor de la organización 31 Nagios, añadiendo la monitorización de disco y ancho de banda del router, como se explicará en su sección.
 
 \subsubsection{Agentes}
-
+%TODO
 \subsubsection{Manejador}
-
+%TODO
+\subsubsection{Nagios}
+%TODO
 \subsection{Voz sobre IP}
-
+%TODO
 En esta sección documentamos las configuraciones que hemos tomado para el servidor de Asterisk.
 
 \subsubsection{Configuración básica}
-
+%TODO
 Para las organizaciones 31 y 32, hacemos 2 cuentas de cliente para ambas organizaciones (311 y 312 para organización 31; 321 y 322 para la organización 32).
 
 \begin{lstlisting}
@@ -210,7 +234,7 @@ TODO: Copiar aqui la configuracion relativa a las extensiones.
 \end{lstlisting}
 
 \subsubsection{Troncales Asterisk}
-
+%TODO
 Para empezar, hacemos una redirección básica entre los dos servicios Asterisk en las configuraciones de extensión de Asterisk:
 
 \begin{lstlisting}
@@ -218,7 +242,7 @@ TODO: Copiar aqui la configuracion relativa a las extensiones entre servicios.
 \end{lstlisting}
 
 \subsubsection{Buzón de voz}
-
+%TODO
 \subsection{LDAP}
 El servicio LDAP ofrece al resto de servicios un punto en común donde encontrar la información relevante de los usuarios (nombres,
 organización a la que pertenecen, permisos de uso y acceso, credenciales, etc).
@@ -237,7 +261,7 @@ interacción del administrador), en python, generando tres clientes de la organi
 %TODO: LDAP lo integramos con OwnCloud y lo probamos.
 
 \subsection{OwnCloud}
-
+%TODO
 \section{Políticas de seguridad}
 %TODO: Un dibujo del escenario de seguridad
 
@@ -248,10 +272,40 @@ interacción del administrador), en python, generando tres clientes de la organi
 %TODO: Iptables
 
 \subsection{Generación de certificados}
-En openssl.cnf no se explica que %yo me entiendo
 
-\[ usr_cert \]
+La creación de una jerarquía de certificados con su CA no se establece como un servicio a desplegar para el público o clientes, pero lo necesitamos en esta práctica de cara a la seguridad TLS de Owncloud.
 
-crlDistributionPoints = URI:http://server.org31/crl/org31.CRL
+En el caso ideal de nuestra organización, de ofrecer el servicio de nuestra CA para firmar solicitudes de certificados dispondríamos una máquina física en la red DMZ cuya única función sea la de almacenar la clave privada de la CA, firmar las solicitudes y por supuesto generar las lístas de CRL publicándolas en el servidor web. Esta máquina es tan crítica en la seguridad que dispondría de un firewall que la aislara del tráfico de la red DMZ como una segunda capa de seguridad, donde sólo se permitan comunicaciones desde el servidor para el intercambio de ficheros criptográficos, y el servidor HTTP/S donde registrarse por primera vez.
+
+Siguiendo el ejemplo de otras CA, el procedimiento para firmar un certificado de un servidor web sería: el cliente registra el dominio que quiere que se certifique, se le indica que instale un script en el servidor, el cual escuchará las conexiones proactivas del servidor de la CA, que hará una comprobación con datos aleatorios para comprobar que es la máquina del dominio indicado y el script instalado, se le indica al script que genere el par de claves y el csr, se envía responde a la CA con el csr y ésta termina devolviendo el certificado público firmado. De esta manera, la única comunicación que recibiría la CA sería la dirección del servidor, y el resto de comunicaciones las iniciaría la máquina de la CA. Es más, el servidor web sería el que dispusiera el formulario de registro y la única máquina que el nuevo firewall permitiera comunicarse con el servidor de la CA.
+
+Para administración, el firewall añadiría un acceso por ssh desde una máquina específica de un administrador del sistema desde la red interna a la organización, y por una VLAN reservada exclusivamente para dicho propósito.
+
+Teniendo en cuenta que tratamos con la clave privada de nuestra CA, nunca se es demasiado paranoico.
+
+
+\hfill
+
+
+En nuestro caso práctico, las claves de la CA para generar los CRL se encuentra en la misma máquina que el resto de servicios (nada recomendable), y para generar las claves seguimos los pasos de las diapositivas de prácticas, añadiendo los siguientes detalles:
+
+\begin{itemize}
+	\item En el fichero \textit{openssl.conf} en la sección $[$ usr\_cert $]$, la que indica qué hay que hacer al firmar una solicitud csr, hay que añadir la línea \textit{crlDistributionPoints = URI:http://server.org31/crl/org31.CRL} para indicar, en los certificados firmados, que la CA generará las listas de CRL y las publicará en la dirección \textit{http://server.org31/crl/org31.CRL}, que en nuestro caso es el mismo servidor apache2 que Owncloud.
+	\item El certificado del servidor hay que darle como \textit{common name} \textit{server.org31}, que es el nombre por el que accederemos desde el navegador, el escrito en \textit{/etc/hosts} a falta de servidor DNS.
+	\item Con crontab añadimos el comando de generar una nueva lista actualizada de los CRL a las doce de la noche cada día, copiándola en el servidor web indicado antes.
+	\item Al servidor apache2, en la configuración de SSL se le debe indicar dónde está su certificado, que compruebe el certificado de los clientes y haga una comprobación de los certificados revocados por la lista CRL.
+	\subitem Para la comprobación de CRL se debe indicar un fichero (o una carpeta con ficheros nombrados por hash) donde se encuentre un fichero CRL correcto.
+	\subitem Entre los problemas que nos hemos ido encontrando en el despliegue, se encuentra que Apache no comprueba la lista de CRL indicada con la extensión del primer punto, sino que siempre compara con el fichero indicado, y en caso de modificar el fichero, se debe reiniciar el servicio. Por ello, para las pruebas de revocación, se copia `forzosamente' el CRL actualizado en el fichero de Apache, aunque se siga publicando en la dirección web.
+\end{itemize}
+
+\hfill
+
+Para las pruebas, tenemos el certificado de la CA, el de \textit{server.org31} y el de \textit{cliente}, no necesitamos más en las pruebas, pues sólo tenemos un servidor y el certificado de cliente es para comprobar la revocación, no hemos añadido que sirva para iniciar sesión en Owncloud en vez de escribir usuario y contraseña.
+
+Primero comprobamos que sin el certificado el servidor no nos deja acceder a Owncloud por HTTPS, después que con el certificado sin revocar nos permite acceder, y finalmente revocamos el certificado de \textit{cliente}, actualizamos el CRL, lo copiamos en el fichero de Apache y reiniciamos el servidor, y volvemos a intentar acceder, recibiendo un error por la revocación del certificado.
+
+%TODO: imagenes de las pruebas de los certificados de servidor, cliente y revocación
+
+
 
 \end{document}
