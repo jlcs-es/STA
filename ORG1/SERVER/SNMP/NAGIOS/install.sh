@@ -4,7 +4,8 @@ apt-get install -y nagios3
 # Usuario por defecto: nagiosadmin
 
 cp disk.cfg /etc/nagios-plugins/config/
-cp bandwith.cfg /etc/nagios/conf.d/
+cp bandwith.cfg /etc/nagios-plugins/config/
+cp router.cfg /etc/nagios3/conf.d/
 cp check_bandwith /usr/lib/nagios/plugins/
 
 
