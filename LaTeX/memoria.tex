@@ -213,8 +213,39 @@ Por problemas descubiertos con los paquetes de SNMP donde la orden \textit{monit
 %TODO
 \subsubsection{Manejador}
 %TODO
+
+\begin{Verbatim}[frame=single]
+
+$snmpwalk -v 3 -c sta31 -u router -l authPriv -a MD5 -A 123456789
+ -x DES -X 123456789 192.168.31.1 1.3.6.1.2.1.2.2.1.2
+
+IF-MIB::ifDescr.1 = STRING: lo
+IF-MIB::ifDescr.2 = STRING: eth1
+IF-MIB::ifDescr.3 = STRING: eth0
+IF-MIB::ifDescr.4 = STRING: eth1.31
+IF-MIB::ifDescr.5 = STRING: eth1.32
+
+$snmpwalk -v 3 -c sta31 -u router -l authNoPriv -a MD5 -A 123456789 
+192.168.31.1 1.3.6.1.2.1.2.2.1.2
+
+IF-MIB::ifDescr.1 = STRING: lo
+IF-MIB::ifDescr.2 = STRING: eth1
+IF-MIB::ifDescr.3 = STRING: eth0
+IF-MIB::ifDescr.4 = STRING: eth1.31
+IF-MIB::ifDescr.5 = STRING: eth1.32
+\end{Verbatim}
+
+
 \subsubsection{Nagios}
 %TODO
+
+\begin{center}
+	\includegraphics[scale=0.5]{images/snmp/nagios/descargas.png}
+\end{center}
+\begin{center}
+	\includegraphics[scale=0.5]{images/snmp/nagios/critical bandwidth.png}
+\end{center}
+
 \subsection{Voz sobre IP}
 %TODO
 En esta sección documentamos las configuraciones que hemos tomado para el servidor de Asterisk.
@@ -236,13 +267,77 @@ TODO: Copiar aqui la configuracion relativa a las extensiones.
 \subsubsection{Troncales Asterisk}
 %TODO
 Para empezar, hacemos una redirección básica entre los dos servicios Asterisk en las configuraciones de extensión de Asterisk:
-
 \begin{lstlisting}
 TODO: Copiar aqui la configuracion relativa a las extensiones entre servicios.
 \end{lstlisting}
 
+
+\subsubsection{Seguridad IPsec}
+%DONE
+
+Para proteger la comunicación entre las centralitas de las organizaciones 31 y 32 aplicamos protección por IPsec entre las direcciones de las centralitas, gracias a que elegimos \textit{directmedia=no}, sabemos que cualquier comunicación externa pasará por la centralita y estará protegida. Como en la configuración de la centralita sólo permitimos llamadas en la organización y sólo sabemos redirigir a la organización 31 o 32, también sabemos que no habrá llamadas externas sin proteger.
+
+Sin embargo, en la topología ideal, la aplicación de IPsec se haría en las comunicaciones entre los routers, protegiendo así no sólo el servicio VoIP, sino todas las comunicaciones entre las organizaciones. Como sólo tenemos un router, en la práctica IPsec se instala entre cada servidor de las organizaciones, y para poder analizar los mensajes, no usamos ESP, sólo AH.
+
+Además, en la solución ideal, en caso de que aceptemos llamadas entre otras organizaciones además de la 31 y 32, añadiríamos seguridad TLS o DTLS para UDP, entre la centralita y el otro extremo. En nuestra práctica con IPsec es más que suficiente, y al tener todos los servicios en la misma máquina, todos se benefician como si fuera IPsec entre los routers.
+
+\hfill
+
+La instalación de IPsec se puede seguir en las diapositivas de Servicios Telemáticos del año pasado. Basta con modificar \textit{/etc/ipsec-tools.conf} en ambas máquinas añadiendo para AH, en la máquina de la organización 31:
+
+\begin{Verbatim}[frame=single]
+add 192.168.31.100 192.168.32.100 ah 0x200 -A hmac-md5 0xc0291ff014dccdd03874d9e8e4cdf3e6;
+add 192.168.32.100 192.168.31.100 ah 0x300 -A hmac-md5 0x96358c90783bbfa3d7b196ceabe0536b;
+
+spdadd 192.168.31.100 192.168.32.100 any -P out ipsec ah/transport//require;
+spdadd 192.168.32.100 192.168.31.100 any -P in ipsec ah/transport//require;
+\end{Verbatim}
+
+
+O en caso de poner ESP, en la organización 31:
+
+\begin{Verbatim}[frame=single]
+add 192.168.31.100 192.168.32.100 esp 0x201 -E 3des-cbc
+ 0x7aeaca3f87d060a12f4a4487d5a5c3355920fae69a96c831 -A hmac-md5 0xc0291ff014dccdd03874d9e8e4cdf3e6;
+add 192.168.32.100 192.168.31.100 esp 0x301 -E 3des-cbc
+ 0xf6ddb555acfd9d77b03ea3843f2653255afe8eb5573965df -A hmac-md5 0x96358c90783bbfa3d7b196ceabe0536b;
+
+spdadd 192.168.31.100 192.168.32.100 any -P out ipsec esp/transport//require;
+spdadd 192.168.32.100 192.168.31.100 any -P in ipsec esp/transport//require;
+\end{Verbatim}
+
+Para la organización 32 es igual cambiando los out por in, y viceversa.
+
+\hfill
+\\
+
+
+Y con un simple ping desde una máquina a la otra podemos ver cómo se añaden las cabeceras AH a los paquetes, en la \autoref{fig:pingreqAH} vemos el ping request y que el campo AH SPI corresponde al 0x200 de la configuración, y en la \autoref{fig:pingreplyAH} del ping reply, el valor es el 0x300 de las comunicaciones desde 192.168.32.100 a 192.168.31.100.
+
+
+\begin{figure}[h!]
+	\caption{Ping Request AH}
+	\centering
+	\includegraphics[scale=0.5]{images/ipsec/pingreqAH.png}
+	\label{fig:pingreqAH}
+\end{figure}
+
+\begin{figure}[h!]
+	\caption{Ping Reply AH}
+	\centering
+	\includegraphics[scale=0.5]{images/ipsec/pingreplyAH.png}
+	\label{fig:pingreplyAH}
+\end{figure}
+
+
+
 \subsubsection{Buzón de voz}
 %TODO
+
+
+
+
+
 \subsection{LDAP}
 El servicio LDAP ofrece al resto de servicios un punto en común donde encontrar la información relevante de los usuarios (nombres,
 organización a la que pertenecen, permisos de uso y acceso, credenciales, etc).
@@ -251,14 +346,63 @@ Como contiene la información crítica de los usuarios que se integran en los se
 
 Sin embargo, en el despliegue real del laboratorio, LDAP está integrado en el ordenador de la organización 31.
 
-Para las pruebas de laboratorio, la instalación y la configuración la generamos automáticamente (sin necesidad de
-interacción del administrador), en python, generando tres clientes de la organización 31.
+Para las pruebas de laboratorio, la instalación y la configuración la generamos automáticamente (sin necesidad de interacción del administrador), en python, generando tres clientes de la organización 31.
 
-%TODO: Incluir partes o total del fichero python.
-%TODO: Incluir un ldiff y comentarlo.
-%TODO: Describir qué es db.tar.gz e initial.tar.gz
-%TODO: Justificar que funciona correctamente con ldapsearch.
-%TODO: LDAP lo integramos con OwnCloud y lo probamos.
+Estos tres clientes se generan con el servicio Owncloud en mente. Para organizar la pertenencia de usuarios de Owncloud en el árbol, hemos decidido usar el campo Organizational Unit con valor \textit{owncloud} para indicar la pertenencia al servicio.
+                                                                                                                                                                                                                                                                     
+Este caso es el más sencillo para aplicar en nuestro caso práctico, pero no es el mejor para la topología ideal. El servicio ldap no lo suele usar un único servicio, y no todos los usuarios tienen acceso a los mismos servicios en una organización. Por ejemplo, el servicio Golum de la Universidad de Murcia frente al de correo o UmuBox.
+
+La solución ideal sería tener los usuarios registrados sin indicar los servicios por la \textit{ou}, sino crear un grupo por cada servicio, y del que cuelguen identificadores de los usuarios que pertenecen al grupo. Así, un usuario registrado en ldap tiene una sola entrada con todos sus datos, y cuelga de una sola \textit{ou}, no de varias posibles, y para asignarle a un servicio, sólo hay que ir al nodo del servicio y dar de alta la hoja del usuario.
+
+Ejemplo de entrada ldap: \textit{cliente311.ldif}:
+
+\begin{BVerbatim}
+# Entrada para los usuarios:
+dn: cn=cliente311, ou=owncloud, dc=org31, dc=es
+changetype: add
+objectclass: inetOrgPerson
+sn:Perez
+cn: cliente311cn
+uid: cliente311uid
+userPassword: manyhue
+ou:owncloud
+\end{BVerbatim}
+
+%TODO: Indicar puertos usados.
+%TODO: hacer consulta entre organizaciones, con un ldapsearch más simple
+
+A continuación se muestran imágenes de la traza capturada durante la orden: \textit{ldapsearch -x -b “dc=org11,dc=es"\ “ou=owncloud"\ dn description}:
+
+Las dos primeras trazas indican el acceso a ldap. Las dos últimas indican que la búsqueda ha terminado con éxito y que se puede terminar la consulta.
+
+\begin{center}
+\includegraphics[scale=0.5]{images/ldap/ldap1}
+\end{center}
+
+Aquí se muestra la tercera traza con la petición de búsqueda del comando, con el objeto \textit{“dc=org11,dc=es"} como punto inicial de búsqueda, el filtro de \textit{“ou=owncloud"} y los atributos a devolver \textit{dn} y \textit{description}.
+
+\begin{center}
+	\includegraphics[scale=0.5]{images/ldap/ldap2}
+\end{center}
+
+Las siguientes imágenes muestran los resultados (\textit{searchResEntry}), con la entrada que define la propia O.U. Owncloud, seguido de las entradas de los clientes \textit{cliente311}, \textit{cliente312} y \textit{cliente313}.
+
+\begin{center}
+	\includegraphics[scale=0.5]{images/ldap/ldap3}
+\end{center}
+\begin{center}
+	\includegraphics[scale=0.5]{images/ldap/ldap4}
+\end{center}
+\begin{center}
+	\includegraphics[scale=0.5]{images/ldap/ldap5}
+\end{center}
+
+\begin{center}
+	\includegraphics[scale=0.5]{images/ldap/ldap6}
+\end{center}
+
+
+
 
 \subsection{OwnCloud}
 %TODO
@@ -302,10 +446,94 @@ En nuestro caso práctico, las claves de la CA para generar los CRL se encuentra
 
 Para las pruebas, tenemos el certificado de la CA, el de \textit{server.org31} y el de \textit{cliente}, no necesitamos más en las pruebas, pues sólo tenemos un servidor y el certificado de cliente es para comprobar la revocación, no hemos añadido que sirva para iniciar sesión en Owncloud en vez de escribir usuario y contraseña.
 
-Primero comprobamos que sin el certificado el servidor no nos deja acceder a Owncloud por HTTPS, después que con el certificado sin revocar nos permite acceder, y finalmente revocamos el certificado de \textit{cliente}, actualizamos el CRL, lo copiamos en el fichero de Apache y reiniciamos el servidor, y volvemos a intentar acceder, recibiendo un error por la revocación del certificado.
+Primero comprobamos que sin el certificado el servidor no nos deja acceder a Owncloud por HTTPS en la \autoref{fig:pedircert}, después, que con el certificado del cliente, \autoref{fig:usercert1} y \autoref{fig:usercert2}, sin revocar nos permite acceder,  \autoref{fig:https}, y finalmente revocamos el certificado de \textit{cliente}, actualizamos el CRL, lo copiamos en el fichero de Apache, reiniciamos el servidor, y volvemos a intentar acceder, recibiendo un error por la revocación del certificado, en \autoref{fig:revoked}.
 
 %TODO: imagenes de las pruebas de los certificados de servidor, cliente y revocación
 
+\begin{figure}[h]
+	\caption{Petición certificado de cliente}
+	\centering
+	\includegraphics[scale=0.5]{images/certs/pedircert.png}
+	\label{fig:pedircert}
+\end{figure}
 
+
+\begin{figure}[h]
+	\caption{Conexión HTTPS}
+	\centering
+	\includegraphics[scale=0.5]{images/certs/https.png}
+	\label{fig:https}
+\end{figure}
+
+\begin{figure}[h]
+	\caption{Certificado de usuario 1/2}
+	\centering
+	\includegraphics[scale=0.5]{images/certs/usercert1.png}
+	\label{fig:usercert1}
+\end{figure}
+
+
+\begin{figure}[h]
+	\caption{Certificado de usuario 2/2}
+	\centering
+	\includegraphics[scale=0.5]{images/certs/usercert2.png}
+	\label{fig:usercert2}
+\end{figure}
+
+\begin{figure}[h]
+	\caption{Certificado del servidor}
+	\centering
+	\includegraphics[scale=0.5]{images/certs/servercert1.png}
+	\label{fig:servercert1}
+\end{figure}
+
+\begin{figure}[h]
+	Revocación del certificado de \textit{cliente}:
+\begin{Verbatim}[frame=single]
+alumno@Laboratorio27:~/demoCA$ openssl crl -in /var/www/crl/org31.CRL -text -noout 
+	Certificate Revocation List (CRL):
+		Version 2 (0x1)
+	Signature Algorithm: sha256WithRSAEncryption
+		Issuer: /C=ES/O=Org31/CN=CA para Organizacion 31
+		Last Update: Dec 14 18:29:43 2015 GMT
+		Next Update: Jan 13 18:29:43 2016 GMT
+		CRL extensions:
+			X509v3 CRL Number: 
+				2
+	Revoked Certificates:
+		Serial Number: 02
+	Revocation Date: Dec 14 18:28:56 2015 GMT
+	Signature Algorithm: sha256WithRSAEncryption
+		a7:a6:7d:75:92:81:4f:e1:21:b4:db:58:5b:60:dd:b8:12:0c:
+		9f:83:53:d0:41:59:34:2c:d1:e4:d2:56:a9:ce:01:b5:8e:4f:
+		53:0f:f4:40:1c:95:d6:55:77:9f:82:a2:d1:fc:b4:07:dd:46:
+		d0:bd:d3:47:c3:46:7a:cb:af:e6:09:86:55:68:eb:dd:f2:8b:
+		19:a0:91:d5:5c:d2:e7:1e:7f:38:a1:31:de:6a:2e:e6:cb:d5:
+		fa:af:02:33:12:34:47:22:8a:41:da:ff:96:bb:ca:52:72:b9:
+		11:97:e7:20:46:44:e5:13:5d:9d:5a:da:34:71:d4:09:87:f4:
+		7a:2d:d5:6c:d6:ea:b0:6b:4e:db:28:f4:c9:81:ef:b1:16:43:
+		50:b7:be:9e:e6:95:af:60:ce:8f:ad:9c:99:f3:f7:2e:24:5a:
+		92:13:03:b4:a8:d8:e9:e2:05:b7:89:95:d0:07:88:d4:d8:99:
+		bd:5f:2c:35:8c:18:90:d9:d3:93:80:db:ea:4f:e6:83:d1:7c:
+		b2:83:ce:fb:c5:6b:3c:15:af:bb:31:1b:42:7e:44:44:b5:d8:
+		a3:ca:fd:0e:0c:ac:ab:b5:b0:47:8e:00:65:cd:e1:d0:e2:5b:
+		5d:55:5e:d8:43:96:8d:cc:55:6c:ee:a0:3b:c0:bb:b7:80:bc:
+		3c:ec:30:c2
+\end{Verbatim}
+\end{figure}
+
+
+\begin{figure}[h]
+	\caption{Certificado de cliente revocado}
+	\centering
+	\includegraphics[scale=0.5]{images/certs/revoked.png}
+	\label{fig:revoked}
+\end{figure}
+
+
+
+
+               
+   
 
 \end{document}
