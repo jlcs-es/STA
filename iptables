@@ -1,3 +1,4 @@
+#!/bin/bash
 # Conseguir una tabla de firewall vacía:
 iptables -F
 iptables -X
@@ -22,14 +23,9 @@ iptables -t nat -A POSTROUTING ! -d 192.168.0.0/16 -o eth0 -j MASQUERADE
 # Permitir tráfico entrante en el router si son conexiones TCP ya establecidas
 iptables -A INPUT -p tcp -m state --state ESTABLISHED -j ACCEPT
 
-# Permitir tráfico saliente de los servidores por defecto:
-iptables -A FORWARD -s 192.168.31.100 -d 0/0 -j ACCEPT
-iptables -A FORWARD -s 192.168.32.100 -d 0/0 -j ACCEPT
-
 # Perimitir tráfico entrante a los servidores de conexiones ya establecidas
 iptables -A FORWARD -p tcp -d 192.168.31.100 -s 0/0 -m state --state ESTABLISHED -j ACCEPT
 iptables -A FORWARD -p tcp -d 192.168.32.100 -s 0/0 -m state --state ESTABLISHED -j ACCEPT
-
 
 # Permitir DNS
 iptables -A FORWARD -p udp -s 8.8.8.8 -d 0/0 --sport 53 --dport 513:65535 -j ACCEPT
@@ -48,7 +44,7 @@ iptables -A INPUT -p udp -s 155.54.1.1 -d 0/0 --sport 53 --dport 513:65535 -j AC
 iptables -A FORWARD -p tcp -s 0/0 -d 192.168.31.100 --sport 513:65535 --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -p tcp -s 0/0 -d 192.168.32.100 --sport 513:65535 --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
 
-# Permitir SSH en el router si las conexiones van desde las organicaciones
+# Permitir SSH en el router si las conexiones van desde las organizaciones
 iptables -A INPUT -p tcp -s 192.168.31.0/24 -d 192.168.31.1 --sport 513:65535 --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -p tcp -s 192.168.31.1 -d 192.168.31.0/24 --sport 22 --dport 513:65535 -m state --state ESTABLISHED -j ACCEPT
 
@@ -78,4 +74,6 @@ iptables -A FORWARD -p udp -s 0/0 -d 192.168.32.100 --sport 513:65535 --dport 10
 iptables -A FORWARD -p udp -s 192.168.31.100 -d 0/0 --sport 10000:20000 --dport 513:65535 -j ACCEPT
 iptables -A FORWARD -p udp -s 192.168.32.100 -d 0/0 --sport 10000:20000 --dport 513:65535 -j ACCEPT
 
-
+# Permitir tráfico saliente de los servidores por defecto:
+iptables -A FORWARD -s 192.168.31.100 ! -d 192.168.32.100 -j ACCEPT
+iptables -A FORWARD -s 192.168.32.100 ! -d 192.168.31.100 -j ACCEPT

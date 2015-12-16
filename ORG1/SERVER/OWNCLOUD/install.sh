@@ -66,7 +66,7 @@ service apache2 restart
 
 #Configurar owncloud
 curl -X POST -d @curl-post-data.txt http://192.168.31.100/owncloud/index.php
-sudo -u www-data cp config.php /var/www/owncloud/config/config.php
+sudo cp config.php /var/www/owncloud/config/config.php
 #chown www-data:www-data /var/www/owncloud/config/config.php
 
 sudo -u www-data php /var/www/owncloud/occ app:enable encryption
