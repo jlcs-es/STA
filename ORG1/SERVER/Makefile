@@ -1,5 +1,5 @@
 
-all: network snmp voip test
+all: network snmp voip test owncloud
 
 network:
 	sh network

@@ -27,6 +27,7 @@ EOF
 
 cat > /etc/hosts << EOF
 127.0.0.1   localhost
+127.0.0.1   Laboratorio27
 
 #ROUTER
 192.168.31.1    router.org31

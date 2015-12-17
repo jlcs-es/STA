@@ -20,6 +20,9 @@ iptables -A INPUT -p icmp -j ACCEPT
 # Routing
 iptables -t nat -A POSTROUTING ! -d 192.168.0.0/16 -o eth0 -j MASQUERADE
 
+# Permitir conexión a internet a los móviles por wifi
+iptables -A FORWARD -d 192.168.31.128/25 -j ACCEPT
+
 # Permitir tráfico entrante en el router si son conexiones TCP ya establecidas
 iptables -A INPUT -p tcp -m state --state ESTABLISHED -j ACCEPT
 
@@ -53,10 +56,10 @@ iptables -A OUTPUT -p tcp -s 192.168.32.1 -d 192.168.32.0/24 --sport 22 --dport 
 
 # Perimitir acceso público a los servicios web en los puertos 80, 8000, 8080 y 443:
 
-iptables -A FORWARD -p tcp -s 0/0 -d 192.168.32.100 --sport 513:65535 --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A FORWARD -p tcp -s 0/0 -d 192.168.32.100 --sport 513:65535 --dport 8000 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A FORWARD -p tcp -s 0/0 -d 192.168.32.100 --sport 513:65535 --dport 8080 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A FORWARD -p tcp -s 0/0 -d 192.168.32.100 --sport 513:65535 --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -p tcp -s 0/0 -d 192.168.31.100 --sport 513:65535 --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -p tcp -s 0/0 -d 192.168.31.100 --sport 513:65535 --dport 8000 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -p tcp -s 0/0 -d 192.168.31.100 --sport 513:65535 --dport 8080 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -p tcp -s 0/0 -d 192.168.31.100 --sport 513:65535 --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT
 
 # Permitir el tráfico ASTERIX entre los troncales (SIP)
 
@@ -67,7 +70,6 @@ iptables -A FORWARD -p tcp -s 192.168.31.100 -d 0/0 --sport 5060 --dport 513:655
 iptables -A FORWARD -p tcp -s 192.168.32.100 -d 0/0 --sport 5060 --dport 513:65535 -m state --state ESTABLISHED -j ACCEPT
 
 # (RTP)
-
 iptables -A FORWARD -p udp -s 0/0 -d 192.168.31.100 --sport 513:65535 --dport 10000:20000 -j ACCEPT
 iptables -A FORWARD -p udp -s 0/0 -d 192.168.32.100 --sport 513:65535 --dport 10000:20000 -j ACCEPT
 
@@ -77,3 +79,6 @@ iptables -A FORWARD -p udp -s 192.168.32.100 -d 0/0 --sport 10000:20000 --dport 
 # Permitir tráfico saliente de los servidores por defecto:
 iptables -A FORWARD -s 192.168.31.100 ! -d 192.168.32.100 -j ACCEPT
 iptables -A FORWARD -s 192.168.32.100 ! -d 192.168.31.100 -j ACCEPT
+
+# Permitir SNMP entre el router y la ORG31
+iptables -A INPUT -s 192.168.31.100 -d 192.168.31.1 -j ACCEPT
