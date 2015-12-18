@@ -411,6 +411,27 @@ Las siguientes imágenes muestran los resultados (\textit{searchResEntry}), con 
 
 \subsection{Análisis de riesgos}
 %TODO: Tabla de reglas de seguridad
+El escenario tiene como servicios a proteger:
+
+\begin{itemize}
+	\item LDAP
+	\item OwnCloud
+	\item Voz sobre ip
+	\item SNMP + Nagios3
+\end{itemize}
+
+De estos servicios los únicos que tienen que ofrecer funcionalidad al exterior son OwnCloud (que está localizado en la organización 31) y VOIP (con dos servidores dedicados ASTERIX, uno en cada organización).
+
+Por lo tanto, los otros dos servicios (SNMP y LDAP) hay que protegerlos completamente de accesos al exterior. 
+
+Como LDAP es un servicio crítico (contiene el directorio de usuarios, y se usa para otros servicios), en un escenario real LDAP estaría en su propia máquina con todo capado salvo el acceso desde el servidor OwnCloud que necesita acceso para los usuarios registrados.
+
+La máquina con Nagios3 haría de centro de control. Sería la única con acceso ssh al exterior y la única desde la cual se puede hacer ssh al resto de servidores (y al router), además de monitorizar todos los dispositivos con Nagios y SNMP.
+
+En este escenario, para poder manipular remotamente el servicio LDAP por ejemplo se necesitaría acceder al servidor de Nagios y después al de LDAP, duplicando la seguridad. En caso de que el servidor de Nagios estuviera comprometido, todavía haría falta un nivel más de acceso para poder llegar al LDAP.
+
+
+
 
 \subsection{Configuración de seguridad}
 %TODO: Iptables
@@ -537,3 +558,4 @@ alumno@Laboratorio27:~/demoCA$ openssl crl -in /var/www/crl/org31.CRL -text -noo
    
 
 \end{document}
+\grid
