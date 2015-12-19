@@ -47,7 +47,7 @@
 
 
 \title{Servicios Telemáticos Avanzados\\ENERO 2016}
-\author{José Luis Cánovas Sánchez - 48636907A\\Ezequiel Santamaría Navarro - }
+\author{José Luis Cánovas Sánchez - 48636907A\\Ezequiel Santamaría Navarro - 20096517Z}
 
 \begin{document}
 
@@ -344,30 +344,81 @@ El primer \textit{get-next-request} pide el MIB \textit{ifDescr}, y en la respue
 
 
 \subsection{Voz sobre IP}
-%TODO
 En esta sección documentamos las configuraciones que hemos tomado para el servidor de Asterisk.
 
 \subsubsection{Configuración básica}
-%TODO
 Para las organizaciones 31 y 32, hacemos 2 cuentas de cliente para ambas organizaciones (311 y 312 para organización 31; 321 y 322 para la organización 32).
 
-\begin{lstlisting}
-TODO: Copiar aqui la configuracion relativa a los clientes.
-\end{lstlisting}
+\begin{Verbatim}
+; Organizacion 1
+[cliente-311]
+type=friend
+secret=12345
+nat=no
+host=dynamic
+context=default
+
+[cliente-312]
+type=friend
+secret=12345
+nat=no
+host=dynamic
+context=default
+
+; Organizacion 2
+[cliente-321]
+type=friend
+secret=12345
+nat=no
+host=dynamic
+context=default
+
+[cliente-322]
+type=friend
+secret=12345
+nat=no
+host=dynamic
+context=default
+\end{Verbatim}
+
+Al establecer el \textit{type=friend} y el \textit{host=dynamic} indicamos que el usuario puede registrarse desde cualquier ip y que se le permite hacer llamadas. Además, todos los usuarios tienen la misma contraseña: 12345.
+
+\hfill
 
 Para esos clientes también hemos configurado sus extensiones.
 
-\begin{lstlisting}
-TODO: Copiar aqui la configuracion relativa a las extensiones.
-\end{lstlisting}
+\begin{Verbatim}
+exten => 311,1,Dial(SIP/cliente-311)
+exten => 312,1,Dial(SIP/cliente-312)
+
+exten => 321,1,Dial(SIP/cliente-321)
+exten => 322,1,Dial(SIP/cliente-322)
+\end{Verbatim}
+
+Aquí se declara la extensión telefónica asociada a cada cliente. Para hacerlo sencillo, al cliente 2 de la organización 3.1, se le ha establecido la extensión 312, y siguiendo la misma lógica para los otros tres clientes.
 
 \subsubsection{Troncales Asterisk}
-%TODO
 Para empezar, hacemos una redirección básica entre los dos servicios Asterisk en las configuraciones de extensión de Asterisk:
-\begin{lstlisting}
-TODO: Copiar aqui la configuracion relativa a las extensiones entre servicios.
-\end{lstlisting}
+\begin{Verbatim}
+[Organizacion-32]
+type=friend
+host=192.168.32.100
+context=default
+allow=all
+nat=no
+insecure=invite
+\end{Verbatim}
 
+Arriba se está definiendo la organización 3.2 (esta es la configuración de la organización 3.1). Al establecer \textit{type=friend} y la ip del host así como \textit{allow=all} se permite que la organización 3.2 haga llamadas a clientes de la organización 3.1.
+
+\begin{Verbatim}
+exten => _32X,1,Dial(SIP/${EXTEN}@192.168.32.100)
+exten => _32X,n,Hangup()
+\end{Verbatim}
+
+Por último, con estas dos extensiones se redirigen llamadas con la extensión 32X siendo X cualquier cosa, hacia la organización 32.
+
+La configuración en la organización 3.1 es simétrica, cambiando 192.168.32.100 por 192.168.31.100 y cambiando \textit{\_32X} por \textit{\_31X}.
 
 \subsubsection{Seguridad IPsec}
 %DONE
@@ -427,17 +478,51 @@ Y con un simple ping desde una máquina a la otra podemos ver cómo se añaden l
 \end{figure}
 
 
-
 \subsubsection{Buzón de voz}
-%TODO
+Después de un intento de llamada, a los 5 segundos salta el buzón de voz. Los clientes después pueden comprobar su buzón de voz llamando al 123.
 
+\begin{Verbatim}
+; Primero se intenta llamar (5 segundos), y después buzón de voz (VoiceMail).
+exten => 311,1,Dial(SIP/cliente-311,5)
+exten => 311,n,VoiceMail(311@vm-org31,u)
+exten => 312,1,Dial(SIP/cliente-312,5)
+exten => 312,n,VoiceMail(312@vm-org31,u)
 
+; Llamando al 123 se puede acceder al buzón de voz.
+exten => 123,1,Answer(500)
+exten => 123,2,VoiceMailMain(@vm-org31)
+\end{Verbatim}
 
+\subsubsection{Análisis de trazas}
 
+El registro de un cliente en la plataforma en 4 paquetes:
+
+\begin{center}
+	\includegraphics[width=1\linewidth]{images/voip1}
+\end{center}
+
+Intento de registro. Se indica la procedencia y el user-agent así como el identificador del cliente.
+
+\begin{center}
+	\includegraphics[width=1\linewidth]{images/voip2}
+\end{center}
+
+El servidor responde indicando que para conseguir el registro debe autenticarse. Para ello debe proteger la contraseña usando MD5 y el nonce indicado.
+
+\begin{center}
+	\includegraphics[width=1\linewidth]{images/voip3}
+\end{center}
+
+Paquete muy parecido al primero, solo que este lleva en la cabecera la opción \textit{Authorization}, con el \textit{response} al $MD5(nonce+password)$.
+
+\begin{center}
+	\includegraphics[width=1\linewidth]{images/voip4}
+\end{center}
+
+El servicio Asterix autoriza al cliente-321 desde la ip 192.168.31.200, y se lo comunica mediante un \textbf{OK 200}.
 
 \subsection{LDAP}
-El servicio LDAP ofrece al resto de servicios un punto en común donde encontrar la información relevante de los usuarios (nombres,
-organización a la que pertenecen, permisos de uso y acceso, credenciales, etc).
+El servicio LDAP ofrece al resto de servicios un punto en común donde encontrar la información relevante de los usuarios (nombres,organización a la que pertenecen, permisos de uso y acceso, credenciales, etc).
 
 Como contiene la información crítica de los usuarios que se integran en los servicios, LDAP se despliega en su propia máquina.
 
@@ -446,7 +531,7 @@ Sin embargo, en el despliegue real del laboratorio, LDAP está integrado en el o
 Para las pruebas de laboratorio, la instalación y la configuración la generamos automáticamente (sin necesidad de interacción del administrador), en python, generando tres clientes de la organización 31.
 
 Estos tres clientes se generan con el servicio Owncloud en mente. Para organizar la pertenencia de usuarios de Owncloud en el árbol, hemos decidido usar el campo Organizational Unit con valor \textit{owncloud} para indicar la pertenencia al servicio.
-                                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                    
 Este caso es el más sencillo para aplicar en nuestro caso práctico, pero no es el mejor para la topología ideal. El servicio ldap no lo suele usar un único servicio, y no todos los usuarios tienen acceso a los mismos servicios en una organización. Por ejemplo, el servicio Golum de la Universidad de Murcia frente al de correo o UmuBox.
 
 La solución ideal sería tener los usuarios registrados sin indicar los servicios por la \textit{ou}, sino crear un grupo por cada servicio, y del que cuelguen identificadores de los usuarios que pertenecen al grupo. Así, un usuario registrado en ldap tiene una sola entrada con todos sus datos, y cuelga de una sola \textit{ou}, no de varias posibles, y para asignarle a un servicio, sólo hay que ir al nodo del servicio y dar de alta la hoja del usuario.
@@ -499,15 +584,22 @@ Las siguientes imágenes muestran los resultados (\textit{searchResEntry}), con 
 \end{center}
 
 
-
-
 \subsection{OwnCloud}
 %TODO
 \section{Políticas de seguridad}
-%TODO: Un dibujo del escenario de seguridad
+Para las políticas de seguridad nos centramos en explicar la organización 1, ya que la organización solo tiene que proteger VOIP y se haría de manera simétrica a la organización 1.
+
+\begin{center}
+	\includegraphics[width=1\linewidth]{images/seguridadorg1}
+\end{center}
+
+A las zonas 1 y 2 solo deberá entrar el administrador y deberá estar protegida de cualquier acceso físico. En caso de que no funcione el servidor de LDAP se instalará una copia de seguridad en el servidor de OwnCloud, y se repondrá con un servidor nuevo lo antes posible.
+
+Si falla el servidor de VOIP o el de OwnCloud, se instalará una copia de seguridad en el otro servidor (nunca en el de LDAP), y se repondrá con otro servidor nuevo cuanto antes.
+
+Si el servidor de monitorización deja de funcionar, se permitirá el acceso a un usuario a las zonas 1 y 2 bajo previo aviso del administrador y con el único objetivo de establecer una manera de acceder por SSH a los servicios de forma temporal (ya que el servidor de monitorización es el único que permite hacer el puente SSH entre el exterior y los servicios).
 
 \subsection{Análisis de riesgos}
-%TODO: Tabla de reglas de seguridad
 El escenario tiene como servicios a proteger:
 
 \begin{itemize}
@@ -523,15 +615,25 @@ Por lo tanto, los otros dos servicios (SNMP y LDAP) hay que protegerlos completa
 
 Como LDAP es un servicio crítico (contiene el directorio de usuarios, y se usa para otros servicios), en un escenario real LDAP estaría en su propia máquina con todo capado salvo el acceso desde el servidor OwnCloud que necesita acceso para los usuarios registrados.
 
-La máquina con Nagios3 haría de centro de control. Sería la única con acceso ssh al exterior y la única desde la cual se puede hacer ssh al resto de servidores (y al router), además de monitorizar todos los dispositivos con Nagios y SNMP.
+La máquina con la etiqueta monitorización haría de centro de control. Sería la única con acceso ssh al exterior y la única desde la cual se puede hacer ssh al resto de servidores (y al router), además de monitorizar todos los dispositivos con Nagios y SNMP.
 
-En este escenario, para poder manipular remotamente el servicio LDAP por ejemplo se necesitaría acceder al servidor de Nagios y después al de LDAP, duplicando la seguridad. En caso de que el servidor de Nagios estuviera comprometido, todavía haría falta un nivel más de acceso para poder llegar al LDAP.
+En este escenario, para poder manipular remotamente el servicio LDAP por ejemplo se necesitaría acceder al servidor de monitorización y después al de LDAP, duplicando la seguridad. En caso de que el servidor de monitorización estuviera comprometido, todavía haría falta un nivel más de acceso para poder llegar a los servicios de la zona 1.
 
+Por lo tanto el firewall 2 permitiría:
 
+\begin{itemize}
+	\item LDAP solo hacia OwnCloud: TCP puerto 389 entre las máquinas OwnCloud y LDAP
+	\item OwnCloud hacia el exterior: TCP puerto 443 desde cualquier lugar
+	\item VoIP hacia el exterior: UDP 5060 para sip y UDP 10000 al 20000 para RTP hacia cualquier lugar
+	\item SSH solo hacia la zona 2: TCP puerto 22 entre cualquiera de las máquinas de servicios y la máquina de monitorización.
+\end{itemize}
 
+Además, toda conexión Asterix entre ambas organizaciones viajaría por IPsec una vez cruzado el firewall 2.
 
 \subsection{Configuración de seguridad}
-%TODO: Iptables
+Las iptables no se corresponden con la expliación anterior pues la infraestructura real del laboratorio 2.7 no coincide a la ideal. Aquí solo hay un cortafuegos que se establece en el router y que protege a la vez a usuarios y a ambas organizaciones:
+
+\lstinputlisting{../iptables}
 
 \subsection{Generación de certificados}
 %DONE
@@ -652,7 +754,7 @@ alumno@Laboratorio27:~/demoCA$ openssl crl -in /var/www/crl/org31.CRL -text -noo
 
 \section{Conclusiones}
 
-Tras estos casi cuatro meses de práctica, nuestras impresiones finales son que su principal propósito es que los alumnos investiguemos por nuestra cuenta y nos enfrentemos a los problemas reales que supone un despliegue de este tipo. En cualquier \textit{tutorial} puedes leerte los pasos y pensar que eso funcionará a la primera, pero lo importante son los fallos inesperados, que aunque te lleven uno o dos días solucionarlos, ese trabajo no forma realmente parte del resultado final, no como lo hace añadir una característica nueva, tipo el buzón de voz a Asterisk. Son problemas como descubrir hasta dónde comprueba apache2 un certificado, que la versión de SNMP instalada tiene un fallo en concreto con una orden, que AH en IPsec modifica el campo \textit{next protocol} del paquete IP y el protocolo (TCP, UDP, ...) ahora está en \textit{next header}, de modo que iptables no lo tiene en cuenta, ...
+Tras estos casi cuatro meses de práctica, nuestras impresiones finales son que su principal propósito es que los alumnos investiguemos por nuestra cuenta y nos enfrentemos a los problemas reales que supone un despliegue de este tipo. En cualquier \textit{tutorial} puedes leerte los pasos y pensar que eso funcionará a la primera, pero lo importante son los fallos inesperados, que aunque te lleven uno o dos días solucionarlos, ese trabajo no forma realmente parte del resultado final, no como lo hace añadir una característica nueva, tipo el buzón de voz a Asterisk. Son problemas como descubrir hasta dónde comprueba apache2 un certificado, que la versión de SNMP instalada tiene un fallo en concreto con una orden, que AH en IPsec modifica el campo \textit{protocol} del paquete IP y el protocolo (TCP, UDP, ...) ahora está en \textit{next header}, de modo que iptables no lo tiene en cuenta, ...
                
                
                

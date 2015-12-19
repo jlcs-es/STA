@@ -1,5 +1,5 @@
 #!/bin/bash
-# Conseguir una tabla de firewall vacía:
+# Conseguir una tabla de firewall vacia:
 iptables -F
 iptables -X
 
@@ -7,7 +7,7 @@ iptables -X
 iptables -P INPUT DROP
 iptables -P FORWARD DROP
 
-# Pero permitir toda la salida (solo para las prácticas, en un entorno real no):
+# Pero permitir toda la salida (solo para las practicas, en un entorno real no):
 iptables -P OUTPUT ACCEPT
 
 
@@ -15,21 +15,21 @@ iptables -P OUTPUT ACCEPT
 iptables -t nat -A POSTROUTING ! -d 192.168.0.0/16 -o eth0 -j MASQUERADE
 
 
-# Permitir tráfico interfaz local
+# Permitir trafico interfaz local
 iptables -A INPUT -i lo -j ACCEPT
 
-# Permitir todo el tráfico ICMP
+# Permitir todo el trafico ICMP
 iptables -A FORWARD -p icmp -j ACCEPT
 iptables -A INPUT -p icmp -j ACCEPT
 
-# Permitir conexión a internet a los móviles por wifi
+# Permitir conexion a internet a los moviles por wifi
 iptables -A FORWARD -d 192.168.31.128/25 -j ACCEPT
 iptables -A FORWARD -s 192.168.31.128/25 -j ACCEPT
 
-# Permitir tráfico entrante en el router si son conexiones TCP ya establecidas
+# Permitir trafico entrante en el router si son conexiones TCP ya establecidas
 iptables -A INPUT -p tcp -m state --state ESTABLISHED -j ACCEPT
 
-# Perimitir tráfico entrante a los servidores de conexiones ya establecidas
+# Perimitir trafico entrante a los servidores de conexiones ya establecidas
 iptables -A FORWARD -p tcp -d 192.168.31.100 -s 0/0 -m state --state ESTABLISHED -j ACCEPT
 iptables -A FORWARD -p tcp -d 192.168.32.100 -s 0/0 -m state --state ESTABLISHED -j ACCEPT
 
@@ -57,14 +57,14 @@ iptables -A OUTPUT -p tcp -s 192.168.31.1 -d 192.168.31.0/24 --sport 22 --dport 
 iptables -A INPUT -p tcp -s 192.168.32.0/24 -d 192.168.32.1 --sport 513:65535 --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -p tcp -s 192.168.32.1 -d 192.168.32.0/24 --sport 22 --dport 513:65535 -m state --state ESTABLISHED -j ACCEPT
 
-# Permitir acceso público a los servicios web en los puertos 80, 8000, 8080 y 443:
+# Permitir acceso publico a los servicios web en los puertos 80, 8000, 8080 y 443:
 
 iptables -A FORWARD -p tcp -s 0/0 -d 192.168.31.100 --sport 513:65535 --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -p tcp -s 0/0 -d 192.168.31.100 --sport 513:65535 --dport 8000 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -p tcp -s 0/0 -d 192.168.31.100 --sport 513:65535 --dport 8080 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -p tcp -s 0/0 -d 192.168.31.100 --sport 513:65535 --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT
 
-# Permitir el tráfico ASTERIX entre los troncales (SIP)
+# Permitir el trafico ASTERIX entre los troncales (SIP)
 
 iptables -A FORWARD -p udp -s 0/0 -d 192.168.31.100 --sport 513:65535 --dport 5060 -j ACCEPT
 iptables -A FORWARD -p udp -s 0/0 -d 192.168.32.100 --sport 513:65535 --dport 5060 -j ACCEPT
