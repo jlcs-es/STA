@@ -46,8 +46,8 @@
 
 
 
-\title{Servicios Telemáticos Avanzados}
-\author{José Luis Cánovas Sánchez\\Ezequiel Santamaría Navarro}
+\title{Servicios Telemáticos Avanzados\\ENERO 2016}
+\author{José Luis Cánovas Sánchez - 48636907A\\Ezequiel Santamaría Navarro - }
 
 \begin{document}
 
@@ -65,6 +65,13 @@ En esta memoria se describen el despliegue y configuración de las topologías y
 Como grupo 3 de prácticas, desplegaremos las organizaciones 31 y 32. En la descripción de cada servicio desplegado indicaremos en los párrafos iniciales el despliegue que haríamos en una situación real y con recursos, es decir, donde tuviéramos un router por organización, más de una o dos máquinas físicas, varios switches, puntos de acceso, firewall, usuarios, clientes, etc. A continuación, la descripción del despliegue que hemos realizado y configurado en los ordenadores de prácticas y sus equivalente máquinas virtuales cuando no había acceso al laboratorio 2.7.
 
 Primero describimos la topología de las organizaciones, segundo el despliegue de la gestión por SNMP y Nagios, a continuación el servicio VoIP desplegado con Asterisk, finalmente entre los servicios, Owncloud haciendo uso de LDAP. No puede faltar la seguridad de la organización, con iptables, y la certificación de Owncloud por medio de nuestra propia jerarquía de certificados.
+
+El trabajo en grupo ha consistido en que ambos hemos desarrollado y configurado todo conjuntamente, no hay un reparto en el que un miembro se encarga de SNMP, otro de VoIP, otro de Owncloud, etc., sino que ente los dos avanzamos en cada servicio conjuntamente, lo que se refleja en nuestro repositorio git de GitHub, donde cada semana hay como mínimo un par de commits. Es verdad que hay ocasiones donde no podemos quedar en el laboratorio y tampoco en la casa de uno de los dos, en esos casos uno solo avanza por su cuenta escribiendo el código o probando el servicio, pero la decisión previa de qué se va a modificar o escribir, el diseño de la parte del servicio que uno solo va a implementar, se hace en común, normalmente por chats como Telegram. En caso de imprevistos que sobrepasaran a uno sólo, se hacía un commit y hasta que se hablase el problema no se continuaba, pero eran los menos.
+
+\begin{center}
+	\includegraphics[scale=0.5]{images/git.PNG}
+\end{center}
+
 
 \section{Topología}
 
@@ -130,35 +137,31 @@ En la \autoref{fig:topofisica} vemos el diagrama de la topología física, donde
 Para la configuración de los dispositivos utilizamos herramientas Makefile, y scripts escritos en bash y python, de manera que desplegar los servicios y la topología en un dispositivo esté automatizado, llegando a tal punto que en la instalación sólo haría falta intervenir para escribir la contraseña de la base de datos de Owncloud y pulsar Intro en alguna instalación. No nos apoyamos en una máquina virtual que vayamos configurando a lo largo de las prácticas llevándola de un lado a otro, y por lo general, usamos máquinas virtuales con una instantánea \textit{limpia}.
 \\
 
-Usamos una estructura de directorios basada en el hardware a configurar. Es decir, en el ordenador que hace de enrutador ejecutamos un Makefile que está en el directorio ROUTER; para la máquina servidor de la organización 31, la carpeta SERVER correspondiente; etc.
+Usamos una estructura de directorios basada en el hardware a configurar. Es decir, en el ordenador que hace de router ejecutamos un Makefile que está en el directorio ROUTER; para la máquina servidor de la organización 31, la carpeta SERVER contiene su Makefile correspondiente; etc.
 
-%TODO: decidir si se pone la estructura, y si se modifica cómo presentarla.
-\begin{Verbatim}
+\begin{BVerbatim}
 ROUTER
 	SNMP
 	Makefile
 	network
 	test
+	iptables
 ORG1
-	FISICA
-		Makefile
-		network
-		test
 	SERVER
+		CERTS
+		IPSEC
+		LDAP
+		OWNCLOUD
 		SNMP
+			NAGIOS
 		VOIP
 		Makefile
 		network
 		test
-	CLIENTE1
-		SNMP
-		VOIP
-		Makefile
-		network
-		test
+		
+\end{BVerbatim}
 
-\end{Verbatim}
-
+\hfill
 
 
 
@@ -185,7 +188,7 @@ En las máquinas servidor basta con modificar el fichero \textit{/etc/network/in
 
 
 \subsection{SNMP}
-%Ideal más Intro: DONE
+%DONE
 
 En la topología ideal descrita hemos indicado que habría un servidor dedicado para SNMP. En concreto sería para el manejador, con un acceso por VLAN de gestión desde un ordenador del administrador en la red interna. El resto de servidores, el firewall, el router, los switches y los puntos de acceso inalámbricos tendrían instalados SNMP como agente.
 
@@ -210,14 +213,59 @@ En cuanto a la seguridad, el router tendrá sólo acceso de lectura con autentic
 Por problemas descubiertos con los paquetes de SNMP donde la orden \textit{monitor} no funciona, con posible solución la compilación de los paquetes snmp, decidimos instalar en el servidor de la organización 31 Nagios, añadiendo la monitorización de disco y ancho de banda del router, como se explicará en su sección.
 
 \subsubsection{Agentes}
-%TODO
+%DONE
+
+El script en los agentes instala los paquetes \textit{snmp}, \textit{snmpd} y \textit{snmp-mibs-downloader} y copia en \textit{/etc/snmp/} los ficheros \textit{snmp.conf} y \textit{snmpd.conf} ya preparados para cada máquina en particular.
+
+En el \textbf{router}, que actúa como agente en las organizaciones 31 y 32, tenemos en \textit{snmpd.conf} el fichero por defecto en la instalación de los paquetes, añadiendo un usuario con autenticación por MD5 y cifrado por DES, donde en el control de acceso se amplía al árbol 1.3.6.1.2.1 para dar acceso a comprobaciones de ancho de banda con los MIBs 1.3.6.1.2.1.2.2.1.2,  1.3.6.1.2.1.2.2.1.10., 1.3.6.1.2.1.2.2.1.16., los cuales usaremos más adelante con Nagios, y define los \textit{community} \textit{sta31} y \textit{sta32}, uno por organización. Los cambios restantes son sobre la información de la máquina modificando los MIBs \textit{sysLocation} y \textit{sysContact}, y finalmente indicando que los traps e informs se envíen a los manejadores de ambas organizaciones. En el caso de haber dos routers, cada uno se comunicaría únicamente con el manejador de su organización.
+
+En el \textbf{servidor}, que actúa también de manejador, la configuración como agente es como en el router, pero el usuario creado sólo tiene autenticación por MD5, sólo hay un nuevo \textit{community}, \textit{sta31}, o \textit{sta32} en la Organización 32.
+
 \subsubsection{Manejador}
-%TODO
+%DONE
+
+Como manejadores, los servidores de cada organización añaden al fichero \textit{snmptrapd.conf} las líneas \textit{donotlogtraps 0} y	\textit{authCommunity log,execute sta31} para aceptar los traps de los agentes, cambiando en la Organización 2 el \textit{community} por \textit{sta32}.
+
+
+
+\subsubsection{Nagios}
+%DONE
+
+Como servicio extra a la gestión de dispositivos en red, y supliendo la falta de \textit{monitor} para poder configurar nuevos traps en los agentes, instalamos Nagios en la Organización 31 para monitorizar el servidor y el router.
+
+Para todos los controles sobre el servidor y la carga de cpu que usa el router, usamos las herramientas que vienen con Nagios por defecto.
+
+Para la consulta del ancho de banda del router, definimos un nuevo comando \textit{check\_bandwidth}, que hace uso de un script bash de los foros de Nagios, modificado por nosotros para que use SNMP sobre la máquina del router. Entre los cambios más importantes, sobre el script original, tenemos que se usaba para consultar máquinas Cisco, cuya nomenclatura de las interfaces no es compatible con las de linux, y el uso de SNMPv3 con el usuario y contraseñas del router. El script además le indica a Nagios si la situación es del alerta o crítica según unos límites pasados por parámetro que indican los flujos de datos límite para el router.
+
+Las órdenes SNMP que usamos son todas \textit{snmpwalk} sobre los MIBs que identifican las interfaces de una máquina y sus propiedades. En la prueba y análisis de trazas vamos a analizar en concreto la orden que pregunta por las interfaces de red disponibles en una máquina.
+
+
+
+Para probar que Nagios consigue hacer consultas con éxito nos aprovechamos del servicio Owncloud de la Organización 31, subiendo un fichero de más de 400MB y descargándolo varias veces en la máquina de la Organización 32, por el mismo usuario de Owncloud, de modo que se genera un tráfico de varios megas por segundo entre organizaciones, que claramente debe pasar por el router.
+
+Más abajo se muestran las imágenes de la descarga paralela y de cómo Nagios comprueba los anchos de banda y muestra el mensaje \textit{CRITICAL} al superar los 15Mbit/s puestos como límite, con unos 74Mbit/s.
+
+\begin{center}
+	\includegraphics[scale=0.5]{images/snmp/nagios/descargas.png}
+\end{center}
+\begin{center}
+	\includegraphics[scale=0.5]{images/snmp/nagios/criticalbandwidth.png}
+\end{center}
+
+
+
+
+
+
+\subsubsection{Prueba snmpwalk}
+%DONE
+
+Para la prueba se ejecutan los siguientes comandos, que consultan el mismo MIB, pero en el primero los mensajes SNMP van cifrados y en el segundo se desactivó temporalmente el cifrado en el agente SNMP del router, dejando sólo autenticación, de modo que se pueden ver el contenido de los paquetes en wireshark.
+
 
 \begin{Verbatim}[frame=single]
-
 $snmpwalk -v 3 -c sta31 -u router -l authPriv -a MD5 -A 123456789
- -x DES -X 123456789 192.168.31.1 1.3.6.1.2.1.2.2.1.2
+-x DES -X 123456789 192.168.31.1 1.3.6.1.2.1.2.2.1.2
 
 IF-MIB::ifDescr.1 = STRING: lo
 IF-MIB::ifDescr.2 = STRING: eth1
@@ -235,16 +283,65 @@ IF-MIB::ifDescr.4 = STRING: eth1.31
 IF-MIB::ifDescr.5 = STRING: eth1.32
 \end{Verbatim}
 
+En ambas capturas los dos primeros mensajes son los mismos: Un primer mensaje \textit{get-request} vacío, sin encriptar, sin autenticar, sin pedir ningún objeto, desde el manejador al agente del router. Después, un mensaje de respuesta \textit{report} con el valor del objeto \textit{usmStatsUnknownEngineIDs}, el cual indica el número de intentos fallidos de paquetes anteriores al referenciar su \textit{snmpEngineID}. Este último paquete además viene con información del Authoritative Engine del router, que es la información que añade en sus paquetes el manejador en los siguientes mensajes.
 
-\subsubsection{Nagios}
-%TODO
 
 \begin{center}
-	\includegraphics[scale=0.5]{images/snmp/nagios/descargas.png}
+	\includegraphics[scale=0.75]{images/snmp/reportMIB.png}
 \end{center}
+
 \begin{center}
-	\includegraphics[scale=0.5]{images/snmp/nagios/critical bandwidth.png}
+	\includegraphics[scale=0.45]{images/snmp/snmp1.png}
+	
+	\textit{get-request vacío}
 \end{center}
+
+\begin{center}
+	\includegraphics[scale=0.45]{images/snmp/snmp2.png}
+	
+	\textit{Mensaje report}
+\end{center}
+
+En la captura de los mensajes cifrados sólo podemos ver la información del Authoritative Engine ID, el usuario \textit{router} y los parámetros de autenticación y cifrado que acompañan un PDU encriptado. En los paquetes que sólo llevan autenticación, vemos la información anterior y además el PDU con el tipo de mensaje \textit{get-next-request}, el \textit{request-id}, indicadores de error a 0, y la variable pedida.
+
+En nuestro ejemplo pedimos el MIB 1.3.6.1.2.1.2.2.1.2, del cual se obtiene una tabla a recorrer añadiendo .1, .2, etc. al final del MIB:
+
+\begin{center}
+	\includegraphics[scale=0.75]{images/snmp/ifDescr.png}
+\end{center}
+
+El primer \textit{get-next-request} pide el MIB \textit{ifDescr}, y en la respuesta se le devuelve \textit{ifDescr.1}, el primer descriptor de interfaces. En la siguiente petición, se debe pedir \textit{ifDescr.1} para que le devuelvan \textit{ifDescr.2}, y así sucesivamente hasta recibir el MIB \textit{ifType} con el valor \textit{other}, para indicar que ya no hay más que las 5 interfaces devueltas, las 5 que el comando \textit{snmpwalk} nos devolvía más arriba.
+
+\begin{center}
+	\includegraphics[scale=0.75]{images/snmp/snmpMensajes.png}
+	
+	\textit{Consulta snmpwalk}
+\end{center}
+
+\begin{center}
+	\includegraphics[scale=0.75]{images/snmp/iftypeother.png}
+\end{center}
+
+
+\begin{center}
+	\includegraphics[scale=0.45]{images/snmp/get-next-request.png}
+	
+	\textit{Mensaje get-next-request preguntando por la quinta interfaz}
+\end{center}
+
+
+\begin{center}
+	\includegraphics[scale=0.45]{images/snmp/get-response.png}
+	
+	\textit{Mensaje get-response con la descripción de la quinta interfaz}
+\end{center}
+
+\begin{center}
+	\includegraphics[scale=0.75]{images/snmp/octet.png}
+	
+	\textit{Valor de la quinta interfaz de HEX a texto}
+\end{center}
+
 
 \subsection{Voz sobre IP}
 %TODO
@@ -437,6 +534,7 @@ En este escenario, para poder manipular remotamente el servicio LDAP por ejemplo
 %TODO: Iptables
 
 \subsection{Generación de certificados}
+%DONE
 
 La creación de una jerarquía de certificados con su CA no se establece como un servicio a desplegar para el público o clientes, pero lo necesitamos en esta práctica de cara a la seguridad TLS de Owncloud.
 
@@ -469,7 +567,6 @@ Para las pruebas, tenemos el certificado de la CA, el de \textit{server.org31} y
 
 Primero comprobamos que sin el certificado el servidor no nos deja acceder a Owncloud por HTTPS en la \autoref{fig:pedircert}, después, que con el certificado del cliente, \autoref{fig:usercert1} y \autoref{fig:usercert2}, sin revocar nos permite acceder,  \autoref{fig:https}, y finalmente revocamos el certificado de \textit{cliente}, actualizamos el CRL, lo copiamos en el fichero de Apache, reiniciamos el servidor, y volvemos a intentar acceder, recibiendo un error por la revocación del certificado, en \autoref{fig:revoked}.
 
-%TODO: imagenes de las pruebas de los certificados de servidor, cliente y revocación
 
 \begin{figure}[h]
 	\caption{Petición certificado de cliente}
@@ -553,9 +650,16 @@ alumno@Laboratorio27:~/demoCA$ openssl crl -in /var/www/crl/org31.CRL -text -noo
 
 
 
+\section{Conclusiones}
 
+Tras estos casi cuatro meses de práctica, nuestras impresiones finales son que su principal propósito es que los alumnos investiguemos por nuestra cuenta y nos enfrentemos a los problemas reales que supone un despliegue de este tipo. En cualquier \textit{tutorial} puedes leerte los pasos y pensar que eso funcionará a la primera, pero lo importante son los fallos inesperados, que aunque te lleven uno o dos días solucionarlos, ese trabajo no forma realmente parte del resultado final, no como lo hace añadir una característica nueva, tipo el buzón de voz a Asterisk. Son problemas como descubrir hasta dónde comprueba apache2 un certificado, que la versión de SNMP instalada tiene un fallo en concreto con una orden, que AH en IPsec modifica el campo \textit{next protocol} del paquete IP y el protocolo (TCP, UDP, ...) ahora está en \textit{next header}, de modo que iptables no lo tiene en cuenta, ...
                
-   
+               
+               
+Además, por el orden de las prácticas, nosotros propondríamos un cambio donde los certificados fueran lo primero, pues ya se vieron en Servicios Telemáticos, de modo que la siguiente práctica puede empezarse en la misma clase. El servicio SNMP lo pondríamos casi al final de todos, pues cuando lo hemos dado el primero, al principio no se ve qué puedes gestionar realmente. Después de haber desplegado, por ejemplo, Asterisk, si entonces viéramos SNMP, se nos ocurriría que sería útil para controlar que esté el servicio escuchando por UDP o TCP, según lo hayamos configurado en \textit{sip.conf}, etc.
+
+El servicio de iptables no lo tenemos tampoco claro como el último. Estando al final puedes escribir todas las iptables de una vez, aunque luego las pruebes una a una, pero dan problemas y la falta de tiempo se nota. Estando de las primeras prácticas se podrían añadir los servicios mínimos (DNS, conexiones TCP ya establecidas, etc.) al inicio, e ir añadiendo las reglas nuevas necesarias para el nuevo servicio desplegado. Idealmente, de esta forma las iptables se crearían junto a los servicios y no serían de golpe unas decenas de reglas que implementar. Pero aquí se enfrentan el modelo se parece al de SNMP, de darlo lo primero para ir juntándolo con otros servicios, y que iptables sí sería necesario llevarlo al día para que los servicios funcionen.
+
+
 
 \end{document}
-\grid

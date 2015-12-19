@@ -81,3 +81,6 @@ iptables -A FORWARD -p udp -s 192.168.32.100 -d 0/0 --sport 10000:20000 --dport 
 
 # Permitir SNMP entre el router y la ORG31
 iptables -A INPUT -p udp -s 192.168.31.100 -d 192.168.31.1 --dport 161 -j ACCEPT
+
+# Permitir SNMP entre el router y la ORG32
+iptables -A INPUT -p udp -s 192.168.32.100 -d 192.168.32.1 --dport 161 -j ACCEPT
