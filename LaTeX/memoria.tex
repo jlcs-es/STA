@@ -521,6 +521,75 @@ Paquete muy parecido al primero, solo que este lleva en la cabecera la opción \
 
 El servicio Asterix autoriza al cliente-321 desde la ip 192.168.31.200, y se lo comunica mediante un \textbf{OK 200}.
 
+Después del registro, se inicia una llamada, y se puede iniciar con \textit{Direct Media} activado o desactivado. 
+Con \textit{Direct Media} desactivado, las trazas son:
+
+\begin{center}
+\includegraphics[width=1\linewidth]{images/voip5}
+\end{center}
+
+En orden y resumido:
+
+\begin{itemize}
+	\item Invite al asterix ORG32, el dispositivo (31.201) quiere llamar a alguien.
+	\item 401 Unauthorized, obliga al dispositivo a autenticarse usando el MD5 password + nonce.
+	\item Un ACK.
+	\item Otro invite igual que el primero, pero autenticado.
+	\item Trying, asterix ORG32 avisa al dispositivo de que se está intentando la llamada.
+	\item Invite desde asterix ORG32 a ORG31. Eso es porque el dispositivo receptor final está registrado en la ORG31.
+	\item Trying, asterix ORG31 avisa a la ORG32 de que lo está intentando.
+	\item Ringing desde ORG31 a ORG32, diciendo que se está consiguiendo \textit{tono} hasta el dispositivo final.
+	\item Ringing desde ORG32 al dispositivo, idem arriba.
+	\item OK desde ORG31 a ORG32, 3 segundos más tarde, el dispositivo receptor cogió la llamada.
+	\item ACK del paquete anterior.
+	\item OK desde ORG32 hasta el dispositivo. El dispositivo ahora sabe que está en llamada.
+	\item ACK del paquete anterior.
+\end{itemize}
+
+Después del intercambio SIP se empezarían a enviar paquetes RTP con el contenido del audio de la llamada:
+
+\begin{center}
+	\includegraphics[width=1\linewidth]{images/voip6}
+\end{center}
+
+Estudiando más en detalle los paquetes sip:
+
+\begin{center}
+	\includegraphics[width=1\linewidth]{images/voip7}
+\end{center}
+
+En el primer Invite viaja la información de conectividad y las distintas opciones que permite el dispositivo.
+
+Después del 401 unauthorized y el ACK del 401, viene otro invite exactamente igual salvo por el campo \textit{Authorization}:
+
+\begin{center}
+	\includegraphics[width=1\linewidth]{images/voip8}
+\end{center}
+
+Por otro lado, el invite que realiza la ORG32 a la ORG31 está fuertemente modificado, sobretodo para incluirse a sí mismo como el que inicia la llamada:
+
+\begin{center}
+	\includegraphics[width=1\linewidth]{images/voip9}
+\end{center}
+
+Al finalizar, se devuelve un OK que tiene contenido similar al Invite:
+
+\begin{center}
+	\includegraphics[width=1\linewidth]{images/voip10}
+\end{center}
+
+La diferencia principal frente al invite es, este contiene el campo \textit{Contact} con la información del usuario, el puerto y la dirección de su \textit{host}.
+  
+Por otro lado, si la conversación se inicia con \textit{Direct Media} activado:
+
+\begin{center}
+	\includegraphics[width=1\linewidth]{images/voip11}
+\end{center}
+
+Aparecen muchos más \textit{invites}, que son intentos (intentos porque el software de llamada debe estar preparado para poder usarlo) de asterix por poner en contacto directo a ambas partes (sin usar de intermediario el servidor asterix).
+
+Esos \textit{invites} llevan la dirección real y final de los dispositivos, y no la del servidor asterix que hace de intermediario.
+
 \subsection{LDAP}
 El servicio LDAP ofrece al resto de servicios un punto en común donde encontrar la información relevante de los usuarios (nombres,organización a la que pertenecen, permisos de uso y acceso, credenciales, etc).
 
