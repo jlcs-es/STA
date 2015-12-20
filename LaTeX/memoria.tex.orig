@@ -522,8 +522,14 @@ Paquete muy parecido al primero, solo que este lleva en la cabecera la opción \
 El servicio Asterix autoriza al cliente-321 desde la ip 192.168.31.200, y se lo comunica mediante un \textbf{OK 200}.
 
 \subsection{LDAP}
-El servicio LDAP ofrece al resto de servicios un punto en común donde encontrar la información relevante de los usuarios (nombres,organización a la que pertenecen, permisos de uso y acceso, credenciales, etc).
+<<<<<<< HEAD
+%DONE
 
+El servicio LDAP ofrece al resto de servicios un punto en común donde encontrar la información relevante de los usuarios (nombres,
+organización a la que pertenecen, permisos de uso y acceso, credenciales, etc).
+=======
+El servicio LDAP ofrece al resto de servicios un punto en común donde encontrar la información relevante de los usuarios (nombres,organización a la que pertenecen, permisos de uso y acceso, credenciales, etc).
+>>>>>>> 0fc9ed30ef6da4fb58aecc3e549d951e3cff2625
 
 Como contiene la información crítica de los usuarios que se integran en los servicios, LDAP se despliega en su propia máquina.
 
