@@ -47,7 +47,7 @@
 
 
 \title{Servicios Telemáticos Avanzados\\ENERO 2016}
-\author{José Luis Cánovas Sánchez - 48636907A\\Ezequiel Santamaría Navarro - }
+\author{José Luis Cánovas Sánchez - 48636907A\\Ezequiel Santamaría Navarro - 20096517Z}
 
 \begin{document}
 
@@ -436,6 +436,8 @@ Y con un simple ping desde una máquina a la otra podemos ver cómo se añaden l
 
 
 \subsection{LDAP}
+%DONE
+
 El servicio LDAP ofrece al resto de servicios un punto en común donde encontrar la información relevante de los usuarios (nombres,
 organización a la que pertenecen, permisos de uso y acceso, credenciales, etc).
 
@@ -464,9 +466,6 @@ uid: cliente311uid
 userPassword: manyhue
 ou:owncloud
 \end{BVerbatim}
-
-%TODO: Indicar puertos usados.
-%TODO: hacer consulta entre organizaciones, con un ldapsearch más simple
 
 A continuación se muestran imágenes de la traza capturada durante la orden: \textit{ldapsearch -x -b “dc=org11,dc=es"\ “ou=owncloud"\ dn description}:
 
@@ -498,11 +497,77 @@ Las siguientes imágenes muestran los resultados (\textit{searchResEntry}), con 
 	\includegraphics[scale=0.5]{images/ldap/ldap6}
 \end{center}
 
+\hfill
+
+También realizamos una consulta (con iptables desactivadas) desde otra máquina al servidor ldap con la orden \textit{ldapsearch -Y EXTERNAL -H ldap://server.org31 -b "dc=org31,dc=es" dn}, y vemos en la captura que los paquetes se envían al puerto 389 de escucha de ldap por TCP, y en los resúmenes de los paquetes se ve cómo responde con todos los usuarios y la OU del Owncloud, pues la petición partía del mismo subarbol que antes, pero sin filtro del valor de la OU.
+
+\begin{center}
+	\includegraphics[scale=0.45]{images/ldap/ldap7}
+	
+	\textit{Consulta ldap externa}
+\end{center}
+
+
 
 
 
 \subsection{OwnCloud}
-%TODO
+
+El servicio web de Owncloud en la topología ideal debería instalarse en un equipo con capacidades de almacenamiento y ancho de banda suficientes para la cantidad de usuarios y datos de la organización, y externos en casos de dar servicio a clientes.
+
+En la topología física desplegada se despliega sobre el mismo equipo físico que el resto de servicios, y haciendo uso del servicio ldap anterior, conseguimos tener registrados los usuarios de la organización en el servidor.
+
+La instalación se realiza con un script donde se instala el paquete \textit{owncloud} tal y como se indica en las diapositivas de prácticas. A continuación, se modifica el servidor \textit{apache} instalado junto a \textit{owncloud} para activar la conexión por HTTPS, como se explicará más en detalle en su sección.
+
+Una vez configurado el servidor \textit{apache}, podemos configurar el servicio Owncloud en sí. Lo primero es configurar la cuenta de administrador, que normalmente se haría accediendo a la página web de owncloud, pero con una petición \textit{curl} automatizamos este paso, definiendo como usuario y contraseña a \textit{alumno} - \textit{alumno}. Después, hacemos uso de la herramienta \textit{occ} activamos la encriptación de los ficheros en el servidor, así como configuramos el acceso al servicio ldap. De este modo, no hay que acceder en ningún momento a la interfaz web para configurar el servicio.
+
+Además, para permitir el acceso por la URL de \textit{server.org31/owncloud}, copiamos el fichero \textit{config.php} modificado con los dominios de acceso confiables.
+
+\subsubsection{Cifrado de archivos en el servidor}
+
+Ya sabemos que con las órdenes:
+\begin{Verbatim}
+sudo -u www-data php /var/www/owncloud/occ app:enable encryption
+sudo -u www-data php /var/www/owncloud/occ encryption:enable
+\end{Verbatim}
+
+se activa el cifrado de los ficheros en el servidor. Ahora bien, qué significa esto en Owncloud. Lo primero que hace por cada usuario, una vez vuelve a iniciar sesión en el servicio, es crear sus claves públicas y privadas de cifrado, y comienza a cifrar todos los ficheros de dicho usuario.
+
+Las claves y ficheros se guardan en los siguientes directorios:
+
+\begin{Verbatim}
+/var/www/owncloud/	
+	data/owncloud\_private\_key
+	data/public-keys
+	data/<user>/files\_encryption
+	data/files\_encryption 
+\end{Verbatim}
+
+Para comprobar que efectivamente se cifran los ficheros, creamos el fichero \textit{texto.txt} con la cadena de texto \textit{Cifrado} y buscamos los ficheros en dichos directorios.
+
+\begin{center}
+	\includegraphics[scale=0.65]{images/owncloud/1.png}
+	
+	\textit{Fichero texto.txt con contenido cifrado mostrado con less}
+\end{center}
+
+\begin{center}
+	\includegraphics[scale=0.33]{images/owncloud/2.png}
+	
+	\textit{Fichero de la clave privada del usuario (mismo hash directorio y fichero)}
+\end{center}
+
+
+\begin{center}
+	\includegraphics[scale=0.65]{images/owncloud/3.png}
+	
+	\textit{Fichero de la clave de cifrado de texto.txt}
+\end{center}
+
+
+
+
+
 \section{Políticas de seguridad}
 %TODO: Un dibujo del escenario de seguridad
 
